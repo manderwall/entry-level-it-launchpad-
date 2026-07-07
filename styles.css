@@ -33,6 +33,38 @@
   }
 }
 
+/* Explicit theme override (Settings > Appearance) — wins over the OS
+   preference above regardless of which way prefers-color-scheme goes,
+   since these rules come later in the cascade at equal specificity. */
+html[data-theme="dark"] {
+  --bg: #14171a;
+  --bg-alt: #1c2024;
+  --text: #eef1f4;
+  --text-muted: #a7b0b8;
+  --border: #333a41;
+  --accent: #6ea8fe;
+  --accent-contrast: #0b0d0f;
+  --green: #4ade80;
+  --green-bg: #12281c;
+  --yellow-bg: #33290a;
+  --red: #ff8a80;
+  --red-bg: #341313;
+}
+html[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-alt: #f4f6f8;
+  --text: #1a1a1a;
+  --text-muted: #55606b;
+  --border: #d7dde2;
+  --accent: #1f6feb;
+  --accent-contrast: #ffffff;
+  --green: #1a7f37;
+  --green-bg: #e6f4ea;
+  --yellow-bg: #fff8dc;
+  --red: #b42318;
+  --red-bg: #fdecea;
+}
+
 * { box-sizing: border-box; }
 
 html { color-scheme: light dark; }
