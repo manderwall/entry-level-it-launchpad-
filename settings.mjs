@@ -6,6 +6,8 @@
 // No import from common.mjs on purpose — common.mjs calls into this module
 // during renderChrome(), so importing back would create a circular module
 // dependency. Tiny local copy instead.
+import { renderSyncControls } from "./data-sync.mjs";
+
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (c) => (
     { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
@@ -92,7 +94,10 @@ export function renderSettingsPanel(container) {
       <input type="checkbox" id="settings-motion" ${s.reducedMotion ? "checked" : ""}>
       <span>Reduce motion/animations</span>
     </label>
-    <p style="font-size:0.8rem;color:var(--text-muted);">Everything above is saved only in this browser — nothing is uploaded, and nothing is shared with other visitors.</p>`;
+    <p style="font-size:0.8rem;color:var(--text-muted);">Everything above is saved only in this browser — nothing is uploaded, and nothing is shared with other visitors.</p>
+    <div id="settings-sync-controls"></div>`;
+
+  renderSyncControls(container.querySelector("#settings-sync-controls"));
 
   const payFloorInput = container.querySelector("#settings-pay-floor");
   const cityInput = container.querySelector("#settings-city");
