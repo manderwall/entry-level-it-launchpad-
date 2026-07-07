@@ -1,0 +1,32 @@
+import { renderChrome, loadJSON, escapeHtml, wireCopyButtons } from "./common.mjs";
+
+renderChrome("interview-prep.html");
+
+async function init() {
+  const data = await loadJSON("data/interview-prep.json");
+
+  document.getElementById("pitch").innerHTML = `${escapeHtml(data.pitch60Second)} <button class="copy-btn" data-copy="${escapeHtml(data.pitch60Second)}">Copy</button>`;
+
+  document.getElementById("qa").innerHTML = data.commonQuestions.map((qa) => `
+    <div class="card">
+      <h3>"${escapeHtml(qa.question)}"</h3>
+      <p>${escapeHtml(qa.answer)} <button class="copy-btn" data-copy="${escapeHtml(qa.answer)}">Copy</button></p>
+    </div>`).join("");
+
+  document.getElementById("tech-terms").innerHTML = data.technicalTerms.map((t) =>
+    `<li><strong>${escapeHtml(t.term)}:</strong> ${escapeHtml(t.definition)}</li>`).join("");
+  document.getElementById("interview-tip").innerHTML = `<strong>Interview tip:</strong> ${escapeHtml(data.interviewTip)}`;
+
+  document.getElementById("star-prompts").innerHTML = data.starPrompts.map((s) => `
+    <div class="card">
+      <h3>"${escapeHtml(s.question)}"</h3>
+      <p><strong>Situation:</strong> ${escapeHtml(s.situation)}</p>
+      <p><strong>Task:</strong> ${escapeHtml(s.task)}</p>
+      <p><strong>Action:</strong> ${escapeHtml(s.action)}</p>
+      <p><strong>Result:</strong> ${escapeHtml(s.result)}</p>
+    </div>`).join("");
+  document.getElementById("star-tip").innerHTML = `<strong>Fill-in tip:</strong> ${escapeHtml(data.starFillInTip)}`;
+}
+
+init().catch((err) => console.error(err));
+wireCopyButtons();

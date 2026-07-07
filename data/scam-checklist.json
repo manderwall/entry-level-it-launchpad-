@@ -1,0 +1,20 @@
+{
+  "redFlags": [
+    "A \"remote IT job\" that requires paying for training or equipment upfront",
+    "A company that sends a check for equipment",
+    "Vague job posts with no company name",
+    "\"IT\" roles that are actually commission-only sales",
+    "$14-$16/hr help desk unless it is short-term with a clear conversion path",
+    "Data-entry jobs claiming unusually high pay with no real interview process",
+    "Interviews conducted only through text/chat with no real company email domain"
+  ],
+  "verificationSteps": [
+    "Search \"[Company name] + scam\" or \"[Company name] + reviews\" — a few honest complaints are normal, but a wall of scam reports is a hard stop.",
+    "Check that the company has a real website and a LinkedIn company page with actual employees listed, not just a single job post.",
+    "Match the email domain — a legitimate recruiter emails from @company.com, not Gmail, Yahoo, or a domain that is one letter off from the real company.",
+    "Never pay for training, background checks, or equipment upfront, and never accept a check to buy your own equipment — this is one of the most common remote-job scams.",
+    "Be cautious of interviews conducted entirely over text or chat apps (especially Telegram) with no video or phone call and no real company email.",
+    "Confirm the role before giving personal information — a real employer does not need a Social Security number or bank account details before an offer.",
+    "When in doubt, apply through the official company careers page instead of a link in an unsolicited message — this avoids most scam variants entirely."
+  ]
+}

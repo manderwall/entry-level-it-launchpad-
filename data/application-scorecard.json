@@ -1,0 +1,17 @@
+{
+  "instructions": "Use this before applying. Prioritize jobs with 7+ points.",
+  "maxScore": 13,
+  "prioritizeThreshold": 7,
+  "questions": [
+    { "id": "pay", "text": "Pay is $19/hr or higher, or salary is $40K+", "points": 2 },
+    { "id": "credentials", "text": "Mentions A+, Per Scholas, Google IT, or entry-level IT", "points": 2 },
+    { "id": "cs-accepted", "text": "Accepts customer service experience", "points": 2 },
+    { "id": "keywords", "text": "Mentions ticketing, Windows, M365, remote support, or troubleshooting", "points": 2 },
+    { "id": "setting", "text": "Remote, hybrid, or commutable", "points": 1 },
+    { "id": "training", "text": "Training is paid and equipment is provided", "points": 1 },
+    { "id": "advancement", "text": "Contract-to-hire or clear advancement path", "points": 1 },
+    { "id": "no-red-flags", "text": "No scam red flags", "points": 2 }
+  ],
+  "applyImmediatelyIf": "The role is $19+, entry-level, mentions technical/customer support, accepts customer service experience, and does not require 3+ years of IT.",
+  "skipIf": "It pays under $19, is commission-only, requires unpaid training, or asks you to buy equipment."
+}

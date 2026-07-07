@@ -1,0 +1,98 @@
+{
+  "priceDisclaimer": "Prices reflect vendor list prices as of mid-2026 and tend to rise over time — budget slightly higher, and watch for student, military, or nonprofit discounts plus employer tuition reimbursement once you're hired.",
+  "recommendedOrder": [
+    "Microsoft 365 Fundamentals (MS-900)",
+    "Network+",
+    "Security+",
+    "ITIL Foundation"
+  ],
+  "certifications": [
+    {
+      "id": "ms-900",
+      "name": "Microsoft 365 Fundamentals (MS-900)",
+      "cost": 99,
+      "prepTime": "1-2 weeks",
+      "bestFor": "Quick credibility boost for help desk / M365-heavy roles",
+      "note": "Cheapest option here, good ROI even before you've applied widely",
+      "tier": "primary"
+    },
+    {
+      "id": "network-plus",
+      "name": "Network+",
+      "cost": 399,
+      "prepTime": "4-8 weeks",
+      "bestFor": "NOC, desktop support, network-adjacent roles",
+      "note": "Network+ holders average roughly $36/hr, but that blends all experience levels, not just entry-level",
+      "tier": "primary"
+    },
+    {
+      "id": "security-plus",
+      "name": "Security+",
+      "cost": 439,
+      "prepTime": "6-10 weeks",
+      "bestFor": "SOC, cybersecurity, federal/cleared contractor roles",
+      "note": "Often required (not just preferred) for defense-contractor-adjacent support roles",
+      "tier": "primary"
+    },
+    {
+      "id": "itil-foundation",
+      "name": "ITIL Foundation",
+      "cost": 550,
+      "costNote": "roughly $300-$800+, no standalone voucher — self-study or bundled training",
+      "prepTime": "2-4 weeks",
+      "bestFor": "Service desk / ITSM-process environments",
+      "note": "Lower urgency than MS-900 or Network+ at this stage",
+      "tier": "primary"
+    },
+    {
+      "id": "az-900",
+      "name": "Azure Fundamentals (AZ-900)",
+      "cost": 99,
+      "prepTime": "1-2 weeks",
+      "bestFor": "Cloud-curious candidates",
+      "note": "Cheapest cloud credential, pairs well with MS-900",
+      "tier": "bonus"
+    },
+    {
+      "id": "md-102",
+      "name": "Endpoint Administrator (MD-102)",
+      "cost": 165,
+      "prepTime": "4-8 weeks (needs some Intune/M365 exposure)",
+      "bestFor": "After some hands-on M365/Intune experience",
+      "note": "Bigger jump than MS-900 — save for after your first IT role",
+      "tier": "bonus"
+    }
+  ],
+  "skillProjects": [
+    {
+      "id": "windows-troubleshooting-notes",
+      "title": "Windows troubleshooting notes",
+      "instructions": "Create a one-page troubleshooting guide for five common problems: slow computer, no internet, printer not working, Outlook/email issue, password/login issue.",
+      "resumeBullet": "Created troubleshooting documentation for common Windows, network, printer, and account-access issues using step-by-step support logic."
+    },
+    {
+      "id": "ticketing-practice",
+      "title": "Ticketing practice",
+      "instructions": "Use a free Trello, Notion, or spreadsheet board to simulate tickets with fields for issue, priority, troubleshooting steps, resolution, and escalation notes.",
+      "resumeBullet": "Practiced ticket documentation, prioritization, and escalation workflows for common end-user support issues."
+    },
+    {
+      "id": "m365-basics",
+      "title": "Microsoft 365 basics",
+      "instructions": "Practice with Outlook, Teams, OneDrive, and basic Microsoft 365 admin concepts using free Microsoft Learn modules.",
+      "resumeBullet": "Built familiarity with Microsoft 365 user-support workflows including Outlook, Teams, OneDrive, password/account issues, and user guidance."
+    },
+    {
+      "id": "active-directory-lab",
+      "title": "Active Directory / user-management lab",
+      "instructions": "If the computer can handle it, build a small home lab with VirtualBox/Hyper-V and Windows Server evaluation. Practice: create a user, reset a password, disable/enable an account, create a group, join a client machine to a domain.",
+      "resumeBullet": "Built a small Active Directory lab to practice user creation, password resets, account lockouts, group management, and basic domain administration."
+    },
+    {
+      "id": "networking-lab",
+      "title": "Basic networking lab",
+      "instructions": "Document the home network: router/modem, Wi-Fi name, IP address, DNS, DHCP, speed test, basic troubleshooting steps.",
+      "resumeBullet": "Documented and troubleshot a home network using basic IP, DNS, DHCP, Wi-Fi, and connectivity-testing concepts."
+    }
+  ]
+}

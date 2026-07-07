@@ -1,0 +1,60 @@
+{
+  "columns": [
+    { "key": "date", "label": "Date", "type": "date" },
+    { "key": "company", "label": "Company", "type": "text" },
+    { "key": "role", "label": "Role", "type": "text" },
+    { "key": "setting", "label": "Remote / hybrid / local", "type": "select", "options": ["Remote", "Hybrid", "Local"] },
+    { "key": "pay", "label": "Pay", "type": "text" },
+    { "key": "source", "label": "Source", "type": "text" },
+    { "key": "status", "label": "Status", "type": "select", "options": ["Not applied", "Applied", "Phone screen", "Interview", "Offer", "Rejected", "Withdrawn"] },
+    { "key": "followUpDate", "label": "Follow-up date", "type": "date" }
+  ],
+  "exampleRow": {
+    "date": "2026-07-06",
+    "company": "Example Co.",
+    "role": "Remote Technical Support Specialist",
+    "setting": "Remote",
+    "pay": "$22/hr",
+    "source": "Indeed",
+    "status": "Applied",
+    "followUpDate": "2026-07-10"
+  },
+  "weeklyGoals": [
+    "Apply to 40-60 roles/week",
+    "Message 5 recruiters/week",
+    "Message 3 Per Scholas alumni/week",
+    "Complete 1 small technical project/week",
+    "Do 2 mock interviews/week",
+    "Follow up on applications after 3-5 business days"
+  ],
+  "twoWeekPlan": {
+    "days1to2": {
+      "title": "Prepare",
+      "items": [
+        "Update resume headline to CompTIA A+ Certified Technical Support Candidate",
+        "Add remote customer-service bullets rewritten as support experience",
+        "Set the LinkedIn headline: CompTIA A+ Certified | Per Scholas Graduate | Remote Customer Service | Entry-Level IT Support",
+        "Set job alerts using the search links"
+      ]
+    },
+    "days3to7": {
+      "title": "Apply hard",
+      "dailyTarget": "8-12 jobs per day",
+      "breakdown": [
+        "4 remote technical/product support roles",
+        "3 local/hybrid help desk or desktop support roles",
+        "2 support analyst / application support roles",
+        "1 IT asset or NOC role"
+      ]
+    },
+    "days8to14": {
+      "title": "Follow up and network",
+      "items": [
+        "Message Per Scholas alumni and career staff",
+        "Ask recruiters about contract-to-hire help desk roles",
+        "Follow up on applications after 3-5 business days",
+        "Practice the 60-second pitch"
+      ]
+    }
+  }
+}

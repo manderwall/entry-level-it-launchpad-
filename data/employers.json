@@ -1,0 +1,49 @@
+{
+  "staffingContractToHire": [
+    "Robert Half Technology",
+    "Kforce",
+    "TEKsystems",
+    "Apex Systems",
+    "Insight Global",
+    "Motion Recruitment",
+    "Randstad Technologies",
+    "Experis / ManpowerGroup"
+  ],
+  "remotePipelines": [
+    { "name": "TTEC", "note": "Legitimate work-from-home customer service and support pipeline; promotes from within. Watch pay because some roles sit below $19.", "url": "https://www.ttecjobs.com/en/work-from-home" },
+    { "name": "Concentrix", "note": "Remote customer service / technical support; some tech-support roles are legit, but some pay around $15/hr, so filter hard.", "url": "https://jobs.concentrix.com/" },
+    { "name": "Kelly / KellyConnect", "note": "Remote, hybrid, and contact-center roles; a good customer-support-to-tech-support bridge. Some roles post $17-$20/hr, so use $19 as the floor.", "url": "https://www.mykelly.com/find-jobs/contact-center-jobs/" },
+    { "name": "Robert Half Technology", "note": "Contract and contract-to-hire help desk.", "url": null },
+    { "name": "Kforce", "note": "Associate help desk and local contracts.", "url": null },
+    { "name": "TEKsystems", "note": "Especially important because of its long partnership with Per Scholas.", "url": null },
+    { "name": "Apex Systems / Insight Global / Experis", "note": "High-volume first IT contracts.", "url": null }
+  ],
+  "byZone": {
+    "inner-loop": ["UTHealth", "Houston Methodist", "Texas Children's", "Memorial Hermann", "MD Anderson", "Rice University", "University of Houston"],
+    "uptown-galleria": [],
+    "energy-corridor": ["bp", "Shell", "ConocoPhillips", "Baker Hughes", "Fluor", "NOV", "Amentum", "Energy Transfer", "Eaton", "C2O"],
+    "north-woodlands": ["ExxonMobil", "Hewlett Packard Enterprise", "Huntsman"],
+    "clear-lake": ["Jacobs", "Leidos", "Amentum", "KBR", "Barrios"],
+    "southwest-sugarland": ["SLB (Schlumberger)", "Fluor"]
+  },
+  "alsoCheckAnywhere": ["AMSYS Innovative Solutions", "Triple-S Steel Supply (in-house IT help desk)", "Harris County (confirm pay carefully, some start below $19/hr)"],
+  "nationalStaffingBpo": ["HCLTech", "CGI", "TEKsystems", "Insight Global", "American National (Galveston / League City)"],
+  "apprenticeships": {
+    "primaryResource": { "name": "Apprenticeship.gov — Technology", "url": "https://www.apprenticeship.gov/apprenticeship-industries/technology" },
+    "tracks": ["Customer Service Tech Support", "IT Generalist", "Network Support Technician", "Cybersecurity Support Technician"],
+    "searchTerms": ["IT support apprenticeship", "help desk apprenticeship", "technology apprenticeship customer service tech support", "network support technician apprenticeship", "IT generalist apprenticeship"],
+    "payBenchmark": "Recent Houston-area IT Apprentice postings have paid around $26-$31/hr."
+  },
+  "perScholasAdvantage": [
+    "Ask career services: \"Which employers hired recent A+ graduates?\"",
+    "Ask for introductions to TEKsystems, local MSPs, and help-desk recruiters.",
+    "Ask alumni: \"Where did you get your first job after A+?\"",
+    "Ask for mock interviews for technical support, not general customer service.",
+    "Ask whether alumni upskilling is available after the first role."
+  ],
+  "networkingScripts": {
+    "linkedinConnectionRequest": "Hi [Name], I'm a CompTIA A+ certified Per Scholas graduate looking for my first IT support role in [remote / Houston]. I'd love to connect and learn from your experience in the field.",
+    "informationalInterviewRequest": "Hi [Name], thanks for connecting! I'm early in my IT career — A+ certified through Per Scholas, with remote customer service experience — and I'm exploring entry-level help desk and technical support roles. Would you be open to a 15-minute call sometime in the next couple weeks to share how you got started or what you'd look for in a new hire? I'd really appreciate any advice.",
+    "referralAsk": "Hi [Name], I saw you work at [Company from the zone list above] and I'm applying for entry-level IT support roles. I'm A+ certified through Per Scholas with remote customer service experience. Would you be willing to refer me for any open help desk or support roles, or point me to the right person on your team? Happy to send my resume."
+  }
+}

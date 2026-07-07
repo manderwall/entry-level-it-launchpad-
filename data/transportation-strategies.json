@@ -1,0 +1,44 @@
+{
+  "realityCheck": "Houston is one of the most car-dependent big metros in the country — sidewalks are sparse and jobs are scattered across dozens of districts. Transportation is often the real deciding factor, so plan for it before you accept anything.",
+  "ifYouHaveACar": [
+    "Judge jobs by commute time, not distance — traffic can turn 15 miles into a 45-minute drive.",
+    "Put gas, tolls, parking, and upkeep into your pay math. A job paying $2/hr more but adding an hour of driving and $15/day parking can net less."
+  ],
+  "ifTransportationIsLimited": [
+    {
+      "rank": 1,
+      "strategy": "Go remote-first (biggest lever)",
+      "detail": "A fully remote support role removes the commute entirely. This is usually the strongest move when you don't have reliable transportation — use the remote search strings in the Search Toolkit."
+    },
+    {
+      "rank": 2,
+      "strategy": "Target the light-rail corridor",
+      "detail": "Local bus/rail fare is $1.25 (60 cents discounted). Focus on jobs near the Red, Green, or Purple lines — Downtown, Midtown, Museum District, and especially the Texas Medical Center, which has a large number of healthcare help-desk jobs right on the Red Line. Near the University of Houston, ask about the COAST program, which can put up to $27.50/month toward your METRO fare."
+    },
+    {
+      "rank": 3,
+      "strategy": "Use Park & Ride",
+      "detail": "METRO runs 25+ suburban Park & Ride lots with express buses to Downtown and the TMC. Boarding fare is $2-$4.50 (about $4-$9 round trip); a day pass is $3. Good if you can drive to a lot but want to skip downtown parking and traffic."
+    },
+    {
+      "rank": 4,
+      "strategy": "Try a vanpool",
+      "detail": "METRO Vanpool matches you with nearby commuters heading to the same area; average cost runs about $7-$9/day per rider (covers your share of the lease, gas, parking, and tolls), and some employers subsidize it further. Sign up and use the commute-cost calculator at vanpool.ridemetro.org.",
+      "url": "https://vanpool.ridemetro.org"
+    }
+  ],
+  "metroLift": "MetroLift is METRO's paratransit service for riders who can't use regular bus or rail because of a disability — worth checking eligibility if that applies to you.",
+  "resourcesIfNoCar": [
+    { "name": "METRO Vanpool", "detail": "Averages about $7-$9/day per rider (covers your share of the lease, gas, parking, and tolls); sign up and get matched with nearby commuters. Some employers subsidize part or all of the cost pretax.", "url": "https://vanpool.ridemetro.org" },
+    { "name": "Rideshare to a transit stop", "detail": "Pairing a short Uber/Lyft or carpool ride with light rail or Park & Ride is often cheaper than a rideshare for the whole commute.", "url": null },
+    { "name": "211 Texas / United Way HelpLine", "detail": "Dial 211 or search '211 Texas transportation assistance' for local nonprofit help with bus passes, gas cards, or rides to work.", "url": "https://211texas.org" },
+    { "name": "Employer transit benefits", "detail": "Ask HR whether a pretax transit or parking benefit is offered; it can offset Park & Ride or rideshare costs.", "url": null },
+    { "name": "Outside Houston", "detail": "Search '[your city] vanpool', '[your city] transit authority', or '211 [your state] transportation assistance' for the equivalent local programs.", "url": null }
+  ],
+  "questionsToAskBeforeAccepting": [
+    "Is it onsite, hybrid, or fully remote? How many days on site?",
+    "What are the shift hours — and does transit actually run then? (Bus and rail service thins out at night and on weekends.)",
+    "Is there a parking cost, or is parking provided?",
+    "Any mileage reimbursement or transit benefit?"
+  ]
+}

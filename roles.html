@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Best-fit entry-level IT roles ranked by pay and remote odds, with a filter tool.">
+<link rel="stylesheet" href="styles.css">
+<title>Best-Fit Roles & Pay — Entry-Level IT Launchpad</title>
+</head>
+<body>
+<main id="main" tabindex="-1">
+  <h1>Best-Fit Roles &amp; Pay</h1>
+  <p>Start with these five. They're the strongest mix of realistic,
+  $19+/hr, remote/hybrid/local availability, and fit for A+ + customer
+  service.</p>
+
+  <div class="toolbar no-print">
+    <div>
+      <label for="filter-min-pay">Minimum hourly pay ($/hr)</label>
+      <input type="number" id="filter-min-pay" value="19" min="0" step="1">
+    </div>
+    <div>
+      <label for="filter-remote">Remote odds</label>
+      <select id="filter-remote">
+        <option value="">Any</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="roles-list">Loading…</div>
+
+  <h2>Stretch or next-step roles</h2>
+  <p>These can still be worth searching, but they may need more networking, a home lab, or a next certification.</p>
+  <ul id="stretch-roles"></ul>
+
+  <h2>Salary floor and negotiation</h2>
+  <ul>
+    <li>Minimum: <strong>$19/hr</strong></li>
+    <li>Realistic target: <strong>$20-$25/hr</strong> for help desk / technical support</li>
+    <li>Strong target: <strong>$22-$28/hr</strong> for support analyst, NOC, application support, or better remote support</li>
+    <li>Entry IT support salary: <strong>$45K-$55K</strong></li>
+    <li>Application support / support analyst / SaaS support salary: <strong>$55K-$70K+</strong></li>
+  </ul>
+
+  <div class="card">
+    <h3>If asked for hourly expectations</h3>
+    <p>"For entry-level technical support roles using my A+ certification and remote customer service background, I'm targeting the $20-$25/hr range depending on schedule, training, and benefits."
+      <button class="copy-btn" data-copy="For entry-level technical support roles using my A+ certification and remote customer service background, I'm targeting the $20-$25/hr range depending on schedule, training, and benefits.">Copy</button></p>
+  </div>
+  <div class="card">
+    <h3>If asked for salary expectations</h3>
+    <p>"I'm targeting the $45K-$55K range for entry-level IT support, with flexibility depending on benefits, growth path, and remote/hybrid structure."
+      <button class="copy-btn" data-copy="I'm targeting the $45K-$55K range for entry-level IT support, with flexibility depending on benefits, growth path, and remote/hybrid structure.">Copy</button></p>
+  </div>
+</main>
+<script type="module" src="roles.mjs"></script>
+</body>
+</html>
