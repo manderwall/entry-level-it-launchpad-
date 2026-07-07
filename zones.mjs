@@ -35,7 +35,7 @@ async function init() {
   renderZoneDetail(zones[0].id);
 
   document.getElementById("zones-table").innerHTML = `
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Zone</th><th>Areas</th><th>What's there</th><th>Getting there</th></tr></thead>
       <tbody>${zones.map((z) => `
         <tr>
@@ -44,14 +44,14 @@ async function init() {
           <td>${escapeHtml(z.whatsThere)}</td>
           <td>${escapeHtml(z.transit)}</td>
         </tr>`).join("")}</tbody>
-    </table>`;
+    </table></div>`;
 
   document.getElementById("pay-table").innerHTML = `
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Zone</th><th>Typical pay</th><th>Notes</th></tr></thead>
       <tbody>${zones.map((z) => `
         <tr><td>${escapeHtml(z.name)}</td><td>${escapeHtml(z.payRange)}</td><td>${escapeHtml(z.payNotes)}</td></tr>`).join("")}</tbody>
-    </table>
+    </table></div>
     <p class="disclaimer">${escapeHtml(zonesData.payDisclaimer)}</p>`;
 
   document.getElementById("example-listings").innerHTML = zonesData.recentExampleListings.map((l) => `<li>${escapeHtml(l)}</li>`).join("");

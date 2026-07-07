@@ -35,10 +35,10 @@ loadJSON("data/roles.json").then((roles) => {
       <td>${escapeHtml(r.remoteOdds)}</td>
     </tr>`).join("");
   document.getElementById("roles-preview").innerHTML = `
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Rank</th><th>Target role</th><th>Realistic pay target</th><th>Remote odds</th></tr></thead>
       <tbody>${rows}</tbody>
-    </table>`;
+    </table></div>`;
 }).catch(() => {
   document.getElementById("roles-preview").textContent = "Could not load role data.";
 });

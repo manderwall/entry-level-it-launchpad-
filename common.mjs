@@ -4,6 +4,7 @@ import { getSettings, applyAccessibility, renderSettingsPanel } from "./settings
 import { maybeShowSplash, showSplash } from "./splash.mjs";
 import { showHelp } from "./help.mjs";
 import { renderChatWidget } from "./chat-widget.mjs";
+import { trapModal } from "./modal.mjs";
 
 export const PAGES = [
   { href: "index.html", label: "Start Here" },
@@ -122,12 +123,8 @@ export function renderChrome(activeHref) {
     closeBtn.textContent = "Done";
     closeBtn.style.marginTop = "1rem";
     overlay.querySelector("#settings-panel-container").appendChild(closeBtn);
-    const dismiss = () => overlay.remove();
-    closeBtn.addEventListener("click", dismiss);
-    overlay.addEventListener("click", (e) => { if (e.target === overlay) dismiss(); });
-    document.addEventListener("keydown", function onKey(e) {
-      if (e.key === "Escape") { dismiss(); document.removeEventListener("keydown", onKey); }
-    });
+    const close = trapModal(overlay);
+    closeBtn.addEventListener("click", close);
   });
 
   maybeShowSplash();

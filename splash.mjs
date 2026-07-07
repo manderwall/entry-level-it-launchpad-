@@ -1,6 +1,8 @@
 // First-visit splash/welcome screen. Shows once per browser (localStorage
 // flag), dismissable immediately, and re-openable anytime from the Help
 // button so it's not a one-shot annoyance.
+import { trapModal } from "./modal.mjs";
+
 const STORAGE_KEY = "entry-level-it-launchpad:seen-splash";
 
 function buildSplash() {
@@ -37,13 +39,6 @@ export function maybeShowSplash() {
 export function showSplash() {
   const overlay = buildSplash();
   document.body.appendChild(overlay);
-  const dismiss = () => {
-    localStorage.setItem(STORAGE_KEY, "1");
-    overlay.remove();
-  };
-  overlay.querySelector("#splash-dismiss").addEventListener("click", dismiss);
-  overlay.addEventListener("click", (e) => { if (e.target === overlay) dismiss(); });
-  document.addEventListener("keydown", function onKey(e) {
-    if (e.key === "Escape") { dismiss(); document.removeEventListener("keydown", onKey); }
-  });
+  const close = trapModal(overlay, () => localStorage.setItem(STORAGE_KEY, "1"));
+  overlay.querySelector("#splash-dismiss").addEventListener("click", close);
 }
