@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Search strings, live job-board link generator, an application scorecard, and a scam checklist.">
+<link rel="stylesheet" href="styles.css">
+<title>Search Toolkit — Entry-Level IT Launchpad</title>
+</head>
+<body>
+<main id="main" tabindex="-1">
+  <h1>Search Toolkit — Strings, Links &amp; Filters</h1>
+
+  <h2>Live search link generator</h2>
+  <p>Pick a role and a location, and this builds ready-to-click links on
+  each job board. Leave the location as "Remote" for fully remote
+  searches, or type your own city/ZIP for local/hybrid.</p>
+  <div class="toolbar no-print">
+    <div>
+      <label for="role-select">Role / keywords</label>
+      <select id="role-select"></select>
+    </div>
+    <div>
+      <label for="location-input">Location</label>
+      <input type="text" id="location-input" value="Remote" placeholder="Remote, Houston TX, or a ZIP">
+    </div>
+  </div>
+  <ul class="link-list" id="board-links"></ul>
+
+  <h2>Search filters to apply on any board</h2>
+  <div id="filters"></div>
+
+  <h2>Job boards</h2>
+  <ul class="link-list" id="job-boards"></ul>
+
+  <h2>How to set up job alerts (2 minutes each)</h2>
+  <div id="alert-setup"></div>
+  <p><em>Set 2-3 alerts total (one remote, one local/zone-specific, one broad) so new postings land in your inbox instead of needing a fresh manual search every day.</em></p>
+
+  <h2>Application scorecard</h2>
+  <p>Check off what's true about a posting. Prioritize jobs scoring 7+ points.</p>
+  <div id="scorecard"></div>
+  <p id="scorecard-result" role="status" aria-live="polite"></p>
+
+  <h2>Scam checklist <button class="no-print" onclick="window.print()">Print this checklist</button></h2>
+  <h3>Red flags to avoid</h3>
+  <ul id="red-flags"></ul>
+  <h3>How to verify a posting is legitimate</h3>
+  <ul id="verification-steps"></ul>
+</main>
+<script type="module" src="search-toolkit.mjs"></script>
+</body>
+</html>

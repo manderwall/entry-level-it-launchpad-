@@ -1,0 +1,62 @@
+[
+  {
+    "rank": 1,
+    "role": "Remote Technical Support Specialist",
+    "whyFit": "Best match for remote customer service + A+. Phone/chat/email support, remote troubleshooting, documentation, escalation.",
+    "payTarget": "$20-$25/hr",
+    "payType": "hourly",
+    "payMin": 20,
+    "payMax": 25,
+    "remoteOdds": "High",
+    "typicalWork": "Answer phone/chat/email requests; troubleshoot login, device, software, browser, printer, VPN, or basic network issues; use remote desktop tools; write clear ticket notes; escalate when needed.",
+    "searchTerms": ["remote technical support", "remote support technician", "CompTIA A+ remote support", "technical customer support"]
+  },
+  {
+    "rank": 2,
+    "role": "Help Desk Analyst I / Service Desk Analyst",
+    "whyFit": "Most direct A+ entry point. Password resets, hardware/software issues, ticketing, Windows, M365, basic network troubleshooting.",
+    "payTarget": "$19-$25/hr",
+    "payType": "hourly",
+    "payMin": 19,
+    "payMax": 25,
+    "remoteOdds": "Medium (local/hybrid easier)",
+    "typicalWork": "Password resets and account unlocks; Windows support; M365/Outlook/Teams support; hardware/peripheral troubleshooting; ticket triage; escalation to Tier 2.",
+    "searchTerms": ["help desk analyst I", "service desk analyst", "entry level help desk CompTIA A+", "IT helpdesk technician"]
+  },
+  {
+    "rank": 3,
+    "role": "SaaS / Product Support Specialist",
+    "whyFit": "Great bridge from customer service into tech. Supports users of a software product without requiring deep infrastructure experience.",
+    "payTarget": "$45K-$60K/yr",
+    "payType": "salary",
+    "payMin": 45000,
+    "payMax": 60000,
+    "remoteOdds": "High",
+    "typicalWork": "Help customers use a software product; answer workflow/setup questions; reproduce issues; escalate bugs; write help articles or internal notes.",
+    "searchTerms": ["product support specialist", "SaaS support specialist", "technical customer support software", "client support analyst"]
+  },
+  {
+    "rank": 4,
+    "role": "Application Support Analyst / Support Analyst",
+    "whyFit": "Higher-paying cousin of help desk. Recreates issues, writes tickets, tests fixes, supports business apps, talks to users.",
+    "payTarget": "$55K-$70K/yr",
+    "payType": "salary",
+    "payMin": 55000,
+    "payMax": 70000,
+    "remoteOdds": "Medium-high",
+    "typicalWork": "Troubleshoot application issues; recreate errors; document user problems; test fixes; work with developers/administrators; help users understand workflows.",
+    "searchTerms": ["application support analyst", "support analyst", "business application support", "customer service analyst"]
+  },
+  {
+    "rank": 5,
+    "role": "IT Asset Coordinator / IT Asset Analyst",
+    "whyFit": "Good hidden entry point. Tracks laptops, software, inventory, imaging, shipping, repairs, lifecycle records.",
+    "payTarget": "$19-$32/hr",
+    "payType": "hourly",
+    "payMin": 19,
+    "payMax": 32,
+    "remoteOdds": "Medium (often local/hybrid)",
+    "typicalWork": "Track laptops/monitors/phones/peripherals; update inventory records; coordinate shipping and returns; support device refresh projects; track software licenses; work with procurement and IT support.",
+    "searchTerms": ["IT asset coordinator", "IT asset analyst", "hardware asset management", "IT inventory", "device lifecycle"]
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "remote": [
+    "remote technical support specialist CompTIA A+",
+    "remote help desk technician CompTIA A+ entry level",
+    "remote IT support specialist customer service",
+    "remote product support specialist software entry level",
+    "remote SaaS support customer service technical",
+    "remote application support analyst entry level",
+    "remote support analyst customer service IT",
+    "remote IT asset coordinator entry level"
+  ],
+  "localTemplate": [
+    "CompTIA A+ entry level help desk {city}",
+    "IT support specialist CompTIA A+ {city}",
+    "desktop support technician A+ {city}",
+    "service desk analyst entry level {city}",
+    "IT asset coordinator {city} entry level",
+    "computer technician A+ {city}",
+    "NOC technician entry level {city}",
+    "technical support specialist customer service {city}"
+  ],
+  "filters": {
+    "pay": ["$19/hr minimum", "$40K minimum salary"],
+    "experience": ["Entry level", "0-2 years", "customer service accepted"],
+    "workSetting": ["Remote", "hybrid", "within commute range"],
+    "keywords": ["CompTIA A+", "ticketing", "Windows", "M365", "remote support", "customer service"]
+  }
+}

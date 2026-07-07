@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Houston broken into job zones with transit access and pay benchmarks, plus a method to build the same map for any metro.">
+<link rel="stylesheet" href="styles.css">
+<title>Houston Zones & Getting There — Entry-Level IT Launchpad</title>
+</head>
+<body>
+<main id="main" tabindex="-1">
+  <h1>Houston by Area &amp; Getting There</h1>
+  <p class="callout">Greater Houston is nearly 10,000 square miles — larger
+  than several U.S. states — with jobs spread across many separate
+  districts and very limited public transit. Don't search "Houston" as
+  one blob. Pick your area, set a realistic commute limit, and decide up
+  front whether you're targeting onsite, hybrid, or fully remote.</p>
+
+  <h2>Zone picker</h2>
+  <p>Pick your zone to jump straight to a live job search for that area.</p>
+  <div class="toolbar no-print">
+    <div>
+      <label for="zone-select">Zone</label>
+      <select id="zone-select"></select>
+    </div>
+  </div>
+  <div id="zone-detail"></div>
+
+  <h2>All zones at a glance</h2>
+  <div id="zones-table">Loading…</div>
+
+  <h2>Pay by zone</h2>
+  <div id="pay-table"></div>
+
+  <h2>Recent example listings</h2>
+  <ul id="example-listings"></ul>
+
+  <h2>Transportation reality check</h2>
+  <p id="transport-reality"></p>
+  <h3>If you have a reliable car</h3>
+  <ul id="car-tips"></ul>
+  <h3>If transportation is limited — strongest strategies first</h3>
+  <ol id="no-car-strategies"></ol>
+
+  <h2>Not in Houston? Break your own metro into zones</h2>
+  <ol id="other-metro-method"></ol>
+</main>
+<script type="module" src="zones.mjs"></script>
+</body>
+</html>

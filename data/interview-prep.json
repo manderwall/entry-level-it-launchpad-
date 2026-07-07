@@ -1,0 +1,51 @@
+{
+  "pitch60Second": "I'm a Per Scholas graduate and CompTIA A+ certified. My background includes remote customer service, so I'm comfortable supporting users by phone, chat, and email, documenting issues, and staying calm with frustrated customers. I'm looking for an entry-level technical support or help desk role where I can combine my customer support experience with my A+ troubleshooting foundation.",
+  "commonQuestions": [
+    {
+      "question": "You don't have much IT experience. Why should we hire you?",
+      "answer": "I understand I'm early in my IT career, but I've already earned CompTIA A+ and completed Per Scholas training, so I have a structured troubleshooting foundation. My remote customer service background also matters because help desk is not just technical — it's guiding users calmly, documenting issues, and knowing when to escalate. I'm coachable, comfortable with support workflows, and ready to build hands-on experience."
+    },
+    {
+      "question": "How would you handle a frustrated user?",
+      "answer": "I would stay calm, acknowledge the frustration, ask clear questions, and walk through one step at a time. I'd document what we tried, avoid blaming the user, and escalate if the issue was outside my access or skill level. My goal would be to make the user feel heard while moving toward a resolution."
+    },
+    {
+      "question": "What would you do if you don't know the answer?",
+      "answer": "I'd gather the facts, check the knowledge base or documentation, try safe troubleshooting steps within policy, and escalate with clear notes if needed. I would rather document and escalate correctly than guess and make the issue worse."
+    }
+  ],
+  "technicalTerms": [
+    { "term": "DNS", "definition": "Translates names like google.com into IP addresses." },
+    { "term": "DHCP", "definition": "Automatically gives devices IP addresses on a network." },
+    { "term": "VPN", "definition": "Creates a secure connection into a private network." },
+    { "term": "Ticketing system", "definition": "A tool for tracking user issues, work notes, status, priority, and resolution." },
+    { "term": "IP address", "definition": "A unique address that identifies a device on a network." },
+    { "term": "Active Directory", "definition": "Microsoft's system for managing users, groups, and permissions on a Windows network." },
+    { "term": "Imaging", "definition": "Installing a standard operating system + apps setup onto a device." }
+  ],
+  "interviewTip": "For every technical question, briefly explain the concept, then connect it to helping a user. Employers hiring at this level care as much about communication and process as raw technical depth.",
+  "starPrompts": [
+    {
+      "question": "Tell me about a time you dealt with a difficult or frustrated customer.",
+      "situation": "Describe a real call/chat where a customer was upset (late order, billing issue, frustrated with a repeat problem).",
+      "task": "Your job was to resolve the issue and keep the interaction professional.",
+      "action": "Explain how you stayed calm, listened, asked clarifying questions, and worked through the issue step by step.",
+      "result": "State the outcome — issue resolved, customer satisfaction score, or a compliment/escalation avoided."
+    },
+    {
+      "question": "Tell me about a time you solved a problem without help.",
+      "situation": "A specific issue you handled solo (a confusing account issue, a tricky troubleshooting step).",
+      "task": "You needed to figure it out without escalating immediately.",
+      "action": "Describe how you researched (knowledge base, past tickets, testing), tried steps in order, and documented what worked.",
+      "result": "Problem solved, and note anything you added to documentation for the next person."
+    },
+    {
+      "question": "Tell me about a time you had to learn something new quickly.",
+      "situation": "A new tool, policy, or product change at your customer service job (or an A+/Per Scholas lab topic).",
+      "task": "You needed to get up to speed fast to keep supporting customers.",
+      "action": "Explain how you studied, practiced, or asked questions to learn quickly.",
+      "result": "Describe how you applied it successfully on the job or in a lab project."
+    }
+  ],
+  "starFillInTip": "Write out 2-3 of these in full before interviews, using real details from your own customer service job. A specific, real story beats a generic answer every time."
+}

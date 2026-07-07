@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Five skill-building projects with resume bullets, plus a certification cost and payoff calculator.">
+<link rel="stylesheet" href="styles.css">
+<title>Skill-Building Projects & Next Certs — Entry-Level IT Launchpad</title>
+</head>
+<body>
+<main id="main" tabindex="-1">
+  <h1>Skill-Building Projects &amp; Next Certs</h1>
+  <p>For someone with A+ but limited work experience, a few documented
+  projects make the resume much stronger. Put these under a resume
+  section called <strong>Technical Projects</strong>. These do not need
+  to be fancy — a simple one-page write-up for each is enough.</p>
+
+  <div id="projects"></div>
+
+  <h2>Certification cost &amp; payoff calculator</h2>
+  <p>Pick the certs you're considering and your target hourly pay to see
+  rough total cost and how many hours at that pay it takes to earn it
+  back.</p>
+  <div class="toolbar no-print">
+    <div>
+      <label for="target-pay">Target hourly pay ($/hr)</label>
+      <input type="number" id="target-pay" value="22" min="1" step="0.5">
+    </div>
+  </div>
+  <div id="certs-calc"></div>
+  <p><strong>Running total selected: <span id="calc-total">$0</span></strong>
+     — pays for itself in about <span id="calc-hours">0</span> hours at your target pay.</p>
+  <p class="disclaimer" id="price-disclaimer"></p>
+</main>
+<script type="module" src="projects-certs.mjs"></script>
+</body>
+</html>

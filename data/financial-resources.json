@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Unemployment benefits (Texas Workforce Commission)",
+    "description": "If you were laid off or had your hours reduced through no fault of your own, apply at twc.texas.gov. You'll also need to register at WorkInTexas.com — which doubles as another job board worth searching.",
+    "url": "https://twc.texas.gov",
+    "secondaryUrl": "https://www.workintexas.com"
+  },
+  {
+    "name": "211 Texas / United Way HelpLine",
+    "description": "Call 2-1-1 or visit 211texas.org for rent, utility, and food assistance referrals in your area.",
+    "url": "https://211texas.org"
+  },
+  {
+    "name": "Workforce Solutions (or your local workforce board)",
+    "description": "Houston-area job seekers can get free resume help, job search assistance, and — in some cases — training funds toward an additional certification. Search \"[your city] workforce solutions\" or \"[your state] workforce board\" to find your local office.",
+    "url": null
+  },
+  {
+    "name": "Outside Texas",
+    "description": "Search \"[your state] unemployment benefits\" and \"211 [your state]\" for the equivalent programs.",
+    "url": null
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Indeed",
+    "note": "Broadest volume",
+    "remoteUrlTemplate": "https://www.indeed.com/jobs?q={query}&l=Remote",
+    "localUrlTemplate": "https://www.indeed.com/jobs?q={query}&l={location}",
+    "alertSteps": "Run a search, then click \"Get new jobs for this search by email\" near the top of the results (or toggle Job Alert in the app) and set it to daily."
+  },
+  {
+    "name": "LinkedIn",
+    "note": "Best for networking and recruiter visibility",
+    "remoteUrlTemplate": "https://www.linkedin.com/jobs/search/?keywords={query}&f_WT=2",
+    "localUrlTemplate": "https://www.linkedin.com/jobs/search/?keywords={query}&location={location}",
+    "alertSteps": "Run a search, toggle \"Set alert\" at the top of the results list, choose Daily, and pick email or app notification."
+  },
+  {
+    "name": "Dice",
+    "note": "Strong for IT contracts and posted rates",
+    "remoteUrlTemplate": "https://www.dice.com/jobs?q={query}&location=Remote&filters.workplaceTypes=Remote",
+    "localUrlTemplate": "https://www.dice.com/jobs?q={query}&location={location}",
+    "alertSteps": "Run a search, click \"Save Search\" and turn on email alerts in account settings."
+  },
+  {
+    "name": "ZipRecruiter",
+    "note": "Useful for salary benchmarks and alerts",
+    "remoteUrlTemplate": "https://www.ziprecruiter.com/candidate/search?search={query}&location=Remote",
+    "localUrlTemplate": "https://www.ziprecruiter.com/candidate/search?search={query}&location={location}",
+    "alertSteps": "Run a search, click \"Get New Jobs Emailed to You\" and confirm the email frequency."
+  },
+  {
+    "name": "Built In",
+    "note": "Better for SaaS, product support, and startup support roles",
+    "remoteUrlTemplate": "https://builtin.com/jobs/remote?search={query}",
+    "localUrlTemplate": "https://builtin.com/jobs?search={query}",
+    "alertSteps": null
+  },
+  {
+    "name": "Remote Rocketship",
+    "note": "Remote tech roles",
+    "remoteUrlTemplate": "https://www.remoterocketship.com/jobs?search={query}",
+    "localUrlTemplate": null,
+    "alertSteps": null
+  },
+  {
+    "name": "DailyRemote",
+    "note": "Remote tech roles",
+    "remoteUrlTemplate": "https://dailyremote.com/remote-jobs?search={query}",
+    "localUrlTemplate": null,
+    "alertSteps": null
+  }
+]

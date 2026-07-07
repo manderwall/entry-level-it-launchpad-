@@ -1,0 +1,21 @@
+{
+  "name": "entry-level-it-launchpad",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Open-source job-search launchpad for CompTIA A+ certified / Per Scholas grads breaking into entry-level IT support.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manderwall/entry-level-it-launchpad-.git"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node scripts/check-syntax.mjs",
+    "serve": "python3 -m http.server 8000"
+  },
+  "devDependencies": {}
+}
