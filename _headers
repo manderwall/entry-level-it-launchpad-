@@ -8,7 +8,9 @@
   # calls our own /api/jobs (a Cloudflare Pages Function), which proxies
   # Adzuna server-side. The browser never talks to api.adzuna.com directly,
   # so no external connect-src entry is needed.
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; object-src 'none'; form-action 'none'; upgrade-insecure-requests
+  # worker-src 'self': the service worker (sw.js) that makes the site
+  # installable/offline-capable on iPad/iPhone/Android/desktop.
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; worker-src 'self'; frame-ancestors 'none'; base-uri 'none'; object-src 'none'; form-action 'none'; upgrade-insecure-requests
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()

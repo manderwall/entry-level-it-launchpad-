@@ -40,10 +40,34 @@ turned into real interactive tools instead of a static document:
   application tracker (stored only in your own browser via
   `localStorage`, exportable to CSV — nothing is uploaded or shared
   between visitors).
+- **Government Contractors & Subcontractors** — federal contract awards
+  near Houston/JSC, live from USAspending.gov.
 
 Houston is used as the worked example metro throughout, but the Zones
 page includes an explicit method for rebuilding the same zone/pay/transit
 breakdown for any city.
+
+## Cross-device, installable, accessible
+
+- **Works everywhere** — it's a responsive web app, so it runs the same
+  in any modern browser on iPad, iPhone, Android, Mac, or PC. No app
+  store, no install required to use it.
+- **Installable as an app** — `manifest.json` + a service worker
+  (`sw.js`) make it installable to a home screen/dock like a native app,
+  and it keeps working offline once you've loaded it once.
+- **Your own pay floor, not a hardcoded number** — the site defaults to
+  $19/hr (based on a real entry-level offer), but every visitor sets
+  their own in **⚙ Settings**, and it's used everywhere (Roles filter,
+  header, scorecard) instead of being fixed.
+- **Accessibility options** (in ⚙ Settings): text size, a dyslexia-friendly
+  font, high-contrast mode, and reduced motion.
+- **A splash screen and a ? Help panel** explain the site's sections and
+  privacy model — the splash shows once per browser and is reachable
+  again anytime from Help.
+- **Nothing you enter is uploaded** — your pay floor, city, accessibility
+  prefs, progress checklist, and application tracker all live only in
+  your own browser's `localStorage`. Nothing is shared between visitors,
+  even if you and a friend both use the same deployed site.
 
 ## Tech stack
 
@@ -65,10 +89,20 @@ test suite.
 content/guide/   Prose export of the original guide (Markdown, source of truth for wording)
 content/LICENSE  CC BY 4.0 — covers the written guide content
 data/            Structured JSON data the site reads at runtime
+functions/api/   Cloudflare Pages Functions — server-side proxies (jobs, contractors, chat)
 scripts/         check-syntax.mjs — CI syntax gate
 tests/           node --test data validation suite
-*.html / *.mjs   One page + one script per section, plus common.mjs (shared header/nav/footer)
-styles.css       Single stylesheet, light/dark via prefers-color-scheme
+*.html / *.mjs   One page + one script per section
+common.mjs       Shared header/nav/footer/chrome, wired into every page
+settings.mjs     Pay floor, city, and accessibility prefs (localStorage)
+progress.mjs     Cross-page milestone checklist (localStorage)
+splash.mjs       First-visit welcome screen
+help.mjs         "?" help/navigation panel
+chat-widget.mjs  Floating AI chat button (dormant until ANTHROPIC_API_KEY is set)
+live-search.mjs  Search Toolkit's live job-results panel
+manifest.json    PWA manifest — installable to a home screen/dock
+sw.js            Service worker — offline caching + installability
+styles.css       Single stylesheet, light/dark + accessibility modes via prefers-color-scheme / classes
 _headers         Cloudflare Pages CSP + security headers
 ```
 
@@ -114,6 +148,27 @@ plain job-board links.
 The key never touches this repo or the visitor's browser — `functions/api/jobs.js`
 runs server-side on Cloudflare's edge and proxies the request. If the
 variables aren't set, the live-results panel just quietly doesn't appear.
+
+### Enable the Government Contractors page (no key needed)
+
+`functions/api/contractors.js` proxies USAspending.gov's public award-search
+API — no API key or account required. It works automatically once
+deployed to Cloudflare Pages; nothing to configure.
+
+### Enable the AI chat box (optional)
+
+A floating chat button on every page can answer questions grounded in
+this site's content, via Anthropic's Claude API.
+
+1. Get an API key from [console.anthropic.com](https://console.anthropic.com/).
+2. Cloudflare Pages dashboard → your project → **Settings** → **Environment variables** → **Add variable**.
+3. Add `ANTHROPIC_API_KEY` as a **Secret**.
+4. Redeploy.
+
+Like the job-search key, this never touches the repo or the browser —
+`functions/api/chat.js` proxies it server-side. Without the key set, the
+chat widget still appears (so visitors know it exists) but explains it
+isn't configured yet instead of erroring.
 
 ## Make it your own
 

@@ -2,32 +2,51 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; worker-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="A free, open-source job-search launchpad for CompTIA A+ certified / Per Scholas grads breaking into entry-level IT support — best-fit roles, search tools, resume templates, and interview prep.">
 <meta name="author" content="Amanda Kondrat'yev">
-<meta name="theme-color" content="#14171a" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <link rel="stylesheet" href="styles.css">
 <title>Entry-Level IT Launchpad</title>
 </head>
 <body>
 <main id="main" tabindex="-1">
-  <h1>Entry-Level IT Launchpad</h1>
-  <p class="callout green">
-    <strong>Main message:</strong> Do not frame yourself as "no experience."
-    Frame it as <strong>CompTIA A+ certified + Per Scholas trained + remote
-    customer service experience = entry-level technical support candidate.</strong>
-    The best first roles are people-facing tech jobs where communication
-    matters as much as troubleshooting.
-  </p>
+  <div class="hero">
+    <svg class="hero-art" viewBox="0 0 240 160" aria-hidden="true">
+      <rect x="10" y="20" width="140" height="95" rx="10" fill="var(--bg-alt)" stroke="var(--border)" stroke-width="2"/>
+      <rect x="22" y="34" width="116" height="10" rx="3" fill="var(--accent)" opacity="0.85"/>
+      <rect x="22" y="52" width="80" height="8" rx="3" fill="var(--border)"/>
+      <rect x="22" y="66" width="96" height="8" rx="3" fill="var(--border)"/>
+      <rect x="22" y="80" width="60" height="8" rx="3" fill="var(--border)"/>
+      <rect x="55" y="115" width="50" height="8" rx="2" fill="var(--border)"/>
+      <g transform="translate(150,10)">
+        <path d="M35 70 C35 40 25 20 5 0 C-15 20 -25 40 -25 70 Z" fill="var(--accent)"/>
+        <circle cx="5" cy="35" r="9" fill="var(--bg)"/>
+        <path d="M-25 60 L-40 90 L-10 78 Z" fill="var(--green)"/>
+        <path d="M35 60 L50 90 L20 78 Z" fill="var(--green)"/>
+        <path d="M-8 70 L5 105 L18 70 Z" fill="var(--red)"/>
+      </g>
+    </svg>
+    <div>
+      <h1>Entry-Level IT Launchpad</h1>
+      <p class="callout green">
+        <strong>Main message:</strong> Do not frame yourself as "no experience."
+        Frame it as <strong>CompTIA A+ certified + Per Scholas trained + remote
+        customer service experience = entry-level technical support candidate.</strong>
+        The best first roles are people-facing tech jobs where communication
+        matters as much as troubleshooting.
+      </p>
 
-  <p class="callout yellow">
-    <strong>If you only read one thing:</strong> Target <strong>technical
-    support, help desk, SaaS/product support, application support, or IT
-    asset support</strong>. Keep <strong>$19/hr</strong> as your minimum
-    and aim for <strong>$20-$25/hr</strong>.
-  </p>
+      <p class="callout yellow">
+        <strong>If you only read one thing:</strong> Target <strong>technical
+        support, help desk, SaaS/product support, application support, or IT
+        asset support</strong>. Keep <strong id="hero-pay-floor">$19/hr</strong>
+        as your minimum, and aim higher when you can — see
+        <a href="roles.html">Best-Fit Roles &amp; Pay</a> for the full
+        breakdown. (Change your own floor anytime in ⚙ Settings.)
+      </p>
+    </div>
+  </div>
 
   <h2 id="progress">Your progress</h2>
   <p>Check items off as you go — this is saved in your own browser only,

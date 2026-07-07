@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; worker-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Five skill-building projects with resume bullets, plus a certification cost and payoff calculator.">
 <meta name="author" content="Amanda Kondrat'yev">
@@ -34,6 +34,11 @@
   <p><strong>Running total selected: <span id="calc-total">$0</span></strong>
      — pays for itself in about <span id="calc-hours">0</span> hours at your target pay.</p>
   <p class="disclaimer" id="price-disclaimer"></p>
+
+  <h2>Free video &amp; study resources</h2>
+  <p>Well-established, free places to actually study for these certs and
+  build career skills — not a random video, a resource worth bookmarking.</p>
+  <div id="video-resources"></div>
 </main>
 <script type="module" src="projects-certs.mjs"></script>
 </body>

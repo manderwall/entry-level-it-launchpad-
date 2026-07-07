@@ -1,9 +1,11 @@
 import { renderChrome, loadJSON, escapeHtml } from "./common.mjs";
 import { renderProgressBadge, renderChecklist } from "./progress.mjs";
+import { getSettings } from "./settings.mjs";
 
 renderChrome("index.html");
 renderProgressBadge();
 renderChecklist(document.getElementById("progress-checklist"));
+document.getElementById("hero-pay-floor").textContent = `$${getSettings().payFloor}/hr`;
 
 const GUIDE_PAGES = [
   { href: "roles.html", title: "Best-Fit Roles & Pay", desc: "The five best target roles, full role details, what the work looks like, and salary targets." },
