@@ -11,7 +11,7 @@ const APP_SHELL = [
   "common.mjs", "settings.mjs", "splash.mjs", "help.mjs", "progress.mjs", "live-search.mjs", "chat-widget.mjs", "data-sync.mjs", "modal.mjs",
   "index.mjs", "roles.mjs", "search-toolkit.mjs", "zones.mjs", "resume.mjs",
   "projects-certs.mjs", "employers.mjs", "gov-contractors.mjs", "interview-prep.mjs", "plan-tracker.mjs",
-  "styles.css", "manifest.json",
+  "styles.css", "manifest.json", "icon.svg",
   "data/application-scorecard.json", "data/certs.json", "data/employers.json",
   "data/financial-resources.json", "data/houston-zones.json", "data/interview-prep.json",
   "data/job-boards.json", "data/networking-scripts.json", "data/roles.json",
