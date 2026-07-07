@@ -96,7 +96,24 @@ npm test        # validate every data/*.json file's shape
 1. Push this repo to GitHub.
 2. In Cloudflare Pages, create a project connected to the repo.
 3. Build command: *(none)*. Build output directory: `/` (repo root).
-4. Deploy — `_headers` is picked up automatically for CSP/security headers.
+4. Deploy — `_headers` is picked up automatically for CSP/security headers,
+   and `functions/api/jobs.js` is picked up automatically as a Pages Function
+   (no config needed — Cloudflare Pages auto-detects the `functions/` folder).
+
+### Enable live job search results (optional)
+
+The Search Toolkit page can show live results from the [Adzuna](https://developer.adzuna.com/)
+API. This is optional — without it, the page still works fine with the
+plain job-board links.
+
+1. Register a free app at [developer.adzuna.com](https://developer.adzuna.com/) to get an **App ID** and **App Key**.
+2. In the Cloudflare Pages dashboard: your project → **Settings** → **Environment variables** → **Add variable**.
+3. Add two variables (mark them **Encrypted**): `ADZUNA_APP_ID` and `ADZUNA_APP_KEY`.
+4. Redeploy (or it picks them up on the next deploy automatically).
+
+The key never touches this repo or the visitor's browser — `functions/api/jobs.js`
+runs server-side on Cloudflare's edge and proxies the request. If the
+variables aren't set, the live-results panel just quietly doesn't appear.
 
 ## Make it your own
 
