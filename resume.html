@@ -5,49 +5,60 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Resume headline, summary, bullets, LinkedIn About, cover letter, and message templates for entry-level IT support.">
+<meta name="author" content="Amanda Kondrat'yev">
 <link rel="stylesheet" href="styles.css">
 <title>Resume, LinkedIn & Cover Letter — Entry-Level IT Launchpad</title>
 </head>
 <body>
 <main id="main" tabindex="-1">
   <h1>Resume, LinkedIn &amp; Cover Letter</h1>
-  <p>Click "Copy" on any block to copy it to your clipboard.</p>
+  <div class="card no-print" id="milestone"></div>
+  <p>Click "Copy" on any block to copy it to your clipboard. Sections are
+  collapsed by default — tap any heading to expand it.</p>
 
-  <h2>Resume headline</h2>
-  <div class="card"><p id="headline"></p></div>
-
-  <h2>Resume summary</h2>
-  <div class="card"><p id="summary"></p></div>
-
-  <h2>Skills to list</h2>
-  <p id="skills"></p>
-
-  <h2>Turn remote customer service into tech-support bullets</h2>
-  <ul id="cs-bullets"></ul>
-
-  <h2>Per Scholas / A+ bullets</h2>
-  <ul id="training-bullets"></ul>
-
-  <h2>Resume bullets by target role</h2>
-  <div id="role-bullets"></div>
-
-  <h2>LinkedIn</h2>
-  <div class="card">
+  <details open>
+    <summary><h2>Resume headline &amp; summary</h2></summary>
     <h3>Headline</h3>
-    <p id="li-headline"></p>
-  </div>
-  <div class="card">
-    <h3>About</h3>
-    <p id="li-about"></p>
-  </div>
+    <div class="card"><p id="headline"></p></div>
+    <h3>Summary</h3>
+    <div class="card"><p id="summary"></p></div>
+    <h3>Skills to list</h3>
+    <p id="skills"></p>
+  </details>
 
-  <h2>Short cover letter template</h2>
-  <div class="card"><p id="cover-letter" style="white-space:pre-wrap;"></p></div>
-  <h3>Opening line swaps by role</h3>
-  <div id="opening-swaps"></div>
+  <details>
+    <summary><h2>Resume bullets</h2></summary>
+    <h3>Turn remote customer service into tech-support bullets</h3>
+    <ul id="cs-bullets"></ul>
+    <h3>Per Scholas / A+ bullets</h3>
+    <ul id="training-bullets"></ul>
+    <h3>Bullets by target role</h3>
+    <div id="role-bullets"></div>
+  </details>
 
-  <h2>Message templates</h2>
-  <div id="message-templates"></div>
+  <details>
+    <summary><h2>LinkedIn</h2></summary>
+    <div class="card">
+      <h3>Headline</h3>
+      <p id="li-headline"></p>
+    </div>
+    <div class="card">
+      <h3>About</h3>
+      <p id="li-about"></p>
+    </div>
+  </details>
+
+  <details>
+    <summary><h2>Cover letter</h2></summary>
+    <div class="card"><p id="cover-letter" style="white-space:pre-wrap;"></p></div>
+    <h3>Opening line swaps by role</h3>
+    <div id="opening-swaps"></div>
+  </details>
+
+  <details>
+    <summary><h2>Message templates</h2></summary>
+    <div id="message-templates"></div>
+  </details>
 </main>
 <script type="module" src="resume.mjs"></script>
 </body>

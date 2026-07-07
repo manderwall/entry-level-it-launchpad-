@@ -4,7 +4,11 @@
   # Strict CSP — this site is vanilla JS with no external scripts, fonts,
   # or APIs; everything loads from 'self'. Tighten further only if a
   # future page adds an external dependency.
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; object-src 'none'; form-action 'none'; upgrade-insecure-requests
+  # connect-src includes Adzuna: the Search Toolkit page's optional live-results
+  # widget (live-search.mjs) fetches https://api.adzuna.com directly from the
+  # visitor's browser using a key they paste in themselves (stored only in
+  # their own localStorage). No other page makes any external request.
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.adzuna.com; frame-ancestors 'none'; base-uri 'none'; object-src 'none'; form-action 'none'; upgrade-insecure-requests
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()

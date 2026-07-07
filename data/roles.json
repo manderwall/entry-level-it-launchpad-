@@ -9,7 +9,13 @@
     "payMax": 25,
     "remoteOdds": "High",
     "typicalWork": "Answer phone/chat/email requests; troubleshoot login, device, software, browser, printer, VPN, or basic network issues; use remote desktop tools; write clear ticket notes; escalate when needed.",
-    "searchTerms": ["remote technical support", "remote support technician", "CompTIA A+ remote support", "technical customer support"]
+    "searchTerms": [
+      "remote technical support",
+      "remote support technician",
+      "CompTIA A+ remote support",
+      "technical customer support"
+    ],
+    "icon": "🖥️"
   },
   {
     "rank": 2,
@@ -21,7 +27,13 @@
     "payMax": 25,
     "remoteOdds": "Medium (local/hybrid easier)",
     "typicalWork": "Password resets and account unlocks; Windows support; M365/Outlook/Teams support; hardware/peripheral troubleshooting; ticket triage; escalation to Tier 2.",
-    "searchTerms": ["help desk analyst I", "service desk analyst", "entry level help desk CompTIA A+", "IT helpdesk technician"]
+    "searchTerms": [
+      "help desk analyst I",
+      "service desk analyst",
+      "entry level help desk CompTIA A+",
+      "IT helpdesk technician"
+    ],
+    "icon": "🎧"
   },
   {
     "rank": 3,
@@ -33,7 +45,13 @@
     "payMax": 60000,
     "remoteOdds": "High",
     "typicalWork": "Help customers use a software product; answer workflow/setup questions; reproduce issues; escalate bugs; write help articles or internal notes.",
-    "searchTerms": ["product support specialist", "SaaS support specialist", "technical customer support software", "client support analyst"]
+    "searchTerms": [
+      "product support specialist",
+      "SaaS support specialist",
+      "technical customer support software",
+      "client support analyst"
+    ],
+    "icon": "💬"
   },
   {
     "rank": 4,
@@ -45,7 +63,13 @@
     "payMax": 70000,
     "remoteOdds": "Medium-high",
     "typicalWork": "Troubleshoot application issues; recreate errors; document user problems; test fixes; work with developers/administrators; help users understand workflows.",
-    "searchTerms": ["application support analyst", "support analyst", "business application support", "customer service analyst"]
+    "searchTerms": [
+      "application support analyst",
+      "support analyst",
+      "business application support",
+      "customer service analyst"
+    ],
+    "icon": "🧩"
   },
   {
     "rank": 5,
@@ -57,6 +81,13 @@
     "payMax": 32,
     "remoteOdds": "Medium (often local/hybrid)",
     "typicalWork": "Track laptops/monitors/phones/peripherals; update inventory records; coordinate shipping and returns; support device refresh projects; track software licenses; work with procurement and IT support.",
-    "searchTerms": ["IT asset coordinator", "IT asset analyst", "hardware asset management", "IT inventory", "device lifecycle"]
+    "searchTerms": [
+      "IT asset coordinator",
+      "IT asset analyst",
+      "hardware asset management",
+      "IT inventory",
+      "device lifecycle"
+    ],
+    "icon": "📦"
   }
 ]

@@ -1,6 +1,9 @@
 import { renderChrome, loadJSON, escapeHtml } from "./common.mjs";
+import { renderProgressBadge, renderMilestoneToggle } from "./progress.mjs";
 
 renderChrome("plan-tracker.html");
+renderProgressBadge();
+renderMilestoneToggle(document.getElementById("milestone"), "started-tracking");
 
 const STORAGE_KEY = "entry-level-it-launchpad:tracker-rows";
 

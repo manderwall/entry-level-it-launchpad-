@@ -1,6 +1,9 @@
 import { renderChrome, escapeHtml, wireCopyButtons } from "./common.mjs";
+import { renderProgressBadge, renderMilestoneToggle } from "./progress.mjs";
 
 renderChrome("resume.html");
+renderProgressBadge();
+renderMilestoneToggle(document.getElementById("milestone"), "update-resume");
 
 function copyBlock(text) {
   return `<button class="copy-btn" data-copy="${escapeHtml(text)}">Copy</button>`;

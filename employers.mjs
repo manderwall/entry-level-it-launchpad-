@@ -1,6 +1,9 @@
 import { renderChrome, loadJSON, escapeHtml, wireCopyButtons } from "./common.mjs";
+import { renderProgressBadge, renderMilestoneToggle } from "./progress.mjs";
 
 renderChrome("employers.html");
+renderProgressBadge();
+renderMilestoneToggle(document.getElementById("milestone"), "shortlisted-employers");
 
 const ZONE_LABELS = {
   "inner-loop": "Inner Loop / Medical Center (TMC)",
@@ -12,7 +15,10 @@ const ZONE_LABELS = {
 };
 
 async function init() {
-  const employers = await loadJSON("data/employers.json");
+  const [employers, networking] = await Promise.all([
+    loadJSON("data/employers.json"),
+    loadJSON("data/networking-scripts.json"),
+  ]);
 
   document.getElementById("staffing").innerHTML = employers.staffingContractToHire.map((s) => `<li>${escapeHtml(s)}</li>`).join("");
 
@@ -35,13 +41,11 @@ async function init() {
     <p><strong>Search terms:</strong> ${app.searchTerms.map(escapeHtml).join(" · ")}</p>
     <p>${escapeHtml(app.payBenchmark)}</p>`;
 
-  document.getElementById("per-scholas").innerHTML = employers.perScholasAdvantage.map((s) => `<li>${escapeHtml(s)}</li>`).join("");
+  document.getElementById("per-scholas").innerHTML = networking.perScholasAdvantage.map((s) => `<li>${escapeHtml(s)}</li>`).join("");
 
-  const scripts = employers.networkingScripts;
-  document.getElementById("scripts").innerHTML = `
-    <div class="card"><h3>LinkedIn connection request</h3><p>${escapeHtml(scripts.linkedinConnectionRequest)} <button class="copy-btn" data-copy="${escapeHtml(scripts.linkedinConnectionRequest)}">Copy</button></p></div>
-    <div class="card"><h3>Informational interview request</h3><p>${escapeHtml(scripts.informationalInterviewRequest)} <button class="copy-btn" data-copy="${escapeHtml(scripts.informationalInterviewRequest)}">Copy</button></p></div>
-    <div class="card"><h3>Referral ask</h3><p>${escapeHtml(scripts.referralAsk)} <button class="copy-btn" data-copy="${escapeHtml(scripts.referralAsk)}">Copy</button></p></div>`;
+  document.getElementById("scripts").innerHTML = networking.scripts.map((s) => `
+    <div class="card"><h3>${escapeHtml(s.title)}</h3><p>${escapeHtml(s.text)} <button class="copy-btn" data-copy="${escapeHtml(s.text)}">Copy</button></p></div>
+  `).join("");
 }
 
 init().catch((err) => console.error(err));

@@ -13,6 +13,14 @@ export const PAGES = [
   { href: "plan-tracker.html", label: "Plan & Tracker" },
 ];
 
+// Grouped view of PAGES for nav rendering. index.html sits outside the
+// groups since it's the persistent "home" link, not a step in the flow.
+export const NAV_GROUPS = [
+  { label: "Find", hrefs: ["roles.html", "search-toolkit.html", "zones.html", "employers.html"] },
+  { label: "Prepare", hrefs: ["resume.html", "projects-certs.html", "interview-prep.html"] },
+  { label: "Track", hrefs: ["plan-tracker.html"] },
+];
+
 export function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (c) => (
     { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
@@ -37,10 +45,16 @@ export function renderChrome(activeHref) {
   const nav = document.createElement("nav");
   nav.className = "site-nav";
   nav.setAttribute("aria-label", "Main sections");
-  nav.innerHTML = PAGES.map((p) => {
-    const current = p.href === activeHref ? ' aria-current="page"' : "";
-    return `<a href="${p.href}"${current}>${p.label}</a>`;
+  const homeCurrent = activeHref === "index.html" ? ' aria-current="page"' : "";
+  const groupsHtml = NAV_GROUPS.map((group) => {
+    const links = group.hrefs.map((href) => {
+      const page = PAGES.find((p) => p.href === href);
+      const current = href === activeHref ? ' aria-current="page"' : "";
+      return `<a href="${href}"${current}>${page.label}</a>`;
+    }).join("");
+    return `<span class="nav-group"><span class="nav-group-label">${group.label}</span>${links}</span>`;
   }).join("");
+  nav.innerHTML = `<a href="index.html"${homeCurrent}>Start Here</a>${groupsHtml}`;
   document.body.insertBefore(nav, document.body.firstChild);
   document.body.insertBefore(header, document.body.firstChild);
 
@@ -53,10 +67,15 @@ export function renderChrome(activeHref) {
   const footer = document.createElement("footer");
   footer.className = "site-footer";
   footer.innerHTML = `
-    <p>Open source under <a href="https://github.com/manderwall/entry-level-it-launchpad-/blob/main/LICENSE">MIT</a>
+    <p>Built by <strong>Amanda Kondrat'yev</strong> · Open source under
+    <a href="https://github.com/manderwall/entry-level-it-launchpad-/blob/main/LICENSE">MIT</a>
     (code) / <a href="https://github.com/manderwall/entry-level-it-launchpad-/blob/main/content/LICENSE">CC BY 4.0</a>
-    (guide content). Not affiliated with CompTIA, Per Scholas, or any employer named on this site.
-    Salary and pay figures are benchmarks, not promises — always confirm on the live posting.</p>
+    (guide content). Not affiliated with CompTIA, Per Scholas, or any employer named on this site.</p>
+    <p>General information only — not legal, financial, immigration, or
+    career-counseling advice. Salary and pay figures are benchmarks, not
+    promises — always confirm on the live posting, and confirm program
+    rules (unemployment, workforce assistance, etc.) with the issuing
+    agency before relying on them.</p>
     <p><a href="https://github.com/manderwall/entry-level-it-launchpad-">Source on GitHub</a></p>`;
   document.body.appendChild(footer);
 }

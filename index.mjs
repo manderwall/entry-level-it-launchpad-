@@ -1,6 +1,9 @@
 import { renderChrome, loadJSON, escapeHtml } from "./common.mjs";
+import { renderProgressBadge, renderChecklist } from "./progress.mjs";
 
 renderChrome("index.html");
+renderProgressBadge();
+renderChecklist(document.getElementById("progress-checklist"));
 
 const GUIDE_PAGES = [
   { href: "roles.html", title: "Best-Fit Roles & Pay", desc: "The five best target roles, full role details, what the work looks like, and salary targets." },
@@ -24,7 +27,7 @@ loadJSON("data/roles.json").then((roles) => {
   const rows = roles.map((r) => `
     <tr>
       <td>${r.rank}</td>
-      <td><strong>${escapeHtml(r.role)}</strong></td>
+      <td><span aria-hidden="true">${r.icon || "🛠️"}</span> <strong>${escapeHtml(r.role)}</strong></td>
       <td>${escapeHtml(r.payTarget)}</td>
       <td>${escapeHtml(r.remoteOdds)}</td>
     </tr>`).join("");

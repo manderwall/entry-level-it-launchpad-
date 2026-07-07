@@ -6,7 +6,14 @@
       "id": "inner-loop",
       "name": "Inner Loop core",
       "tag": "most transit-friendly",
-      "areas": ["Downtown", "Midtown", "Museum District", "Texas Medical Center (TMC)", "EaDo / East End", "University of Houston"],
+      "areas": [
+        "Downtown",
+        "Midtown",
+        "Museum District",
+        "Texas Medical Center (TMC)",
+        "EaDo / East End",
+        "University of Houston"
+      ],
       "whatsThere": "Healthcare IT & help desk (TMC hospitals), corporate HQ support desks, university IT",
       "transit": "Best. Served by all three light-rail lines (Red / Green / Purple) and most bus routes; Park & Ride express buses end here",
       "transitRating": 5,
@@ -14,15 +21,32 @@
       "payMin": 18,
       "payMax": 26,
       "payNotes": "Healthcare and university desks; steady volume, transit-accessible",
-      "zips": ["77002", "77004", "77030"],
-      "employers": ["UTHealth", "Houston Methodist", "Texas Children's", "Memorial Hermann", "MD Anderson", "Rice University", "University of Houston"],
-      "searchLabel": "Texas Medical Center (77030)"
+      "zips": [
+        "77002",
+        "77004",
+        "77030"
+      ],
+      "employers": [
+        "UTHealth",
+        "Houston Methodist",
+        "Texas Children's",
+        "Memorial Hermann",
+        "MD Anderson",
+        "Rice University",
+        "University of Houston"
+      ],
+      "searchLabel": "Texas Medical Center (77030)",
+      "icon": "🚈"
     },
     {
       "id": "uptown-galleria",
       "name": "Uptown / Galleria / Westchase",
       "tag": null,
-      "areas": ["Galleria", "Uptown", "Westchase"],
+      "areas": [
+        "Galleria",
+        "Uptown",
+        "Westchase"
+      ],
       "whatsThere": "Corporate office IT / help desk, finance & insurance support",
       "transit": "Decent near the Galleria (frequent buses + Uptown dedicated bus lanes); Westchase is more car-oriented",
       "transitRating": 3,
@@ -30,15 +54,22 @@
       "payMin": 19,
       "payMax": 28,
       "payNotes": "Corporate, finance, and insurance support desks",
-      "zips": ["77056"],
+      "zips": [
+        "77056"
+      ],
       "employers": [],
-      "searchLabel": "Galleria / Uptown (77056)"
+      "searchLabel": "Galleria / Uptown (77056)",
+      "icon": "🏙️"
     },
     {
       "id": "energy-corridor",
       "name": "Energy Corridor / Katy / West",
       "tag": null,
-      "areas": ["Energy Corridor", "Katy", "west Houston"],
+      "areas": [
+        "Energy Corridor",
+        "Katy",
+        "west Houston"
+      ],
       "whatsThere": "Large corporate IT & service desks (bp, Shell, ConocoPhillips, Baker Hughes, Fluor)",
       "transit": "Park & Ride (Addicks) express to downtown; otherwise car-dependent",
       "transitRating": 2,
@@ -46,15 +77,33 @@
       "payMin": 20,
       "payMax": 33,
       "payNotes": "Corporate and contract IT; contract rates run higher",
-      "zips": ["77079"],
-      "employers": ["bp", "Shell", "ConocoPhillips", "Baker Hughes", "Fluor", "Amentum", "Energy Transfer", "Eaton", "C2O"],
-      "searchLabel": "Energy Corridor / Katy (77079)"
+      "zips": [
+        "77079"
+      ],
+      "employers": [
+        "bp",
+        "Shell",
+        "ConocoPhillips",
+        "Baker Hughes",
+        "Fluor",
+        "Amentum",
+        "Energy Transfer",
+        "Eaton",
+        "C2O"
+      ],
+      "searchLabel": "Energy Corridor / Katy (77079)",
+      "icon": "⚡"
     },
     {
       "id": "north-woodlands",
       "name": "North / The Woodlands / Spring",
       "tag": null,
-      "areas": ["The Woodlands", "Spring", "Greenspoint", "IAH airport area"],
+      "areas": [
+        "The Woodlands",
+        "Spring",
+        "Greenspoint",
+        "IAH airport area"
+      ],
       "whatsThere": "Corporate campuses (ExxonMobil, HPE), airport & logistics IT",
       "transit": "Park & Ride from Spring / Kingwood; mostly car-dependent",
       "transitRating": 2,
@@ -62,15 +111,28 @@
       "payMin": 19,
       "payMax": 30,
       "payNotes": "Corporate campuses; some higher contract roles",
-      "zips": ["77380"],
-      "employers": ["ExxonMobil", "Hewlett Packard Enterprise", "Huntsman"],
-      "searchLabel": "The Woodlands / Spring (77380)"
+      "zips": [
+        "77380"
+      ],
+      "employers": [
+        "ExxonMobil",
+        "Hewlett Packard Enterprise",
+        "Huntsman"
+      ],
+      "searchLabel": "The Woodlands / Spring (77380)",
+      "icon": "🌲"
     },
     {
       "id": "clear-lake",
       "name": "Southeast / Clear Lake / Bay Area",
       "tag": null,
-      "areas": ["Clear Lake", "NASA / Bay Area", "League City", "Pasadena", "Galveston"],
+      "areas": [
+        "Clear Lake",
+        "NASA / Bay Area",
+        "League City",
+        "Pasadena",
+        "Galveston"
+      ],
       "whatsThere": "Aerospace & government contractors, petrochemical IT, insurance service desks (e.g., American National in Galveston)",
       "transit": "Bay Area Park & Ride to downtown / TMC; otherwise car-dependent",
       "transitRating": 2,
@@ -78,15 +140,30 @@
       "payMin": 20,
       "payMax": 30,
       "payNotes": "Aerospace and government contractors often pay above retail help desk",
-      "zips": ["77058"],
-      "employers": ["Jacobs", "Leidos", "Amentum", "KBR", "Barrios", "American National"],
-      "searchLabel": "Clear Lake / Bay Area (77058)"
+      "zips": [
+        "77058"
+      ],
+      "employers": [
+        "Jacobs",
+        "Leidos",
+        "Amentum",
+        "KBR",
+        "Barrios",
+        "American National"
+      ],
+      "searchLabel": "Clear Lake / Bay Area (77058)",
+      "icon": "🚀"
     },
     {
       "id": "southwest-sugarland",
       "name": "Southwest / Sugar Land / Fort Bend",
       "tag": null,
-      "areas": ["Sugar Land", "Missouri City", "Fort Bend", "Pearland"],
+      "areas": [
+        "Sugar Land",
+        "Missouri City",
+        "Fort Bend",
+        "Pearland"
+      ],
       "whatsThere": "Corporate & tech-support employers, insurance",
       "transit": "Park & Ride from Sugar Land / Missouri City; car-dependent",
       "transitRating": 2,
@@ -94,12 +171,23 @@
       "payMin": 18,
       "payMax": 26,
       "payNotes": "Suburban corporate and SMB support",
-      "zips": ["77478"],
-      "employers": ["SLB (Schlumberger)", "Fluor", "Sun Com Mobile"],
-      "searchLabel": "Sugar Land / Fort Bend (77478)"
+      "zips": [
+        "77478"
+      ],
+      "employers": [
+        "SLB (Schlumberger)",
+        "Fluor",
+        "Sun Com Mobile"
+      ],
+      "searchLabel": "Sugar Land / Fort Bend (77478)",
+      "icon": "🏭"
     }
   ],
-  "alsoCheckAnywhere": ["AMSYS Innovative Solutions", "Triple-S Steel Supply (in-house IT help desk)", "Harris County (confirm pay carefully, some start below $19/hr)"],
+  "alsoCheckAnywhere": [
+    "AMSYS Innovative Solutions",
+    "Triple-S Steel Supply (in-house IT help desk)",
+    "Harris County (confirm pay carefully, some start below $19/hr)"
+  ],
   "recentExampleListings": [
     "Energy Corridor: C2O — IT Support Technician (part-time), starting around $22/hr",
     "Inner Loop / TMC: UTHealth Houston — Systems & Applications Specialist supporting clinical IT",
