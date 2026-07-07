@@ -19,6 +19,7 @@ const STORAGE_KEY = "entry-level-it-launchpad:settings";
 const DEFAULTS = {
   payFloor: 19,
   city: "",
+  theme: "auto", // auto | light | dark
   fontScale: "normal", // normal | large | xlarge
   dyslexiaFont: false,
   highContrast: false,
@@ -46,6 +47,8 @@ export function saveSettings(patch) {
 /** Applies font-scale/dyslexia/high-contrast/reduced-motion as classes on <html>. Call on every page load. */
 export function applyAccessibility(settings = getSettings()) {
   const root = document.documentElement;
+  if (settings.theme === "light" || settings.theme === "dark") root.setAttribute("data-theme", settings.theme);
+  else root.removeAttribute("data-theme");
   root.classList.remove("font-large", "font-xlarge");
   if (settings.fontScale === "large") root.classList.add("font-large");
   if (settings.fontScale === "xlarge") root.classList.add("font-xlarge");
@@ -70,6 +73,18 @@ export function renderSettingsPanel(container) {
       </div>
     </div>
     <p style="font-size:0.85rem;color:var(--text-muted);">This becomes the default everywhere on the site — the Roles filter, the Search Toolkit, and the application scorecard all use your number instead of a fixed one. $19/hr is just the starting default (based on a real Foxconn entry-level offer) — set your own.</p>
+
+    <h3>Appearance</h3>
+    <div class="toolbar">
+      <div>
+        <label for="settings-theme">Theme</label>
+        <select id="settings-theme">
+          <option value="auto" ${s.theme === "auto" ? "selected" : ""}>Match my device</option>
+          <option value="light" ${s.theme === "light" ? "selected" : ""}>Light</option>
+          <option value="dark" ${s.theme === "dark" ? "selected" : ""}>Dark</option>
+        </select>
+      </div>
+    </div>
 
     <h3>Accessibility</h3>
     <div class="toolbar">
@@ -103,6 +118,7 @@ export function renderSettingsPanel(container) {
   const cityInput = container.querySelector("#settings-city");
   payFloorInput.addEventListener("change", () => saveSettings({ payFloor: Number(payFloorInput.value) || 0 }));
   cityInput.addEventListener("change", () => saveSettings({ city: cityInput.value }));
+  container.querySelector("#settings-theme").addEventListener("change", (e) => saveSettings({ theme: e.target.value }));
   container.querySelector("#settings-font-scale").addEventListener("change", (e) => saveSettings({ fontScale: e.target.value }));
   container.querySelector("#settings-dyslexia").addEventListener("change", (e) => saveSettings({ dyslexiaFont: e.target.checked }));
   container.querySelector("#settings-contrast").addEventListener("change", (e) => saveSettings({ highContrast: e.target.checked }));

@@ -59,8 +59,17 @@ breakdown for any city.
   $19/hr (based on a real entry-level offer), but every visitor sets
   their own in **⚙ Settings**, and it's used everywhere (Roles filter,
   header, scorecard) instead of being fixed.
-- **Accessibility options** (in ⚙ Settings): text size, a dyslexia-friendly
-  font, high-contrast mode, and reduced motion.
+- **Appearance/accessibility options** (in ⚙ Settings): an explicit
+  light/dark theme toggle (independent of your device's setting), text
+  size, a dyslexia-friendly font, high-contrast mode, and reduced motion.
+- **Keyboard/screen-reader friendly modals** — Settings, Help, and the
+  welcome screen all trap focus properly, close on Escape, and return
+  focus to whatever you opened them from.
+- **Follow-up reminders** — the tracker flags any application whose
+  follow-up date has passed (and isn't already Rejected/Withdrawn).
+- **Print-friendly** — the Resume page and the Search Toolkit's scam
+  checklist both have a one-click print button; collapsed sections
+  auto-expand for the printout and collapse back after.
 - **A splash screen and a ? Help panel** explain the site's sections and
   privacy model — the splash shows once per browser and is reachable
   again anytime from Help.

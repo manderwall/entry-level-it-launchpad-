@@ -41,6 +41,18 @@ async function init() {
     </div>`).join("");
 
   const tableEl = document.getElementById("tracker-table");
+  const bannerEl = document.getElementById("followup-banner");
+
+  function renderFollowupBanner() {
+    const today = new Date().toISOString().slice(0, 10);
+    const due = rows.filter((r) => r.followUpDate && r.followUpDate <= today && !["Rejected", "Withdrawn"].includes(r.status));
+    if (!due.length) {
+      bannerEl.innerHTML = "";
+      return;
+    }
+    const names = due.map((r) => escapeHtml(r.company || "an application")).join(", ");
+    bannerEl.innerHTML = `<p class="callout yellow">📌 <strong>${due.length} follow-up${due.length > 1 ? "s" : ""} due:</strong> ${names}. Update their status below once you've followed up.</p>`;
+  }
 
   function renderTable() {
     const headCells = schema.columns.map((c) => `<th>${escapeHtml(c.label)}</th>`).join("") + "<th class=\"no-print\">Remove</th>";
@@ -59,12 +71,15 @@ async function init() {
     tableEl.innerHTML = `<thead><tr>${headCells}</tr></thead><tbody>${bodyRows}</tbody>`;
   }
 
-  tableEl.addEventListener("input", (e) => {
+  function handleFieldChange(e) {
     const { row, key } = e.target.dataset;
     if (row === undefined) return;
     rows[Number(row)][key] = e.target.value;
     saveRows(rows);
-  });
+    renderFollowupBanner();
+  }
+  tableEl.addEventListener("input", handleFieldChange);
+  tableEl.addEventListener("change", handleFieldChange);
 
   tableEl.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-remove]");
@@ -73,12 +88,14 @@ async function init() {
     if (!rows.length) rows.push(Object.fromEntries(schema.columns.map((c) => [c.key, ""])));
     saveRows(rows);
     renderTable();
+    renderFollowupBanner();
   });
 
   document.getElementById("add-row").addEventListener("click", () => {
     rows.push(Object.fromEntries(schema.columns.map((c) => [c.key, ""])));
     saveRows(rows);
     renderTable();
+    renderFollowupBanner();
   });
 
   document.getElementById("clear-tracker").addEventListener("click", () => {
@@ -86,6 +103,7 @@ async function init() {
     rows = [Object.fromEntries(schema.columns.map((c) => [c.key, ""]))];
     saveRows(rows);
     renderTable();
+    renderFollowupBanner();
   });
 
   document.getElementById("export-csv").addEventListener("click", () => {
@@ -102,6 +120,7 @@ async function init() {
   });
 
   renderTable();
+  renderFollowupBanner();
 }
 
 init().catch((err) => console.error(err));

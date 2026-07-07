@@ -48,16 +48,23 @@ export function renderChrome(activeHref) {
   manifestLink.href = "manifest.json";
   document.head.appendChild(manifestLink);
 
-  const themeColorDark = document.createElement("meta");
-  themeColorDark.name = "theme-color";
-  themeColorDark.content = "#14171a";
-  themeColorDark.media = "(prefers-color-scheme: dark)";
-  document.head.appendChild(themeColorDark);
-  const themeColorLight = document.createElement("meta");
-  themeColorLight.name = "theme-color";
-  themeColorLight.content = "#ffffff";
-  themeColorLight.media = "(prefers-color-scheme: light)";
-  document.head.appendChild(themeColorLight);
+  // A single non-conditional theme-color meta, recomputed whenever the
+  // effective theme changes (explicit Settings choice, or the OS setting
+  // when left on "auto") — more reliable than two prefers-color-scheme
+  // conditioned tags, which some mobile browsers resolve inconsistently
+  // when a page also sets an explicit color-scheme via CSS/JS.
+  const themeColorMeta = document.createElement("meta");
+  themeColorMeta.name = "theme-color";
+  document.head.appendChild(themeColorMeta);
+  const darkMedia = window.matchMedia("(prefers-color-scheme: dark)");
+  function updateThemeColorMeta() {
+    const theme = getSettings().theme;
+    const isDark = theme === "dark" || (theme === "auto" && darkMedia.matches);
+    themeColorMeta.content = isDark ? "#14171a" : "#ffffff";
+  }
+  updateThemeColorMeta();
+  darkMedia.addEventListener("change", updateThemeColorMeta);
+  document.addEventListener("settings:changed", updateThemeColorMeta);
 
   const payFloor = getSettings().payFloor;
   const header = document.createElement("header");
@@ -129,6 +136,19 @@ export function renderChrome(activeHref) {
 
   maybeShowSplash();
   renderChatWidget();
+
+  // Force every collapsed <details> section open when printing (CSS alone
+  // can't reliably override native details/summary hiding across browser
+  // engines), then restore whatever the visitor actually had open.
+  let detailsClosedBeforePrint = [];
+  window.addEventListener("beforeprint", () => {
+    detailsClosedBeforePrint = [...document.querySelectorAll("details:not([open])")];
+    detailsClosedBeforePrint.forEach((d) => { d.open = true; });
+  });
+  window.addEventListener("afterprint", () => {
+    detailsClosedBeforePrint.forEach((d) => { d.open = false; });
+    detailsClosedBeforePrint = [];
+  });
 
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js").catch(() => {
