@@ -4,13 +4,16 @@
   # Strict CSP — this site is vanilla JS with no external scripts, fonts,
   # or APIs; everything loads from 'self'. Tighten further only if a
   # future page adds an external dependency.
-  # connect-src is 'self' only: the Search Toolkit page's live-results widget
-  # calls our own /api/jobs (a Cloudflare Pages Function), which proxies
-  # Adzuna server-side. The browser never talks to api.adzuna.com directly,
-  # so no external connect-src entry is needed.
+  # connect-src is 'self' plus Cloudflare's own analytics domain: the
+  # Search Toolkit/Contractors/Chat/Sync widgets all call our own /api/*
+  # (Cloudflare Pages Functions), which proxy everything server-side —
+  # the browser never talks to Adzuna/USAspending/Workers AI directly.
   # worker-src 'self': the service worker (sw.js) that makes the site
   # installable/offline-capable on iPad/iPhone/Android/desktop.
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; worker-src 'self'; frame-ancestors 'none'; base-uri 'none'; object-src 'none'; form-action 'none'; upgrade-insecure-requests
+  # script-src/connect-src include Cloudflare Web Analytics' beacon
+  # (static.cloudflareinsights.com) — free, cookieless, first-party
+  # analytics; inert until a CF_BEACON_TOKEN is set in common.mjs.
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com; worker-src 'self'; frame-ancestors 'none'; base-uri 'none'; object-src 'none'; form-action 'none'; upgrade-insecure-requests
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()

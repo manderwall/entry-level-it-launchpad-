@@ -35,6 +35,15 @@ export function escapeHtml(str) {
 
 const FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231f6feb'/%3E%3Ctext x='50' y='68' font-size='58' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'%3EIT%3C/text%3E%3C/svg%3E";
 
+// Cloudflare Web Analytics beacon token — free, cookieless, privacy-friendly
+// (no personal data, no cross-site tracking; Cloudflare's own product, not
+// a third-party ad-tech tracker). This token is meant to be public (it's
+// embedded in page source on every Cloudflare Web Analytics site, same as
+// a Google Analytics measurement ID), so it's fine to commit — but it only
+// works once you've added this site under Cloudflare dashboard > Analytics
+// & Logs > Web Analytics and swapped in the real token below.
+const CF_BEACON_TOKEN = ""; // <-- paste your token here once you've added the site in the dashboard
+
 export function renderChrome(activeHref) {
   applyAccessibility(); // apply saved font-size/dyslexia/contrast/motion prefs before paint
 
@@ -47,6 +56,14 @@ export function renderChrome(activeHref) {
   manifestLink.rel = "manifest";
   manifestLink.href = "manifest.json";
   document.head.appendChild(manifestLink);
+
+  if (CF_BEACON_TOKEN) {
+    const beacon = document.createElement("script");
+    beacon.defer = true;
+    beacon.src = "https://static.cloudflareinsights.com/beacon.min.js";
+    beacon.setAttribute("data-cf-beacon", JSON.stringify({ token: CF_BEACON_TOKEN }));
+    document.head.appendChild(beacon);
+  }
 
   // A single non-conditional theme-color meta, recomputed whenever the
   // effective theme changes (explicit Settings choice, or the OS setting
