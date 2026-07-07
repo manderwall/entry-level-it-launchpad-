@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Professor Messer",
+    "url": "https://www.professormesser.com/",
+    "note": "Free, complete video courses for CompTIA A+, Network+, and Security+ — the most widely recommended free study resource in the CompTIA community. Follow along with your next cert."
+  },
+  {
+    "name": "NetworkChuck (YouTube)",
+    "url": "https://www.youtube.com/@NetworkChuck",
+    "note": "Entry-level IT and networking career content, home-lab project ideas (matches the Skill-Building Projects above), and certification roadmaps."
+  },
+  {
+    "name": "Indeed Career Guide",
+    "url": "https://www.indeed.com/career-advice",
+    "note": "Resume, interview, and career-change articles/videos from one of the job boards you're already using to search."
+  },
+  {
+    "name": "Google IT Support Professional Certificate (Coursera)",
+    "url": "https://www.coursera.org/professional-certificates/google-it-support",
+    "note": "A structured, well-known follow-on path if you want more guided study after A+ — free to audit the course content, paid only for the certificate."
+  }
+]

@@ -1,5 +1,9 @@
 // Shared chrome (header/nav/footer) + small utilities used by every page.
 // Zero dependencies, zero build step — plain ES modules loaded by <script type="module">.
+import { getSettings, applyAccessibility, renderSettingsPanel } from "./settings.mjs";
+import { maybeShowSplash, showSplash } from "./splash.mjs";
+import { showHelp } from "./help.mjs";
+import { renderChatWidget } from "./chat-widget.mjs";
 
 export const PAGES = [
   { href: "index.html", label: "Start Here" },
@@ -31,17 +35,40 @@ export function escapeHtml(str) {
 const FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231f6feb'/%3E%3Ctext x='50' y='68' font-size='58' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'%3EIT%3C/text%3E%3C/svg%3E";
 
 export function renderChrome(activeHref) {
+  applyAccessibility(); // apply saved font-size/dyslexia/contrast/motion prefs before paint
+
   const favicon = document.createElement("link");
   favicon.rel = "icon";
   favicon.href = FAVICON;
   document.head.appendChild(favicon);
 
+  const manifestLink = document.createElement("link");
+  manifestLink.rel = "manifest";
+  manifestLink.href = "manifest.json";
+  document.head.appendChild(manifestLink);
+
+  const themeColorDark = document.createElement("meta");
+  themeColorDark.name = "theme-color";
+  themeColorDark.content = "#14171a";
+  themeColorDark.media = "(prefers-color-scheme: dark)";
+  document.head.appendChild(themeColorDark);
+  const themeColorLight = document.createElement("meta");
+  themeColorLight.name = "theme-color";
+  themeColorLight.content = "#ffffff";
+  themeColorLight.media = "(prefers-color-scheme: light)";
+  document.head.appendChild(themeColorLight);
+
+  const payFloor = getSettings().payFloor;
   const header = document.createElement("header");
   header.className = "site-header";
   header.innerHTML = `
     <div class="site-header-inner">
       <a class="site-title" href="index.html">Entry-Level IT <span>Launchpad</span></a>
-      <span style="font-size:0.8rem;color:var(--text-muted)">CompTIA A+ · Per Scholas · $19+/hr targets</span>
+      <span style="font-size:0.8rem;color:var(--text-muted)">CompTIA A+ · Per Scholas · $${payFloor}+/hr target</span>
+      <div class="header-actions">
+        <button id="settings-btn" type="button" aria-label="Settings" title="Settings &amp; accessibility">⚙</button>
+        <button id="help-btn" type="button" aria-label="Help" title="Help &amp; navigation">?</button>
+      </div>
     </div>`;
   const nav = document.createElement("nav");
   nav.className = "site-nav";
@@ -79,6 +106,38 @@ export function renderChrome(activeHref) {
     agency before relying on them.</p>
     <p><a href="https://github.com/manderwall/entry-level-it-launchpad-">Source on GitHub</a></p>`;
   document.body.appendChild(footer);
+
+  header.querySelector("#help-btn").addEventListener("click", showHelp);
+  header.querySelector("#settings-btn").addEventListener("click", () => {
+    const overlay = document.createElement("div");
+    overlay.className = "splash-overlay";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-label", "Settings");
+    overlay.innerHTML = `<div class="splash-card" style="text-align:left;max-width:480px;" id="settings-panel-container"></div>`;
+    document.body.appendChild(overlay);
+    renderSettingsPanel(overlay.querySelector("#settings-panel-container"));
+    const closeBtn = document.createElement("button");
+    closeBtn.className = "primary";
+    closeBtn.textContent = "Done";
+    closeBtn.style.marginTop = "1rem";
+    overlay.querySelector("#settings-panel-container").appendChild(closeBtn);
+    const dismiss = () => overlay.remove();
+    closeBtn.addEventListener("click", dismiss);
+    overlay.addEventListener("click", (e) => { if (e.target === overlay) dismiss(); });
+    document.addEventListener("keydown", function onKey(e) {
+      if (e.key === "Escape") { dismiss(); document.removeEventListener("keydown", onKey); }
+    });
+  });
+
+  maybeShowSplash();
+  renderChatWidget();
+
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").catch(() => {
+      // offline/installability is a nice-to-have — never block the page on it
+    });
+  }
 }
 
 export async function loadJSON(path) {

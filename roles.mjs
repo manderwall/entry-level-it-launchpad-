@@ -1,9 +1,12 @@
 import { renderChrome, loadJSON, escapeHtml, wireCopyButtons } from "./common.mjs";
 import { renderProgressBadge, renderMilestoneToggle } from "./progress.mjs";
+import { getSettings, saveSettings } from "./settings.mjs";
 
 renderChrome("roles.html");
 renderProgressBadge();
 renderMilestoneToggle(document.getElementById("milestone"), "pick-roles");
+
+document.getElementById("filter-min-pay").value = getSettings().payFloor;
 
 let ROLES = [];
 
@@ -47,6 +50,7 @@ Promise.all([
   render();
   document.getElementById("stretch-roles").innerHTML = stretch.map((s) => `<li>${escapeHtml(s)}</li>`).join("");
   document.getElementById("filter-min-pay").addEventListener("input", render);
+  document.getElementById("filter-min-pay").addEventListener("change", (e) => saveSettings({ payFloor: Number(e.target.value) || 0 }));
   document.getElementById("filter-remote").addEventListener("change", render);
 }).catch(() => {
   document.getElementById("roles-list").textContent = "Could not load role data.";

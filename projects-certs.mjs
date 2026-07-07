@@ -6,7 +6,10 @@ renderProgressBadge();
 renderMilestoneToggle(document.getElementById("milestone"), "picked-cert");
 
 async function init() {
-  const certs = await loadJSON("data/certs.json");
+  const [certs, videoResources] = await Promise.all([
+    loadJSON("data/certs.json"),
+    loadJSON("data/video-resources.json"),
+  ]);
 
   document.getElementById("projects").innerHTML = certs.skillProjects.map((p) => `
     <div class="card">
@@ -40,6 +43,12 @@ async function init() {
   recalc();
 
   document.getElementById("price-disclaimer").textContent = certs.priceDisclaimer;
+
+  document.getElementById("video-resources").innerHTML = videoResources.map((v) => `
+    <div class="card">
+      <h3><a href="${v.url}" target="_blank" rel="noopener">${escapeHtml(v.name)}</a></h3>
+      <p>${escapeHtml(v.note)}</p>
+    </div>`).join("");
 }
 
 init().catch((err) => console.error(err));
