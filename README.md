@@ -68,6 +68,14 @@ breakdown for any city.
   prefs, progress checklist, and application tracker all live only in
   your own browser's `localStorage`. Nothing is shared between visitors,
   even if you and a friend both use the same deployed site.
+- **Move your data between your own devices** — ⚙ Settings has an
+  Export/Import for exactly this: download a file with your settings,
+  progress, and tracker, then import it on another device/browser. This
+  is not automatic cloud sync (there's no backend or account system) —
+  just a zero-infrastructure way to carry your data from, say, your
+  phone to your laptop. True automatic sync would need a real backend
+  (Cloudflare KV/D1 or similar) — a bigger call than this project makes
+  on its own; the manual export/import covers the common case without it.
 
 ## Tech stack
 
