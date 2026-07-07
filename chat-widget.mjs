@@ -104,15 +104,28 @@ export function renderChatWidget() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: history }),
       });
-      const data = await res.json();
+      // A plain static server (local dev, or any deployment without the
+      // Function) answers with an HTML error page, not JSON — parsing
+      // that would throw a confusing "Unexpected token '<'" error
+      // instead of the intended graceful fallback. Same fix as
+      // cloud-sync.mjs's parseSyncResponse().
+      let data;
+      try {
+        data = await res.json();
+      } catch {
+        throw new Error("not configured: this deployment doesn't have the chat Function available");
+      }
       if (!res.ok) throw new Error(data.error || `Request failed: ${res.status}`);
       history.push({ role: "assistant", content: data.reply });
     } catch (err) {
-      notConfigured = /not configured|501/i.test(err.message);
+      // Match both "not configured" and "isn't configured" (and 501)
+      // rather than one exact phrase — a future wording tweak on the
+      // Function side shouldn't silently break this detection again.
+      notConfigured = /not configured|isn.t configured|\b501\b/i.test(err.message);
       history.push({
         role: "assistant",
         content: notConfigured
-          ? "Chat isn't set up yet on this deployment — the site owner needs to add an ANTHROPIC_API_KEY in the Cloudflare Pages dashboard. In the meantime, try the Interview Prep or Search Toolkit pages directly."
+          ? "Chat isn't set up yet on this deployment — the site owner needs to bind Workers AI (variable name AI) in the Cloudflare Pages dashboard. In the meantime, try the Interview Prep or Search Toolkit pages directly."
           : `Something went wrong (${err.message}). Try again in a moment, or use the site's regular pages instead.`,
       });
     }
