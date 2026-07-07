@@ -3,7 +3,7 @@
   "maxScore": 13,
   "prioritizeThreshold": 7,
   "questions": [
-    { "id": "pay", "text": "Pay is $19/hr or higher, or salary is $40K+", "points": 2 },
+    { "id": "pay", "text": "Pay is $19/hr or higher, or salary is $40K+ (roughly the hourly floor annualized — see Best-Fit Roles & Pay for the $45K-$55K target range)", "points": 2 },
     { "id": "credentials", "text": "Mentions A+, Per Scholas, Google IT, or entry-level IT", "points": 2 },
     { "id": "cs-accepted", "text": "Accepts customer service experience", "points": 2 },
     { "id": "keywords", "text": "Mentions ticketing, Windows, M365, remote support, or troubleshooting", "points": 2 },
