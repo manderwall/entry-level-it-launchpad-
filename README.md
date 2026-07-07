@@ -77,14 +77,11 @@ breakdown for any city.
   prefs, progress checklist, and application tracker all live only in
   your own browser's `localStorage`. Nothing is shared between visitors,
   even if you and a friend both use the same deployed site.
-- **Move your data between your own devices** — ⚙ Settings has an
-  Export/Import for exactly this: download a file with your settings,
-  progress, and tracker, then import it on another device/browser. This
-  is not automatic cloud sync (there's no backend or account system) —
-  just a zero-infrastructure way to carry your data from, say, your
-  phone to your laptop. True automatic sync would need a real backend
-  (Cloudflare KV/D1 or similar) — a bigger call than this project makes
-  on its own; the manual export/import covers the common case without it.
+- **Sync your data across devices** — ⚙ Settings has two options: an
+  automatic code-based sync (via Cloudflare KV — see setup below) where
+  entering the same code on two devices keeps them in sync, and a manual
+  file Export/Import that needs zero setup at all as a fallback. No
+  account system either way — a sync code is the only credential.
 
 ## Tech stack
 
@@ -195,6 +192,27 @@ Like the job-search key, this never touches the repo or the browser —
 `functions/api/chat.js` proxies it server-side. Without the key set, the
 chat widget still appears (so visitors know it exists) but explains it
 isn't configured yet instead of erroring.
+
+### Enable automatic cross-device sync (optional)
+
+⚙ Settings has a "sync across your devices automatically" option: each
+device gets a random code, and entering the same code on a second device
+pulls the first device's settings/progress/tracker data. This needs a
+Cloudflare KV namespace bound to the Pages project — no API key, since
+KV is a Cloudflare-native resource rather than a third-party service.
+
+1. Cloudflare dashboard → **Workers & Pages** → **KV** → **Create a namespace** (e.g. name it `entry-level-it-launchpad-sync`).
+2. Your Pages project → **Settings** → **Functions** → **KV namespace bindings** → **Add binding**.
+3. Variable name: `SYNC_KV`. KV namespace: the one you just created.
+4. Redeploy.
+
+`functions/api/sync.js` only ever reads/writes the exact code a visitor
+provides — there's no account system, the sync code itself is the
+credential (shown in the UI with a "treat it like a password" warning).
+Codes expire after 180 days of inactivity. Without the KV binding, the
+sync UI still appears but explains cloud sync isn't set up yet and
+points to the manual file export/import instead, which needs no setup
+at all.
 
 ### Link previews when you share it
 

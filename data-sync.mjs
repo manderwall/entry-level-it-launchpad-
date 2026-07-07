@@ -9,15 +9,24 @@
 // True automatic sync (edit on phone, see it instantly on laptop) would
 // need a real backend — Cloudflare KV/D1 or a service like Supabase — a
 // bigger infrastructure decision than this file makes on its own.
-const PREFIX = "entry-level-it-launchpad:";
+export const PREFIX = "entry-level-it-launchpad:";
 
-function collect() {
+/** Collects every entry-level-it-launchpad:* localStorage key into one bundle. Shared with cloud-sync.mjs. */
+export function collect() {
   const data = {};
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
     if (key && key.startsWith(PREFIX)) data[key] = localStorage.getItem(key);
   }
   return { exportedAt: new Date().toISOString(), data };
+}
+
+/** Writes a bundle's data back into localStorage. Shared with cloud-sync.mjs. Returns the number of keys restored. */
+export function restore(data) {
+  const entries = Object.entries(data || {}).filter(([k]) => k.startsWith(PREFIX));
+  if (!entries.length) throw new Error("No recognizable data found.");
+  for (const [key, value] of entries) localStorage.setItem(key, value);
+  return entries.length;
 }
 
 export function exportToFile() {
@@ -37,10 +46,7 @@ export function importFromFile(file, onDone) {
   reader.onload = () => {
     try {
       const bundle = JSON.parse(reader.result);
-      const entries = Object.entries(bundle.data || {}).filter(([k]) => k.startsWith(PREFIX));
-      if (!entries.length) throw new Error("No recognizable data found in that file.");
-      for (const [key, value] of entries) localStorage.setItem(key, value);
-      onDone(null, entries.length);
+      onDone(null, restore(bundle.data));
     } catch (err) {
       onDone(err, 0);
     }
@@ -52,11 +58,12 @@ export function importFromFile(file, onDone) {
 /** Renders the export/import controls into a container (used in the Settings panel). */
 export function renderSyncControls(container) {
   container.innerHTML = `
-    <h3>Move your data to another device</h3>
-    <p style="font-size:0.85rem;color:var(--text-muted);">Not automatic cloud sync — this
-    downloads a file with your settings, progress, and tracker, which you
-    then import on your other device/browser. Nothing is uploaded to any
-    server in either direction.</p>
+    <h3>Or move a file manually</h3>
+    <p style="font-size:0.85rem;color:var(--text-muted);">If you'd rather not
+    use a sync code above (or cloud sync isn't set up on this deployment),
+    this downloads a file with your settings, progress, and tracker, which
+    you then import on your other device/browser. Nothing is uploaded to
+    any server in either direction.</p>
     <div class="toolbar">
       <div><button id="sync-export" type="button">Export my data</button></div>
       <div>
