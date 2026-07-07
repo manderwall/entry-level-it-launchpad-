@@ -139,8 +139,17 @@ Server, etc.).
 
 ```bash
 npm run check   # syntax-check every .mjs file
-npm test        # validate every data/*.json file's shape
+npm test        # data/*.json shape validation + logic unit tests (settings, escapeHtml, milestones)
 ```
+
+`tests/data.test.mjs` validates every `data/*.json` file's shape.
+`tests/logic.test.mjs` unit-tests the pure/near-pure logic in modules that
+don't touch the DOM at module load time (`common.mjs`, `settings.mjs`,
+`progress.mjs`) — things like XSS-safe escaping, settings defaults/merge
+behavior, and theme/font-scale class toggling. The page-entry `.mjs`
+files (`index.mjs`, `roles.mjs`, etc.) call `renderChrome()` immediately
+on load and need a real browser, so those are covered by manual
+Playwright smoke passes instead, not `node --test`.
 
 ## Deploy to Cloudflare Pages
 
