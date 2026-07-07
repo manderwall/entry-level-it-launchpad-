@@ -178,20 +178,31 @@ variables aren't set, the live-results panel just quietly doesn't appear.
 API — no API key or account required. It works automatically once
 deployed to Cloudflare Pages; nothing to configure.
 
-### Enable the AI chat box (optional)
+### Enable the AI chat box (optional, free)
 
 A floating chat button on every page can answer questions grounded in
-this site's content, via Anthropic's Claude API.
+this site's content, via **Cloudflare Workers AI** — genuinely free
+(a daily quota of "neurons," no billing, no separate account or API key),
+running open-source models directly on Cloudflare's own infrastructure.
 
-1. Get an API key from [console.anthropic.com](https://console.anthropic.com/).
-2. Cloudflare Pages dashboard → your project → **Settings** → **Environment variables** → **Add variable**.
-3. Add `ANTHROPIC_API_KEY` as a **Secret**.
-4. Redeploy.
+1. Your Pages project → **Settings** → **Functions** → **Bindings** → **Add**.
+2. Choose **Workers AI**.
+3. Variable name: exactly `AI`.
+4. Save, then redeploy.
 
-Like the job-search key, this never touches the repo or the browser —
-`functions/api/chat.js` proxies it server-side. Without the key set, the
+That's it — no API key to create or paste anywhere, since Workers AI is
+a Cloudflare-native binding rather than a third-party service.
+`functions/api/chat.js` calls `env.AI.run(...)` with an open-source
+model (`@cf/meta/llama-3.1-8b-instruct-fast`). Quality is a step below a
+frontier model like Claude or GPT, but it's plenty for grounded
+questions about this site's own content. Without the binding set, the
 chat widget still appears (so visitors know it exists) but explains it
 isn't configured yet instead of erroring.
+
+If you ever want a stronger (but paid) model instead, swap the Workers
+AI call in `functions/api/chat.js` for Anthropic's or OpenAI's API and
+add the corresponding key as a Secret — same pattern as the Adzuna
+integration above.
 
 ### Enable automatic cross-device sync (optional)
 

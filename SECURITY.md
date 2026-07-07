@@ -11,27 +11,30 @@ visitor or the site owner.
 
 | ✅ In scope | ❌ Out of scope |
 |---|---|
-| Accidental exposure of the Adzuna or Anthropic API keys to the browser/repo | A targeted attacker with root access to a visitor's device |
-| A malicious PR trying to smuggle a client-side secret into committed code | Anthropic/Adzuna/USAspending outages or rate limits |
+| Accidental exposure of the Adzuna API key to the browser/repo | A targeted attacker with root access to a visitor's device |
+| A malicious PR trying to smuggle a client-side secret into committed code | Adzuna/USAspending/Workers AI outages or rate limits |
 | XSS via unescaped user input rendered back to the page (e.g. tracker fields) | Content of AI chat responses being factually wrong (it's disclosed as AI-generated, verify anything important) |
 | CSP bypass attempts (inline script injection, external script loading) | Someone reading the open-source data files — they're public by design |
 
 ## Server-side secrets
 
-Two optional features call third-party APIs that need a secret key:
+Only one feature calls a third-party API that needs an actual secret key:
 
-- **Live job search** (`functions/api/jobs.js`) — Adzuna API key.
-- **AI chat** (`functions/api/chat.js`) — Anthropic API key.
+- **Live job search** (`functions/api/jobs.js`) — Adzuna API key, read
+  from `ADZUNA_APP_ID`/`ADZUNA_APP_KEY` Cloudflare Pages environment
+  variables, set as **Secret** type, never as plain **Text**, and never
+  committed to this repo. The Function never returns the key value in
+  any response — if it isn't set, it returns a 501 with a plain "not
+  configured" message and stops.
 
-Both keys are read only from Cloudflare Pages environment variables
-(`ADZUNA_APP_ID/APP_KEY`, `ANTHROPIC_API_KEY`), set as **Secret** type in
-the Cloudflare dashboard, never as plain **Text**, and never committed to
-this repo. Neither Function returns the key value in any response —
-if a key isn't set, they return a 501 with a plain "not configured"
-message and stop, rather than falling back to some other behavior.
+Two other features that might look like they need a key don't:
 
-The Government Contractors feature (`functions/api/contractors.js`) calls
-USAspending.gov's public API, which needs no key at all.
+- **AI chat** (`functions/api/chat.js`) runs on **Cloudflare Workers
+  AI** — a native Cloudflare binding (`AI`), not a third-party API key.
+  There's no secret to leak because there isn't one; the binding itself
+  is the credential, scoped to this Cloudflare account.
+- **Government Contractors** (`functions/api/contractors.js`) calls
+  USAspending.gov's public API, which needs no key at all.
 
 ## Cloud sync codes
 
