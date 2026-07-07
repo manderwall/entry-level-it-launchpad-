@@ -178,12 +178,14 @@ variables aren't set, the live-results panel just quietly doesn't appear.
 API — no API key or account required. It works automatically once
 deployed to Cloudflare Pages; nothing to configure.
 
-### Enable the AI chat box (optional, free)
+### Enable the AI chat box (optional, free, opt-in)
 
-A floating chat button on every page can answer questions grounded in
-this site's content, via **Cloudflare Workers AI** — genuinely free
-(a daily quota of "neurons," no billing, no separate account or API key),
-running open-source models directly on Cloudflare's own infrastructure.
+An **opt-in** chat button (off by default — a visitor has to turn it on
+in ⚙ Settings, it's never the first thing anyone sees) can answer
+questions grounded in this site's content, via **Cloudflare Workers AI**
+— genuinely free (a daily quota of "neurons," no billing, no separate
+account or API key), running open-source models directly on
+Cloudflare's own infrastructure.
 
 1. Your Pages project → **Settings** → **Functions** → **Bindings** → **Add**.
 2. Choose **Workers AI**.
@@ -192,12 +194,19 @@ running open-source models directly on Cloudflare's own infrastructure.
 
 That's it — no API key to create or paste anywhere, since Workers AI is
 a Cloudflare-native binding rather than a third-party service.
-`functions/api/chat.js` calls `env.AI.run(...)` with an open-source
-model (`@cf/meta/llama-3.1-8b-instruct-fast`). Quality is a step below a
-frontier model like Claude or GPT, but it's plenty for grounded
-questions about this site's own content. Without the binding set, the
-chat widget still appears (so visitors know it exists) but explains it
+
+**Model:** `@cf/meta/llama-3.1-8b-instruct-fast` (Meta's Llama 3.1 8B
+Instruct) — a small, fast, free open-source model. Quality is a step
+below a frontier model like Claude or GPT-4, but it's plenty for
+grounded questions about this site's own content. Without the `AI`
+binding set, the chat widget (once a visitor enables it) explains it
 isn't configured yet instead of erroring.
+
+**Rules/behavior:** entirely controlled by the `SYSTEM_PROMPT` constant
+at the top of `functions/api/chat.js` — it's a plain string, edit it
+directly to change what the assistant knows, how it should behave, or
+what it should refuse to answer. No special syntax, just rewrite the
+text.
 
 If you ever want a stronger (but paid) model instead, swap the Workers
 AI call in `functions/api/chat.js` for Anthropic's or OpenAI's API and
