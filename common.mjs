@@ -152,7 +152,19 @@ export function renderChrome(activeHref) {
   });
 
   maybeShowSplash();
-  renderChatWidget();
+
+  // Opt-in only — the chat widget stays completely absent from the page
+  // (not just hidden) until a visitor turns it on in Settings, so it's
+  // never the first thing anyone sees. Mounts immediately if already
+  // enabled from a past visit, or the moment someone flips it on live.
+  let chatMounted = false;
+  function mountChatIfEnabled() {
+    if (chatMounted || !getSettings().aiChatEnabled) return;
+    chatMounted = true;
+    renderChatWidget();
+  }
+  mountChatIfEnabled();
+  document.addEventListener("settings:changed", mountChatIfEnabled);
 
   // Force every collapsed <details> section open when printing (CSS alone
   // can't reliably override native details/summary hiding across browser

@@ -52,7 +52,7 @@ export function renderChatWidget() {
       <input type="text" id="chat-input" placeholder="e.g. What cert should I get after A+?" autocomplete="off">
       <button type="submit" class="primary">Send</button>
     </form>
-    <p class="chat-footnote">Answers come from an AI model and may be wrong — always verify anything important. Nothing you type is saved after you close this tab.</p>`;
+    <p class="chat-footnote">Runs on Llama 3.1 8B (Cloudflare Workers AI) — a small, free, open-source model, not Claude/GPT-4-class. Answers may be wrong, always verify anything important. Nothing you type is saved after you close this tab. Turn this off anytime in ⚙ Settings.</p>`;
   document.body.appendChild(panel);
 
   const messagesEl = panel.querySelector("#chat-messages");

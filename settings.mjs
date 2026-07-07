@@ -25,6 +25,7 @@ const DEFAULTS = {
   dyslexiaFont: false,
   highContrast: false,
   reducedMotion: false,
+  aiChatEnabled: false, // opt-in — the AI chat widget stays hidden until a visitor turns it on here
 };
 
 export function getSettings() {
@@ -111,8 +112,23 @@ export function renderSettingsPanel(container) {
       <span>Reduce motion/animations</span>
     </label>
     <p style="font-size:0.8rem;color:var(--text-muted);">Everything above is saved only in this browser — nothing is uploaded, and nothing is shared with other visitors.</p>
+
+    <h3>AI chat assistant</h3>
+    <label style="display:flex;gap:0.5rem;align-items:center;margin:0.5rem 0;">
+      <input type="checkbox" id="settings-ai-chat" ${s.aiChatEnabled ? "checked" : ""}>
+      <span>Enable the AI chat assistant</span>
+    </label>
+    <p style="font-size:0.8rem;color:var(--text-muted);">Off by default — this
+    is an optional extra, not the main way to use the site. When enabled, a
+    chat button appears in the corner of every page. It runs on Llama 3.1 8B
+    via Cloudflare Workers AI (a small, free, open-source model — not
+    Claude/GPT-4-class), answers are AI-generated and may be wrong, and
+    nothing you type is saved past this browser tab.</p>
+
     <div id="settings-cloud-sync-controls"></div>
     <div id="settings-sync-controls"></div>`;
+
+  container.querySelector("#settings-ai-chat").addEventListener("change", (e) => saveSettings({ aiChatEnabled: e.target.checked }));
 
   renderCloudSyncControls(container.querySelector("#settings-cloud-sync-controls"));
   renderSyncControls(container.querySelector("#settings-sync-controls"));

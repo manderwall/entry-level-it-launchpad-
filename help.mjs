@@ -25,6 +25,10 @@ export function showHelp() {
       starting point — set your own), your city, and accessibility
       options (text size, dyslexia-friendly font, high contrast, reduced
       motion).</p>
+      <p>There's also an optional <strong>AI chat assistant</strong> —
+      off by default, since it's an extra, not the main way to use the
+      site. Turn it on in Settings if you want it; a chat button will
+      then appear in the corner of every page.</p>
       <p><strong>Your data stays yours:</strong> your tracker, progress,
       and settings are stored only in this browser (localStorage) —
       nothing is uploaded, and nothing is shared between visitors, even
