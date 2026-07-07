@@ -225,6 +225,48 @@ sync UI still appears but explains cloud sync isn't set up yet and
 points to the manual file export/import instead, which needs no setup
 at all.
 
+### Enable usage analytics (optional, free)
+
+Cloudflare Web Analytics gives you page-view/visitor counts with no
+cookies and no personal data collected — Cloudflare's own product, not
+third-party ad-tech.
+
+1. Cloudflare dashboard → **Analytics & Logs** → **Web Analytics** → add this site.
+2. Copy the beacon token it gives you.
+3. Paste it into `common.mjs`, replacing the empty `CF_BEACON_TOKEN = ""` near the top of the file.
+4. Commit and redeploy.
+
+The token is meant to be public (same idea as a Google Analytics
+measurement ID) — safe to commit. Until you set it, the beacon script
+simply never gets injected, so there's zero overhead either way. CSP
+(`_headers` and every page's meta tag) already allows
+`static.cloudflareinsights.com` for when you do.
+
+### Protecting the free API quotas (dashboard-only, no code)
+
+`/api/jobs`, `/api/contractors`, `/api/chat`, and `/api/sync` are public
+endpoints with no login — anyone (including a script) can call them
+directly, which could burn through the Adzuna or Workers AI free daily
+quotas. Cloudflare's **Security → WAF → Rate limiting rules** (free tier
+available) can cap this:
+
+1. Create a rule matching **URI Path** → **starts with** → `/api/`.
+2. Rate: something like **30 requests per minute per IP** (generous for
+   one real visitor clicking around, restrictive for a script).
+3. Action: **Block** or **Managed Challenge**.
+
+This is a dashboard setting, not something in this repo — there's no
+Function code change needed.
+
+### Preview deployments need their own bindings/secrets
+
+Cloudflare Pages has separate **Production** and **Preview** environment
+variable/binding sets. If you ever want a non-`main` branch's preview
+URL (e.g. a feature branch) to also have working live search, chat, or
+sync, you'll need to add the same `ADZUNA_APP_ID`/`ADZUNA_APP_KEY`,
+`AI` binding, and `SYNC_KV` binding under the **Preview** tab too —
+they don't carry over automatically from Production.
+
 ### Link previews when you share it
 
 Every page has Open Graph and Twitter Card tags, so pasting a link into a
