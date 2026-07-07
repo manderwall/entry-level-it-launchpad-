@@ -69,11 +69,18 @@ export function renderChatWidget() {
   }
   renderMessages();
 
-  bubble.addEventListener("click", () => {
-    panel.hidden = !panel.hidden;
-    if (!panel.hidden) inputEl.focus();
-  });
-  panel.querySelector(".chat-close").addEventListener("click", () => { panel.hidden = true; });
+  function openPanel() {
+    panel.hidden = false;
+    inputEl.focus();
+  }
+  function closePanel() {
+    panel.hidden = true;
+    bubble.focus();
+  }
+
+  bubble.addEventListener("click", () => { panel.hidden ? openPanel() : closePanel(); });
+  panel.querySelector(".chat-close").addEventListener("click", closePanel);
+  panel.addEventListener("keydown", (e) => { if (e.key === "Escape") closePanel(); });
 
   formEl.addEventListener("submit", async (e) => {
     e.preventDefault();
