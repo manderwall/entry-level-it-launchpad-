@@ -9,9 +9,10 @@ const GUIDE_PAGES = [
   { href: "roles.html", title: "Best-Fit Roles & Pay", desc: "The five best target roles, full role details, what the work looks like, and salary targets." },
   { href: "search-toolkit.html", title: "Search Toolkit", desc: "Copy-paste search strings, a zone/city link generator, an application scorecard, and scam red flags." },
   { href: "zones.html", title: "Houston Zones & Getting There", desc: "The metro broken into zones — where the jobs are, transit access, and how to search when transportation is a barrier." },
-  { href: "resume.html", title: "Resume, LinkedIn & Cover Letter", desc: "Resume headline, summary, bullets; LinkedIn About; a short cover letter; and message templates." },
+  { href: "resume.html", title: "Resume, LinkedIn & Cover Letter", desc: "Resume headline, summary, bullets, LinkedIn About, and a short cover letter." },
   { href: "projects-certs.html", title: "Skill-Building Projects & Next Certs", desc: "Five small projects with ready-made resume bullets, plus a cert cost/payoff calculator." },
-  { href: "employers.html", title: "Employers, Pipelines & Apprenticeships", desc: "Staffing agencies, remote support pipelines, apprenticeships, and networking scripts." },
+  { href: "employers.html", title: "Employers, Pipelines & Apprenticeships", desc: "Staffing agencies, remote support pipelines, apprenticeships, and outreach/networking scripts." },
+  { href: "gov-contractors.html", title: "Government Contractors & Subcontractors", desc: "Federal contract awards near Houston/JSC, pulled live from USAspending.gov — not a hiring board, but a place to start researching employers." },
   { href: "interview-prep.html", title: "Interview Prep", desc: "The 60-second pitch, strong answers to common questions, STAR prompts, and quick technical definitions." },
   { href: "plan-tracker.html", title: "Application Plan & Weekly Tracker", desc: "A 2-week plan, a browser-local application tracker, and weekly goals." },
 ];
