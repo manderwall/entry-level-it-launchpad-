@@ -1,6 +1,7 @@
 // Help/navigation overlay — explains the site's sections and privacy
 // model. Opened from the "?" button common.mjs adds to every header.
 import { showSplash } from "./splash.mjs";
+import { trapModal } from "./modal.mjs";
 
 export function showHelp() {
   const overlay = document.createElement("div");
@@ -35,11 +36,7 @@ export function showHelp() {
       </div>
     </div>`;
   document.body.appendChild(overlay);
-  const dismiss = () => overlay.remove();
-  overlay.querySelector("#help-close").addEventListener("click", dismiss);
-  overlay.querySelector("#help-show-splash").addEventListener("click", () => { dismiss(); showSplash(); });
-  overlay.addEventListener("click", (e) => { if (e.target === overlay) dismiss(); });
-  document.addEventListener("keydown", function onKey(e) {
-    if (e.key === "Escape") { dismiss(); document.removeEventListener("keydown", onKey); }
-  });
+  const close = trapModal(overlay);
+  overlay.querySelector("#help-close").addEventListener("click", close);
+  overlay.querySelector("#help-show-splash").addEventListener("click", () => { close(); showSplash(); });
 }

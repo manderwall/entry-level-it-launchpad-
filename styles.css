@@ -474,3 +474,6 @@ html.reduced-motion *::after {
 @media (max-width: 560px) {
   .hero-art { max-width: 60vw; margin: 0 auto; display: block; }
 }
+
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+.table-wrap table { margin: 0; }
