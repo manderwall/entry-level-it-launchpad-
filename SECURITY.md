@@ -33,6 +33,22 @@ message and stop, rather than falling back to some other behavior.
 The Government Contractors feature (`functions/api/contractors.js`) calls
 USAspending.gov's public API, which needs no key at all.
 
+## Cloud sync codes
+
+`functions/api/sync.js` (cross-device sync) uses a Cloudflare KV
+namespace bound as `SYNC_KV` rather than a secret key — it's a
+Cloudflare-native resource, not a third-party credential. Instead, the
+**sync code itself is the credential**: whoever holds it can read/write
+that code's data blob, with no other authentication. Codes are
+10 characters from a 32-character alphabet (~50 bits of entropy — not
+brute-forceable at any practical rate against Cloudflare's KV request
+limits), validated server-side against a strict `^[A-Za-z0-9]{8,20}$`
+pattern before being used as a KV key (no injection surface), and expire
+after 180 days of inactivity. The UI explicitly tells visitors to treat
+their code like a password. This is an accepted trade-off for a site
+with no account system — the alternative (real accounts) is a much
+bigger addition than a personal job-search tool warrants.
+
 ## Content Security Policy
 
 Every page ships a strict CSP (`default-src 'self'`) both as an inline

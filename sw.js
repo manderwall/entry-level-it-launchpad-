@@ -8,7 +8,7 @@ const CACHE_NAME = `entry-level-it-launchpad-${CACHE_VERSION}`;
 const APP_SHELL = [
   "index.html", "roles.html", "search-toolkit.html", "zones.html", "resume.html",
   "projects-certs.html", "employers.html", "gov-contractors.html", "interview-prep.html", "plan-tracker.html",
-  "common.mjs", "settings.mjs", "splash.mjs", "help.mjs", "progress.mjs", "live-search.mjs", "chat-widget.mjs", "data-sync.mjs", "modal.mjs",
+  "common.mjs", "settings.mjs", "splash.mjs", "help.mjs", "progress.mjs", "live-search.mjs", "chat-widget.mjs", "data-sync.mjs", "modal.mjs", "cloud-sync.mjs",
   "index.mjs", "roles.mjs", "search-toolkit.mjs", "zones.mjs", "resume.mjs",
   "projects-certs.mjs", "employers.mjs", "gov-contractors.mjs", "interview-prep.mjs", "plan-tracker.mjs",
   "styles.css", "manifest.json", "icon.svg",

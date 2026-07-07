@@ -7,6 +7,7 @@
 // during renderChrome(), so importing back would create a circular module
 // dependency. Tiny local copy instead.
 import { renderSyncControls } from "./data-sync.mjs";
+import { renderCloudSyncControls } from "./cloud-sync.mjs";
 
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (c) => (
@@ -110,8 +111,10 @@ export function renderSettingsPanel(container) {
       <span>Reduce motion/animations</span>
     </label>
     <p style="font-size:0.8rem;color:var(--text-muted);">Everything above is saved only in this browser — nothing is uploaded, and nothing is shared with other visitors.</p>
+    <div id="settings-cloud-sync-controls"></div>
     <div id="settings-sync-controls"></div>`;
 
+  renderCloudSyncControls(container.querySelector("#settings-cloud-sync-controls"));
   renderSyncControls(container.querySelector("#settings-sync-controls"));
 
   const payFloorInput = container.querySelector("#settings-pay-floor");
