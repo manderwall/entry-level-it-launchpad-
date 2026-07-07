@@ -1,6 +1,9 @@
 import { renderChrome, loadJSON, escapeHtml, wireCopyButtons } from "./common.mjs";
+import { renderProgressBadge, renderMilestoneToggle } from "./progress.mjs";
 
 renderChrome("interview-prep.html");
+renderProgressBadge();
+renderMilestoneToggle(document.getElementById("milestone"), "practiced-pitch");
 
 async function init() {
   const data = await loadJSON("data/interview-prep.json");

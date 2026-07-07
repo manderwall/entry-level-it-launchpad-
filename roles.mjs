@@ -1,6 +1,9 @@
 import { renderChrome, loadJSON, escapeHtml, wireCopyButtons } from "./common.mjs";
+import { renderProgressBadge, renderMilestoneToggle } from "./progress.mjs";
 
 renderChrome("roles.html");
+renderProgressBadge();
+renderMilestoneToggle(document.getElementById("milestone"), "pick-roles");
 
 let ROLES = [];
 
@@ -25,7 +28,7 @@ function render() {
 
   list.innerHTML = filtered.map((r) => `
     <div class="card">
-      <h3>${r.rank}. ${escapeHtml(r.role)}</h3>
+      <h3><span aria-hidden="true">${r.icon || "🛠️"}</span> ${r.rank}. ${escapeHtml(r.role)}</h3>
       <p><span class="pill ${r.remoteOdds.startsWith("High") ? "high" : ""}">${escapeHtml(r.remoteOdds)} remote odds</span>
          <span class="pill">${escapeHtml(r.payTarget)}</span></p>
       <p><strong>Why this fits:</strong> ${escapeHtml(r.whyFit)}</p>

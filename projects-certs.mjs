@@ -1,6 +1,9 @@
 import { renderChrome, loadJSON, escapeHtml, wireCopyButtons } from "./common.mjs";
+import { renderProgressBadge, renderMilestoneToggle } from "./progress.mjs";
 
 renderChrome("projects-certs.html");
+renderProgressBadge();
+renderMilestoneToggle(document.getElementById("milestone"), "picked-cert");
 
 async function init() {
   const certs = await loadJSON("data/certs.json");

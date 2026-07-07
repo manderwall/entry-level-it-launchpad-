@@ -1,6 +1,11 @@
 import { renderChrome, loadJSON, escapeHtml } from "./common.mjs";
+import { renderProgressBadge, renderMilestoneToggle } from "./progress.mjs";
+import { renderLiveSearch } from "./live-search.mjs";
 
 renderChrome("search-toolkit.html");
+renderProgressBadge();
+renderMilestoneToggle(document.getElementById("milestone"), "set-alerts");
+const refreshLiveSearch = renderLiveSearch(document.getElementById("live-search"));
 
 function buildLinks(query, location) {
   return loadJSON("data/job-boards.json").then((boards) => {
@@ -42,7 +47,11 @@ async function init() {
   }
 
   const locationInput = document.getElementById("location-input");
-  const refresh = () => buildLinks(roleSelect.value, locationInput.value || "Remote");
+  const refresh = () => {
+    const loc = locationInput.value || "Remote";
+    buildLinks(roleSelect.value, loc);
+    refreshLiveSearch(roleSelect.value, loc);
+  };
   roleSelect.addEventListener("change", refresh);
   locationInput.addEventListener("input", refresh);
   refresh();
