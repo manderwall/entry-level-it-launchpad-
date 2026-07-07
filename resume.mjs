@@ -58,12 +58,6 @@ I'd welcome the chance to bring my troubleshooting foundation and customer-first
 
 Sincerely, [Your Name] — [Phone] • [Email] • [LinkedIn]`;
 
-const MESSAGE_TEMPLATES = [
-  { title: "Recruiter message", text: "Hi [Name], I'm a Per Scholas graduate and CompTIA A+ certified. I also have remote customer service experience, so I'm comfortable supporting users by phone, chat, and email while documenting issues clearly. I'm looking for entry-level help desk, technical support, product support, or IT support roles around $20-$25/hr. Do you have any contract-to-hire or entry-level support roles where A+ and customer service would be a good fit?" },
-  { title: "Per Scholas alumni message", text: "Hi [Name], I'm also connected to Per Scholas and recently earned A+. I'm looking for my first technical support/help desk role and have remote customer service experience. Would you be open to sharing where you found your first tech role or which employers were most open to new A+ grads?" },
-  { title: "Follow-up after applying", text: "Hi [Name], I applied for the [Role] position and wanted to briefly introduce myself. I'm CompTIA A+ certified through Per Scholas and bring remote customer service experience, ticket documentation, and user-support skills. I'm especially interested in this role because it combines technical troubleshooting with customer support. Thank you for your consideration." },
-];
-
 document.getElementById("headline").innerHTML = `${escapeHtml(HEADLINE)} ${copyBlock(HEADLINE)}`;
 document.getElementById("summary").innerHTML = `${escapeHtml(SUMMARY)} ${copyBlock(SUMMARY)}`;
 document.getElementById("skills").innerHTML = SKILLS.map((s) => `<span class="pill">${escapeHtml(s)}</span>`).join(" ");
@@ -82,8 +76,5 @@ document.getElementById("cover-letter").innerHTML = `${escapeHtml(COVER_LETTER)}
 
 document.getElementById("opening-swaps").innerHTML = ROLE_BULLETS.map((r) => `
   <div class="card"><h3>${escapeHtml(r.role)}</h3><p>${escapeHtml(r.opening)} ${copyBlock(r.opening)}</p></div>`).join("");
-
-document.getElementById("message-templates").innerHTML = MESSAGE_TEMPLATES.map((m) => `
-  <div class="card"><h3>${escapeHtml(m.title)}</h3><p>${escapeHtml(m.text)} ${copyBlock(m.text)}</p></div>`).join("");
 
 wireCopyButtons();
