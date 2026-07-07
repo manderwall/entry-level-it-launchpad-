@@ -196,6 +196,18 @@ Like the job-search key, this never touches the repo or the browser —
 chat widget still appears (so visitors know it exists) but explains it
 isn't configured yet instead of erroring.
 
+### Link previews when you share it
+
+Every page has Open Graph and Twitter Card tags, so pasting a link into a
+text/group chat, Discord, or social media shows a real title, description,
+and icon instead of a bare URL. `icon.svg` is a real static file (not a
+data URI) specifically so `og:image` and `apple-touch-icon` work — social
+media crawlers generally don't render data-URI images. If you deploy to
+a custom domain, consider changing `og:image`'s value from the relative
+`icon.svg` to an absolute URL for maximum compatibility with older
+crawlers, though the relative path works on all major ones (Facebook,
+Discord, Slack, iMessage) as-is.
+
 ## Make it your own
 
 - **Different metro:** replace `data/houston-zones.json` and
