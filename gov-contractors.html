@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Federal government contractors and subcontractors with active contract awards in the Houston area, pulled live from USAspending.gov.">
+<meta name="author" content="Amanda Kondrat'yev">
+<link rel="stylesheet" href="styles.css">
+<title>Government Contractors — Entry-Level IT Launchpad</title>
+</head>
+<body>
+<main id="main" tabindex="-1">
+  <h1>Government Contractors &amp; Subcontractors</h1>
+  <p class="callout yellow">
+    <strong>Read this first:</strong> this list reflects federal
+    <em>contract awards</em>, not open job postings — a company here may
+    not be hiring right now, may not have local entry-level IT roles, or
+    may not be a fit for you for reasons specific to your own situation
+    (e.g. a personal conflict of interest). Always verify independently
+    before applying, and use your own judgment about which employers on
+    this list make sense for you.
+  </p>
+
+  <div class="toolbar no-print">
+    <div>
+      <label for="agency-select">Awarding agency</label>
+      <select id="agency-select">
+        <option value="National Aeronautics and Space Administration" selected>NASA (Johnson Space Center area)</option>
+        <option value="Department of Homeland Security">Department of Homeland Security</option>
+        <option value="Department of Defense">Department of Defense</option>
+        <option value="Department of Veterans Affairs">Department of Veterans Affairs</option>
+      </select>
+    </div>
+    <div>
+      <label for="county-select">County (place of performance)</label>
+      <select id="county-select">
+        <option value="201" selected>Harris County (Houston, Clear Lake, Energy Corridor)</option>
+        <option value="157">Fort Bend County (Sugar Land)</option>
+        <option value="339">Montgomery County (The Woodlands, Spring)</option>
+        <option value="167">Galveston County (League City, Galveston)</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="contractors-list">Loading…</div>
+
+  <h2>How to use this list</h2>
+  <ul>
+    <li>This is sourced live from <a href="https://www.usaspending.gov/" target="_blank" rel="noopener">USAspending.gov</a>, the federal government's own public contract-spending database — not a hiring board.</li>
+    <li>Contract size is a rough proxy for how much local staff the contractor might employ, not a guarantee of open roles.</li>
+    <li>Use the "Search openings" link on each company to check their actual careers page or job-board postings.</li>
+    <li>Confirm any company is actively registered to do business with the government at <a href="https://sam.gov/content/entity-information" target="_blank" rel="noopener">SAM.gov Entity Search</a> before relying on it.</li>
+  </ul>
+</main>
+<script type="module" src="gov-contractors.mjs"></script>
+</body>
+</html>

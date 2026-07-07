@@ -9,6 +9,7 @@ export const PAGES = [
   { href: "resume.html", label: "Resume & LinkedIn" },
   { href: "projects-certs.html", label: "Projects & Certs" },
   { href: "employers.html", label: "Employers" },
+  { href: "gov-contractors.html", label: "Gov Contractors" },
   { href: "interview-prep.html", label: "Interview Prep" },
   { href: "plan-tracker.html", label: "Plan & Tracker" },
 ];
@@ -16,7 +17,7 @@ export const PAGES = [
 // Grouped view of PAGES for nav rendering. index.html sits outside the
 // groups since it's the persistent "home" link, not a step in the flow.
 export const NAV_GROUPS = [
-  { label: "Find", hrefs: ["roles.html", "search-toolkit.html", "zones.html", "employers.html"] },
+  { label: "Find", hrefs: ["roles.html", "search-toolkit.html", "zones.html", "employers.html", "gov-contractors.html"] },
   { label: "Prepare", hrefs: ["resume.html", "projects-certs.html", "interview-prep.html"] },
   { label: "Track", hrefs: ["plan-tracker.html"] },
 ];
