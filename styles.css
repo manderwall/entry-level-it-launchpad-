@@ -293,7 +293,7 @@ footer.site-footer a { color: var(--text-muted); }
 
 @media print {
   header.site-header, nav.site-nav, footer.site-footer, .no-print,
-  .chat-bubble, .chat-panel { display: none !important; }
+  .chat-bubble, .chat-panel, .copy-btn { display: none !important; }
   body { color: #000; background: #fff; }
 }
 
