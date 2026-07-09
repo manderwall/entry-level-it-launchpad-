@@ -4,10 +4,24 @@
   "private": true,
   "description": "Open-source job-search launchpad for CompTIA A+ certified / Per Scholas grads breaking into entry-level IT support.",
   "license": "MIT",
+  "author": "Amanda Kondrat'yev",
   "repository": {
     "type": "git",
     "url": "https://github.com/manderwall/entry-level-it-launchpad-.git"
   },
+  "homepage": "https://github.com/manderwall/entry-level-it-launchpad-#readme",
+  "bugs": {
+    "url": "https://github.com/manderwall/entry-level-it-launchpad-/issues"
+  },
+  "keywords": [
+    "job-search",
+    "career",
+    "comptia-a-plus",
+    "per-scholas",
+    "help-desk",
+    "accessibility",
+    "pwa"
+  ],
   "type": "module",
   "engines": {
     "node": ">=20"
