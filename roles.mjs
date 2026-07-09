@@ -7,6 +7,12 @@ renderProgressBadge();
 renderMilestoneToggle(document.getElementById("milestone"), "pick-roles");
 
 document.getElementById("filter-min-pay").value = getSettings().payFloor;
+// Keep the filter in sync if the pay floor is changed via the ⚙ Settings
+// dialog while already on this page, not just on the next page load.
+document.addEventListener("settings:changed", () => {
+  document.getElementById("filter-min-pay").value = getSettings().payFloor;
+  render();
+});
 
 let ROLES = [];
 

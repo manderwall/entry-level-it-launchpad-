@@ -5,6 +5,8 @@
 // action instead of ten open tabs. Reads the same localStorage keys
 // progress.mjs and plan-tracker.mjs already own; no import coupling
 // needed since this only ever reads, never writes, those keys.
+import { getSettings } from "./settings.mjs";
+
 const PROGRESS_KEY = "entry-level-it-launchpad:progress";
 const TRACKER_KEY = "entry-level-it-launchpad:tracker-rows";
 const WEEKLY_GOAL = 40; // matches data/weekly-tracker-schema.json's low end
@@ -44,7 +46,12 @@ export function computeNextStep() {
     };
   }
 
-  if (!progress["set-area"]) {
+  // Checks the real setting, not just the manually-ticked checklist item —
+  // someone who actually opens Settings and sets their city has done the
+  // real thing, even if they never separately tick the checklist box for
+  // it. Relying only on the checklist flag here caused this to nag people
+  // to do something they'd already done.
+  if (!getSettings().city) {
     return {
       text: "Start here: set your pay floor and city in Settings, so every page on this site is tailored to you.",
       href: "index.html",

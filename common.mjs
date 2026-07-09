@@ -86,18 +86,27 @@ export function renderChrome(activeHref) {
   darkMedia.addEventListener("change", updateThemeColorMeta);
   document.addEventListener("settings:changed", updateThemeColorMeta);
 
-  const payFloor = getSettings().payFloor;
   const header = document.createElement("header");
   header.className = "site-header";
   header.innerHTML = `
     <div class="site-header-inner">
       <a class="site-title" href="index.html">Entry-Level IT <span>Launchpad</span></a>
-      <span style="font-size:0.8rem;color:var(--text-muted)">CompTIA A+ · Per Scholas · $${payFloor}+/hr target</span>
+      <span style="font-size:0.8rem;color:var(--text-muted)">CompTIA A+ · Per Scholas · $<span id="header-pay-floor"></span>+/hr target</span>
       <div class="header-actions">
         <button id="settings-btn" type="button" aria-label="Settings" title="Settings &amp; accessibility">⚙</button>
         <button id="help-btn" type="button" aria-label="Help" title="Help &amp; navigation">?</button>
       </div>
     </div>`;
+  const headerPayFloorEl = header.querySelector("#header-pay-floor");
+  function updateHeaderPayFloor() {
+    headerPayFloorEl.textContent = getSettings().payFloor;
+  }
+  updateHeaderPayFloor();
+  // Without this, changing your pay floor in Settings left every page's
+  // header showing the old number until a reload — looked like the
+  // change hadn't saved, even though it had (same class of bug as the
+  // homepage hero, fixed alongside this).
+  document.addEventListener("settings:changed", updateHeaderPayFloor);
   const nav = document.createElement("nav");
   nav.className = "site-nav";
   nav.setAttribute("aria-label", "Main sections");
