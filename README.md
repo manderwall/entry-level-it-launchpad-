@@ -288,13 +288,27 @@ they don't carry over automatically from Production.
 
 Every page has Open Graph and Twitter Card tags, so pasting a link into a
 text/group chat, Discord, or social media shows a real title, description,
-and icon instead of a bare URL. `icon.svg` is a real static file (not a
-data URI) specifically so `og:image` and `apple-touch-icon` work — social
-media crawlers generally don't render data-URI images. If you deploy to
-a custom domain, consider changing `og:image`'s value from the relative
-`icon.svg` to an absolute URL for maximum compatibility with older
-crawlers, though the relative path works on all major ones (Facebook,
-Discord, Slack, iMessage) as-is.
+and icon instead of a bare URL. `og:image` and `apple-touch-icon` point at
+real PNG files (`icon-512.png`, `apple-touch-icon.png`, generated from
+`icon.svg`) rather than the SVG or a data URI directly — most social
+crawlers (including X/Twitter) and iOS home-screen install don't reliably
+render either of those. If you deploy to a custom domain, consider
+changing `og:image`'s value from the relative path to an absolute URL for
+maximum compatibility with older crawlers, though the relative path works
+on all major ones (Facebook, Discord, Slack, iMessage) as-is.
+
+### Before you submit this to search engines
+
+`sitemap.xml` and `robots.txt`'s `Sitemap:` line both currently point at
+`https://entry-level-it-launchpad.pages.dev` as a placeholder — that's
+Cloudflare's default project-name pattern, not a confirmed live URL.
+Update both files with your actual `*.pages.dev` URL or custom domain
+before submitting to Google Search Console/Bing Webmaster Tools. A wrong
+sitemap domain doesn't break the site itself, it just means search
+engines get a bad hint, so this is safe to leave until you're ready to
+publish. `404.html` is a real file, so Cloudflare Pages automatically
+serves it (with the site's own nav/header) for any unmatched path — no
+extra configuration needed.
 
 ## Make it your own
 
