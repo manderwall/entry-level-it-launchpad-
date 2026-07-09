@@ -36,23 +36,43 @@ async function init() {
   ]);
 
   const roleSelect = document.getElementById("role-select");
-  const allQueries = [
-    ...roles.map((r) => ({ label: r.role, value: r.searchTerms[0] })),
-    ...searchStrings.remote.map((s) => ({ label: s, value: s })),
-  ];
-  roleSelect.innerHTML = allQueries.map((q) => `<option value="${escapeHtml(q.value)}">${escapeHtml(q.label)}</option>`).join("");
+  const locationInput = document.getElementById("location-input");
+
+  // Local search strings (data/search-strings.json's localTemplate) need
+  // the {city} placeholder filled in with whatever the visitor typed, so
+  // this list has to rebuild whenever the location changes — unlike the
+  // static role/remote options, which don't depend on it.
+  function populateRoleSelect() {
+    const previousValue = roleSelect.value;
+    const cityRaw = locationInput.value.trim();
+    const city = cityRaw && !/^remote$/i.test(cityRaw) ? cityRaw : "";
+    const localOptions = city
+      ? searchStrings.localTemplate.map((t) => {
+          const value = t.replace("{city}", city);
+          return `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`;
+        }).join("")
+      : "";
+    const roleOptions = roles.map((r) => `<option value="${escapeHtml(r.searchTerms[0])}">${escapeHtml(r.role)}</option>`).join("");
+    const remoteOptions = searchStrings.remote.map((s) => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join("");
+    roleSelect.innerHTML = `
+      <optgroup label="By target role">${roleOptions}</optgroup>
+      <optgroup label="Remote search terms">${remoteOptions}</optgroup>
+      ${localOptions ? `<optgroup label="Local search terms for ${escapeHtml(city)}">${localOptions}</optgroup>` : ""}`;
+    if ([...roleSelect.options].some((o) => o.value === previousValue)) roleSelect.value = previousValue;
+  }
+  populateRoleSelect();
   if (presetRole) {
     const match = roles.find((r) => r.role === presetRole);
     if (match) roleSelect.value = match.searchTerms[0];
   }
 
-  const locationInput = document.getElementById("location-input");
   const refresh = () => {
     const loc = locationInput.value || "Remote";
     buildLinks(roleSelect.value, loc);
     refreshLiveSearch(roleSelect.value, loc);
   };
   roleSelect.addEventListener("change", refresh);
+  locationInput.addEventListener("input", populateRoleSelect);
   locationInput.addEventListener("input", refresh);
   refresh();
 
