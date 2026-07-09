@@ -19,9 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-This license covers the site code (HTML/CSS/JS) and the data files in
-`data/`. The written guide content in `content/guide/` is licensed
-separately under CC-BY-4.0 — see `content/LICENSE`.
