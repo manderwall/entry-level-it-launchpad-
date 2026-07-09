@@ -15,6 +15,7 @@ export const MILESTONES = [
   { id: "picked-cert", label: "Picked your next certification", page: "projects-certs.html" },
   { id: "shortlisted-employers", label: "Shortlisted employers/pipelines to watch", page: "employers.html" },
   { id: "practiced-pitch", label: "Practiced the 60-second pitch out loud", page: "interview-prep.html" },
+  { id: "wrote-star-story", label: "Wrote at least one STAR-format story", page: "story-bank.html" },
   { id: "started-tracking", label: "Logged your first application in the tracker", page: "plan-tracker.html" },
 ];
 
@@ -36,7 +37,7 @@ function countDone(state) {
   return MILESTONES.filter((m) => state[m.id]).length;
 }
 
-/** Renders a small "X/9 done" badge into the header and keeps it live. */
+/** Renders a small "X/N done" badge (N = MILESTONES.length) into the header and keeps it live. */
 export function renderProgressBadge() {
   const target = document.querySelector(".site-header-inner");
   if (!target) return;

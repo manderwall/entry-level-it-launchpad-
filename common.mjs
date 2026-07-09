@@ -16,6 +16,7 @@ export const PAGES = [
   { href: "employers.html", label: "Employers" },
   { href: "gov-contractors.html", label: "Gov Contractors" },
   { href: "interview-prep.html", label: "Interview Prep" },
+  { href: "story-bank.html", label: "STAR Story Bank" },
   { href: "plan-tracker.html", label: "Plan & Tracker" },
   { href: "trust-safety.html", label: "Trust & Safety" },
 ];
@@ -24,7 +25,7 @@ export const PAGES = [
 // groups since it's the persistent "home" link, not a step in the flow.
 export const NAV_GROUPS = [
   { label: "Find", hrefs: ["roles.html", "search-toolkit.html", "zones.html", "employers.html", "gov-contractors.html"] },
-  { label: "Prepare", hrefs: ["resume.html", "projects-certs.html", "interview-prep.html"] },
+  { label: "Prepare", hrefs: ["resume.html", "projects-certs.html", "interview-prep.html", "story-bank.html"] },
   { label: "Track", hrefs: ["plan-tracker.html"] },
   { label: "About", hrefs: ["trust-safety.html"] },
 ];

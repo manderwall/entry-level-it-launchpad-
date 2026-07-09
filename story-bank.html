@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com; worker-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Build 5-10 reusable STAR-format interview stories from your own real experience, saved only in your browser.">
+<meta name="author" content="Amanda Kondrat'yev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="STAR Story Bank — Entry-Level IT Launchpad">
+<meta property="og:description" content="Build 5-10 reusable STAR-format interview stories from your own real experience, saved only in your browser.">
+<meta property="og:image" content="icon.svg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="STAR Story Bank — Entry-Level IT Launchpad">
+<meta name="twitter:description" content="Build 5-10 reusable STAR-format interview stories from your own real experience, saved only in your browser.">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="styles.css">
+<title>STAR Story Bank — Entry-Level IT Launchpad</title>
+</head>
+<body>
+<noscript><div style="max-width:640px;margin:2rem auto;padding:1rem 1.25rem;border:1px solid #d7dde2;border-radius:10px;font-family:sans-serif;">This site needs JavaScript enabled to load its navigation, data, and tools. Please enable JavaScript and reload.</div></noscript>
+<main id="main" tabindex="-1">
+  <div class="page-icon-row">
+    <svg class="page-icon" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M32 6l7.5 15.5L56 24l-12 11.5L47 52 32 43.5 17 52l3-16.5L8 24l16.5-2.5z" fill="var(--bg-alt)" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round"/>
+    </svg>
+    <h1>STAR Story Bank</h1>
+  </div>
+  <div class="card no-print" id="milestone"></div>
+
+  <p>A handful of real stories can answer a surprising range of
+  behavioral interview questions. Build 5-10 &quot;master stories&quot;
+  here using the STAR format (Situation, Task, Action, Result), pulled
+  from real work, school, volunteering, personal projects, or life
+  experience &mdash; you don't need traditional paid work history to have
+  a strong story.</p>
+  <p class="callout">Never invent or exaggerate a detail. If a story feels
+  thin, that's a sign to dig for the real specifics (what exactly did you
+  say, what number changed, what did the other person do), not to make
+  something up. The optional Reflection field is extra credit, not a
+  requirement &mdash; skip it if it doesn't come naturally.</p>
+  <p>Common question categories one good story can cover: <span id="suggested-tags"></span></p>
+  <p>Stored only in this browser (localStorage) &mdash; nothing is
+  uploaded or shared between visitors.</p>
+
+  <p role="status" aria-live="polite" id="story-count"></p>
+  <div id="story-list"></div>
+  <div class="toolbar no-print">
+    <button class="primary" id="add-story">+ Add a story</button>
+  </div>
+</main>
+<script type="module" src="story-bank.mjs"></script>
+</body>
+</html>

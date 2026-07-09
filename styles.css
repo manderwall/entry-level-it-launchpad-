@@ -235,7 +235,7 @@ button.primary { background: var(--accent); color: var(--accent-contrast); borde
 button.primary:hover { opacity: 0.9; color: var(--accent-contrast); }
 
 label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem; }
-select, input[type="text"], input[type="number"], input[type="date"] {
+select, input[type="text"], input[type="number"], input[type="date"], textarea {
   font: inherit;
   padding: 0.4rem 0.55rem;
   border: 1px solid var(--border);
@@ -244,6 +244,7 @@ select, input[type="text"], input[type="number"], input[type="date"] {
   color: var(--text);
   width: 100%;
 }
+textarea { resize: vertical; min-height: 3.5em; }
 
 .toolbar {
   display: flex;
