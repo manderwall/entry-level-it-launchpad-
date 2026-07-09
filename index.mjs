@@ -6,7 +6,15 @@ import { computeNextStep } from "./next-step.mjs";
 renderChrome("index.html");
 renderProgressBadge();
 renderChecklist(document.getElementById("progress-checklist"));
-document.getElementById("hero-pay-floor").textContent = `$${getSettings().payFloor}/hr`;
+
+function updateHeroPayFloor() {
+  document.getElementById("hero-pay-floor").textContent = `$${getSettings().payFloor}/hr`;
+}
+updateHeroPayFloor();
+// Without this, changing your pay floor in Settings and closing the
+// dialog left the hero still showing the old number until a reload —
+// looked like the change hadn't saved, even though it had.
+document.addEventListener("settings:changed", updateHeroPayFloor);
 
 function renderNextStep() {
   const step = computeNextStep();
@@ -16,6 +24,7 @@ function renderNextStep() {
 }
 renderNextStep();
 document.addEventListener("progress:changed", renderNextStep);
+document.addEventListener("settings:changed", renderNextStep);
 window.addEventListener("storage", (e) => {
   if (e.key === "entry-level-it-launchpad:progress" || e.key === "entry-level-it-launchpad:tracker-rows") renderNextStep();
 });
