@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- it-launchpad.pages.dev is the confirmed Cloudflare Pages project
+<!-- entry-level-it-launchpad.pages.dev is the confirmed Cloudflare Pages project
      URL. If you ever move to a custom domain instead, update every
      <loc> below and the Sitemap: line in robots.txt to match. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://it-launchpad.pages.dev/index.html</loc><priority>1.0</priority></url>
-  <url><loc>https://it-launchpad.pages.dev/roles.html</loc><priority>0.8</priority></url>
-  <url><loc>https://it-launchpad.pages.dev/search-toolkit.html</loc><priority>0.8</priority></url>
-  <url><loc>https://it-launchpad.pages.dev/zones.html</loc><priority>0.7</priority></url>
-  <url><loc>https://it-launchpad.pages.dev/resume.html</loc><priority>0.7</priority></url>
-  <url><loc>https://it-launchpad.pages.dev/projects-certs.html</loc><priority>0.7</priority></url>
-  <url><loc>https://it-launchpad.pages.dev/employers.html</loc><priority>0.7</priority></url>
-  <url><loc>https://it-launchpad.pages.dev/gov-contractors.html</loc><priority>0.6</priority></url>
-  <url><loc>https://it-launchpad.pages.dev/interview-prep.html</loc><priority>0.7</priority></url>
-  <url><loc>https://it-launchpad.pages.dev/story-bank.html</loc><priority>0.6</priority></url>
-  <url><loc>https://it-launchpad.pages.dev/plan-tracker.html</loc><priority>0.7</priority></url>
-  <url><loc>https://it-launchpad.pages.dev/trust-safety.html</loc><priority>0.5</priority></url>
+  <url><loc>https://entry-level-it-launchpad.pages.dev/index.html</loc><priority>1.0</priority></url>
+  <url><loc>https://entry-level-it-launchpad.pages.dev/roles.html</loc><priority>0.8</priority></url>
+  <url><loc>https://entry-level-it-launchpad.pages.dev/search-toolkit.html</loc><priority>0.8</priority></url>
+  <url><loc>https://entry-level-it-launchpad.pages.dev/zones.html</loc><priority>0.7</priority></url>
+  <url><loc>https://entry-level-it-launchpad.pages.dev/resume.html</loc><priority>0.7</priority></url>
+  <url><loc>https://entry-level-it-launchpad.pages.dev/projects-certs.html</loc><priority>0.7</priority></url>
+  <url><loc>https://entry-level-it-launchpad.pages.dev/employers.html</loc><priority>0.7</priority></url>
+  <url><loc>https://entry-level-it-launchpad.pages.dev/gov-contractors.html</loc><priority>0.6</priority></url>
+  <url><loc>https://entry-level-it-launchpad.pages.dev/interview-prep.html</loc><priority>0.7</priority></url>
+  <url><loc>https://entry-level-it-launchpad.pages.dev/story-bank.html</loc><priority>0.6</priority></url>
+  <url><loc>https://entry-level-it-launchpad.pages.dev/plan-tracker.html</loc><priority>0.7</priority></url>
+  <url><loc>https://entry-level-it-launchpad.pages.dev/trust-safety.html</loc><priority>0.5</priority></url>
 </urlset>

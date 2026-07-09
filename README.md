@@ -10,7 +10,7 @@ coming from remote customer service).
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Content License](https://img.shields.io/badge/content-CC--BY--4.0-lightgrey)
 
-**🔗 Live:** [it-launchpad.pages.dev](https://it-launchpad.pages.dev) — or deploy your own copy on Cloudflare Pages (see below), no build step, so it's a one-click connect.
+**🔗 Live:** [entry-level-it-launchpad.pages.dev](https://entry-level-it-launchpad.pages.dev) — or deploy your own copy on Cloudflare Pages (see below), no build step, so it's a one-click connect.
 
 ## What this is
 
@@ -319,7 +319,7 @@ on all major ones (Facebook, Discord, Slack, iMessage) as-is.
 ### Before you submit this to search engines
 
 `sitemap.xml` and `robots.txt`'s `Sitemap:` line point at
-`https://it-launchpad.pages.dev`. If you ever move to a custom domain
+`https://entry-level-it-launchpad.pages.dev`. If you ever move to a custom domain
 instead, update both files to match before submitting to Google Search
 Console/Bing Webmaster Tools — a wrong sitemap domain doesn't break the
 site itself, it just means search engines get a bad hint. `404.html` is
