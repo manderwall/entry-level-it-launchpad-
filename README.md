@@ -327,6 +327,10 @@ extra configuration needed.
 - Every page reads its data from `data/*.json` at runtime, so most edits
   don't touch any HTML or JS at all.
 
+## Contributing
+
+Want to fix something or add a feature? See [CONTRIBUTING.md](CONTRIBUTING.md) — it's a short read, no build step to fight with.
+
 ## License
 
 - **Code** (`*.html`, `*.mjs`, `*.css`, `data/*.json`): [MIT](LICENSE)
