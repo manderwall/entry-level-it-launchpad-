@@ -77,4 +77,36 @@ document.getElementById("cover-letter").innerHTML = `${escapeHtml(COVER_LETTER)}
 document.getElementById("opening-swaps").innerHTML = ROLE_BULLETS.map((r) => `
   <div class="card"><h3>${escapeHtml(r.role)}</h3><p>${escapeHtml(r.opening)} ${copyBlock(r.opening)}</p></div>`).join("");
 
+// A ready-made prompt for whatever AI chat tool someone already uses
+// (ChatGPT, Claude, Gemini, whatever) — this site's own opt-in assistant
+// runs a small free model and isn't meant to replace a stronger one you
+// already have access to. Assembles real content from this page instead
+// of asking the visitor to retype it, with an explicit anti-fabrication
+// instruction baked in so a job posting doesn't turn into invented
+// experience.
+const TAILOR_PROMPT = `I'm a CompTIA A+ certified Per Scholas graduate with remote customer service experience, applying for entry-level IT support roles.
+
+My current resume headline: ${HEADLINE}
+
+My current summary: ${SUMMARY}
+
+My skills: ${SKILLS.join(", ")}
+
+My current resume bullets:
+${[...CS_BULLETS, ...TRAINING_BULLETS].map((b) => `- ${b}`).join("\n")}
+
+Here's the job posting I'm applying to (paste it below this line):
+[PASTE THE JOB POSTING HERE]
+
+Please help me:
+1. Rewrite 3-5 of my bullets to match this posting's specific language and requirements.
+2. Suggest a tailored one-line resume headline for this specific role.
+3. Point out any requirements in the posting I don't clearly address, so I can decide how to handle them.
+
+Important: only use details I've actually given you above. Don't invent job titles, employers, metrics, or experience I haven't mentioned.`;
+
+document.getElementById("ai-prompt").innerHTML = `
+  <pre style="white-space:pre-wrap;font-family:inherit;margin:0 0 0.75rem;">${escapeHtml(TAILOR_PROMPT)}</pre>
+  ${copyBlock(TAILOR_PROMPT)}`;
+
 wireCopyButtons();
