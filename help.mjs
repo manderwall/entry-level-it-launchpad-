@@ -25,7 +25,9 @@ export function showHelp() {
       your own pay floor (the site defaults to $19/hr, but that's just a
       starting point — set your own), your city, and accessibility
       options (text size, dyslexia-friendly font, high contrast, reduced
-      motion).</p>
+      motion). If a page feels like too much at once, turn on
+      <strong>essentials-only mode</strong> there too — it starts every
+      page's sections closed so you see just the headings first.</p>
       <p>There's also an optional <strong>AI chat assistant</strong> —
       off by default, since it's an extra, not the main way to use the
       site. Turn it on in Settings if you want it; a chat button will
