@@ -71,4 +71,19 @@ test("weekly-tracker-schema.json exampleRow has a value for every column", () =>
   for (const col of schema.columns) {
     assert.ok(col.key in schema.exampleRow, `exampleRow missing column "${col.key}"`);
   }
+  assert.ok(schema.paceNote && schema.paceNote.length > 0);
+  for (const key of ["days1to2", "days3to7", "days8to14"]) {
+    assert.ok(schema.twoWeekPlan[key].estimatedTime, `twoWeekPlan.${key} missing estimatedTime`);
+  }
+});
+
+test("negotiation-scripts.json has non-empty scripts and rules", () => {
+  const negotiation = loadJSON("negotiation-scripts.json");
+  assert.ok(negotiation.intro.length > 0);
+  assert.ok(negotiation.scripts.length > 0);
+  for (const s of negotiation.scripts) {
+    assert.ok(s.moment && s.moment.length > 0);
+    assert.ok(s.script && s.script.length > 0);
+  }
+  assert.ok(negotiation.rules.length > 0);
 });
