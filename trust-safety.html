@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com; worker-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="What this site and its optional AI assistant will never do with your data or your applications, in plain language.">
+<meta name="author" content="Amanda Kondrat'yev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Trust & Safety — Entry-Level IT Launchpad">
+<meta property="og:description" content="What this site and its optional AI assistant will never do with your data or your applications, in plain language.">
+<meta property="og:image" content="icon.svg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Trust & Safety — Entry-Level IT Launchpad">
+<meta name="twitter:description" content="What this site and its optional AI assistant will never do with your data or your applications, in plain language.">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="styles.css">
+<title>Trust & Safety — Entry-Level IT Launchpad</title>
+</head>
+<body>
+<noscript><div style="max-width:640px;margin:2rem auto;padding:1rem 1.25rem;border:1px solid #d7dde2;border-radius:10px;font-family:sans-serif;">This site needs JavaScript enabled to load its navigation, data, and tools. Please enable JavaScript and reload.</div></noscript>
+<main id="main" tabindex="-1">
+  <div class="page-icon-row">
+    <svg class="page-icon" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M32 6l22 8v14c0 15-9.5 24.5-22 30-12.5-5.5-22-15-22-30V14z" fill="var(--bg-alt)" stroke="var(--accent)" stroke-width="3"/>
+      <path d="M22 32l7 7 13-14" fill="none" stroke="var(--green)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h1>Trust &amp; Safety</h1>
+  </div>
+  <div class="card no-print" id="milestone"></div>
+
+  <p>Many job-search and resume products are vague about what they do with
+  your information and how much you can trust their output. This page is a
+  plain-language, permanent commitment for this site and its optional AI
+  chat assistant &mdash; not a marketing claim.</p>
+
+  <h2>What this tool will never do</h2>
+  <ul>
+    <li>Never submit or click "apply" on your behalf. You always review and send everything yourself.</li>
+    <li>Never invent experience, skills, or metrics that are not in your own materials.</li>
+    <li>Never overwrite your original resume or cover letter text on this site &mdash; any edits are yours to make and keep; nothing is silently replaced.</li>
+    <li>Never tell you a job is a good fit just to be encouraging, if the honest read is that it isn't.</li>
+    <li>Never sell, share, or use your personal data for anything other than helping with your own search.</li>
+    <li>Never pretend to know something it doesn't. If data is missing (like a specific company's pay range), it says so instead of guessing.</li>
+  </ul>
+
+  <h2>How this is actually enforced</h2>
+  <p>These aren't just promises in a document &mdash; they're written directly
+  into the AI assistant's own rules (its "system prompt"), which is a plain
+  text file in this site's own open-source code, not a hidden setting. The
+  file is <a href="https://github.com/manderwall/entry-level-it-launchpad-/blob/main/functions/api/chat.js" target="_blank" rel="noopener">functions/api/chat.js</a>
+  on GitHub &mdash; you can read the exact rules it runs on at any time.</p>
+
+  <h2>What this site doesn't do (yet, or at all)</h2>
+  <ul>
+    <li><strong>No posting legitimacy verification.</strong> Neither the site nor its chat assistant can check whether a company's domain is real, look up other postings from the same employer, or confirm a posting is still open. Use the <a href="search-toolkit.html">scam checklist</a> on the Search Toolkit page to vet postings yourself &mdash; that stays a manual, honest checklist rather than an automated "verified" stamp this site can't actually back up.</li>
+    <li><strong>No live web search.</strong> The chat assistant answers from this site's own bundled data and general knowledge, not real-time company or job-board lookups. It's told to say so plainly rather than guess when asked something it can't verify.</li>
+    <li><strong>No account, no server-side profile.</strong> Your tracker, settings, and progress live only in your own browser unless you explicitly turn on cross-device sync with your own code &mdash; see <a href="index.html">Settings</a> for details.</li>
+  </ul>
+
+  <p class="callout">Questions, or something here doesn't match what you
+  saw in the app? <a href="https://github.com/manderwall/entry-level-it-launchpad-/issues">Open an issue on GitHub</a>
+  &mdash; this is open-source, and this page is meant to be checkable, not
+  just trusted.</p>
+</main>
+<script type="module" src="trust-safety.mjs"></script>
+</body>
+</html>

@@ -17,6 +17,7 @@ export const PAGES = [
   { href: "gov-contractors.html", label: "Gov Contractors" },
   { href: "interview-prep.html", label: "Interview Prep" },
   { href: "plan-tracker.html", label: "Plan & Tracker" },
+  { href: "trust-safety.html", label: "Trust & Safety" },
 ];
 
 // Grouped view of PAGES for nav rendering. index.html sits outside the
@@ -25,6 +26,7 @@ export const NAV_GROUPS = [
   { label: "Find", hrefs: ["roles.html", "search-toolkit.html", "zones.html", "employers.html", "gov-contractors.html"] },
   { label: "Prepare", hrefs: ["resume.html", "projects-certs.html", "interview-prep.html"] },
   { label: "Track", hrefs: ["plan-tracker.html"] },
+  { label: "About", hrefs: ["trust-safety.html"] },
 ];
 
 export function escapeHtml(str) {

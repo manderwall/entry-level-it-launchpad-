@@ -27,9 +27,11 @@
     "Do 2 mock interviews/week",
     "Follow up on applications after 3-5 business days"
   ],
+  "paceNote": "These numbers are a floor to aim for, not a pass/fail test. A slower week (fewer applications, one mock interview instead of two) still counts as real progress — the goal is to keep moving, not to hit every number every single week.",
   "twoWeekPlan": {
     "days1to2": {
       "title": "Prepare",
+      "estimatedTime": "~2-3 hours total",
       "items": [
         "Update resume headline to CompTIA A+ Certified Technical Support Candidate",
         "Add remote customer-service bullets rewritten as support experience",
@@ -40,6 +42,7 @@
     "days3to7": {
       "title": "Apply hard",
       "dailyTarget": "8-12 jobs per day",
+      "estimatedTime": "~1-1.5 hours/day",
       "breakdown": [
         "4 remote technical/product support roles",
         "3 local/hybrid help desk or desktop support roles",
@@ -49,6 +52,7 @@
     },
     "days8to14": {
       "title": "Follow up and network",
+      "estimatedTime": "~30-45 min/day",
       "items": [
         "Message Per Scholas alumni and career staff",
         "Ask recruiters about contract-to-hire help desk roles",
