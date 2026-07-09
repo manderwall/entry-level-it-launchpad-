@@ -7,14 +7,20 @@ renderMilestoneToggle(document.getElementById("milestone"), "started-tracking");
 
 const STORAGE_KEY = "entry-level-it-launchpad:tracker-rows";
 
-function loadRows(exampleRow) {
+function loadRows(columns) {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) return JSON.parse(raw);
   } catch {
     // ignore corrupt storage, fall through to default
   }
-  return [{ ...exampleRow }];
+  // Start genuinely blank, not pre-filled with the "Example Co." sample
+  // row — a filled row here used to look like a real logged application
+  // to a brand-new visitor, and silently defeated the follow-up banner
+  // and the homepage's "log your first application" prompt (both count
+  // any row with a company/role as real). Column placeholders below show
+  // the example values instead, without polluting actual saved data.
+  return [Object.fromEntries(columns.map((c) => [c.key, ""]))];
 }
 
 function saveRows(rows) {
@@ -23,7 +29,7 @@ function saveRows(rows) {
 
 async function init() {
   const schema = await loadJSON("data/weekly-tracker-schema.json");
-  let rows = loadRows(schema.exampleRow);
+  let rows = loadRows(schema.columns);
 
   const plan = schema.twoWeekPlan;
   const timeTag = (t) => t ? ` <span class="pill">${escapeHtml(t)}</span>` : "";
@@ -80,7 +86,8 @@ async function init() {
           return `<td><select data-row="${idx}" data-key="${c.key}">${opts}</select></td>`;
         }
         const inputType = c.type === "date" ? "date" : "text";
-        return `<td><input type="${inputType}" data-row="${idx}" data-key="${c.key}" value="${escapeHtml(val)}"></td>`;
+        const placeholder = inputType === "text" ? ` placeholder="${escapeHtml(String(schema.exampleRow[c.key] ?? ""))}"` : "";
+        return `<td><input type="${inputType}" data-row="${idx}" data-key="${c.key}" value="${escapeHtml(val)}"${placeholder}></td>`;
       }).join("");
       return `<tr>${cells}<td class="no-print"><button data-remove="${idx}" aria-label="Remove row">✕</button></td></tr>`;
     }).join("");
