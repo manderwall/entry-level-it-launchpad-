@@ -229,10 +229,12 @@ button, .btn {
   color: var(--text);
   border-radius: 8px;
   padding: 0.45rem 0.8rem;
+  display: inline-block;
+  text-decoration: none;
 }
 button:hover, .btn:hover { border-color: var(--accent); color: var(--accent); }
-button.primary { background: var(--accent); color: var(--accent-contrast); border-color: var(--accent); }
-button.primary:hover { opacity: 0.9; color: var(--accent-contrast); }
+button.primary, .btn.primary { background: var(--accent); color: var(--accent-contrast); border-color: var(--accent); }
+button.primary:hover, .btn.primary:hover { opacity: 0.9; color: var(--accent-contrast); }
 
 label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem; }
 select, input[type="text"], input[type="number"], input[type="date"], textarea {
