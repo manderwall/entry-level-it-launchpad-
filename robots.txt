@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://entry-level-it-launchpad.pages.dev/sitemap.xml
