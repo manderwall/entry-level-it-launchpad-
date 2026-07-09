@@ -508,6 +508,19 @@ html.reduced-motion *::after {
 }
 @media (max-width: 560px) {
   .hero-art { max-width: 60vw; margin: 0 auto; display: block; }
+
+  /* On a phone, letting the nav wrap onto many lines pushes real page
+     content below the fold before a first-time visitor sees anything.
+     A single horizontally-scrollable row keeps every link reachable
+     without eating that space — swipe instead of wrap. */
+  nav.site-nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.6rem;
+  }
+  .nav-group { flex-wrap: nowrap; flex-shrink: 0; }
+  nav.site-nav > a { flex-shrink: 0; }
 }
 
 .table-wrap { overflow-x: auto; margin: 1rem 0; }
