@@ -6,7 +6,10 @@ renderProgressBadge();
 renderMilestoneToggle(document.getElementById("milestone"), "practiced-pitch");
 
 async function init() {
-  const data = await loadJSON("data/interview-prep.json");
+  const [data, negotiation] = await Promise.all([
+    loadJSON("data/interview-prep.json"),
+    loadJSON("data/negotiation-scripts.json"),
+  ]);
 
   document.getElementById("pitch").innerHTML = `${escapeHtml(data.pitch60Second)} <button class="copy-btn" data-copy="${escapeHtml(data.pitch60Second)}">Copy</button>`;
 
@@ -29,6 +32,14 @@ async function init() {
       <p><strong>Result:</strong> ${escapeHtml(s.result)}</p>
     </div>`).join("");
   document.getElementById("star-tip").innerHTML = `<strong>Fill-in tip:</strong> ${escapeHtml(data.starFillInTip)}`;
+
+  document.getElementById("negotiation-intro").textContent = negotiation.intro;
+  document.getElementById("negotiation-scripts").innerHTML = negotiation.scripts.map((s) => `
+    <div class="card">
+      <h3>${escapeHtml(s.moment)}</h3>
+      <p>"${escapeHtml(s.script)}" <button class="copy-btn" data-copy="${escapeHtml(s.script)}">Copy</button></p>
+    </div>`).join("");
+  document.getElementById("negotiation-rules").innerHTML = negotiation.rules.map((r) => `<li>${escapeHtml(r)}</li>`).join("");
 }
 
 init().catch((err) => console.error(err));

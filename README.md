@@ -35,13 +35,21 @@ turned into real interactive tools instead of a static document:
   support pipelines, apprenticeship search terms, and networking
   scripts.
 - **Interview Prep** — a 60-second pitch, common Q&A, STAR-format
-  prompts, and quick technical definitions.
-- **Application Plan & Weekly Tracker** — a 2-week plan and a browser-local
-  application tracker (stored only in your own browser via
-  `localStorage`, exportable to CSV — nothing is uploaded or shared
-  between visitors).
+  prompts, quick technical definitions, and negotiation scripts for
+  responding to an offer, asking for time, countering, or handling a
+  competing offer.
+- **Application Plan & Weekly Tracker** — a 2-week plan with time
+  estimates per phase, weekly goals with an explicit "this is a floor,
+  not a pass/fail test" note, and a browser-local application tracker
+  (stored only in your own browser via `localStorage`, exportable to
+  CSV — nothing is uploaded or shared between visitors).
 - **Government Contractors & Subcontractors** — federal contract awards
   near Houston/JSC, live from USAspending.gov.
+- **Trust & Safety** — a plain-language, permanent page listing exactly
+  what this site and its optional AI assistant will never do (never
+  auto-apply, never invent experience, never guess and present it as
+  fact), with a direct link to the actual system prompt file so it's
+  checkable, not just a claim.
 
 Houston is used as the worked example metro throughout, but the Zones
 page includes an explicit method for rebuilding the same zone/pay/transit

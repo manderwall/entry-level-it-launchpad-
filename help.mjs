@@ -16,6 +16,7 @@ export function showHelp() {
         <li><strong>Find</strong> — Best-Fit Roles, Search Toolkit, Houston Zones, Employers, and Government Contractors: where to look and how to search.</li>
         <li><strong>Prepare</strong> — Resume &amp; LinkedIn, Projects &amp; Certs, Interview Prep: materials and practice.</li>
         <li><strong>Track</strong> — your application plan and tracker.</li>
+        <li><strong>About</strong> — the <a href="trust-safety.html">Trust &amp; Safety</a> page: a plain-language list of what this site and its AI assistant will never do.</li>
       </ul>
       <p>The badge in the header (e.g. "3/9 steps done") tracks your
       progress through the guide — check items off on each page as you

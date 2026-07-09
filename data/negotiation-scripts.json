@@ -1,0 +1,27 @@
+{
+  "intro": "Entry-level candidates negotiate the least and are the most likely to be offered below-market pay because of it. A reasonable, respectful counter rarely costs you an offer. You don't have to use these word-for-word, but having a script ready removes a lot of the pressure to improvise live.",
+  "scripts": [
+    {
+      "moment": "Responding to an initial offer",
+      "script": "Thank you so much for the offer, I'm genuinely excited about this role. Could I have a day or two to review everything before I give you my answer?"
+    },
+    {
+      "moment": "Asking for time to consider",
+      "script": "I want to make sure I'm giving this the attention it deserves. Would [specific day] work for me to follow up with any questions or my decision?"
+    },
+    {
+      "moment": "Countering with a number",
+      "script": "I'm excited about this opportunity and I'd love to move forward. Based on my CompTIA A+ certification, my training, and my customer service background, would there be room to bring the base pay to $[X]/hr?"
+    },
+    {
+      "moment": "Handling a competing offer",
+      "script": "I want to be upfront that I have another offer on the table, and this role is genuinely my first choice. Is there any flexibility on pay or start date that would help me say yes to you?"
+    }
+  ],
+  "rules": [
+    "It is normal and reasonable to negotiate even for a first job in tech, not just after you have experience.",
+    "Never negotiate if you don't want to. Some situations (a tight timeline, urgent need for income, personal risk tolerance) make accepting as-is the right call, and that is a valid choice.",
+    "If you don't know what a reasonable range looks like for a role, research it first (job postings for similar roles, sites like Levels.fyi or Glassdoor) rather than guessing a number.",
+    "Keep it short and speakable. These scripts are meant to say out loud on a call, not read from a script in front of the person."
+  ]
+}

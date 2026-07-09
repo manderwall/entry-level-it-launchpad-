@@ -26,11 +26,13 @@ async function init() {
   let rows = loadRows(schema.exampleRow);
 
   const plan = schema.twoWeekPlan;
+  const timeTag = (t) => t ? ` <span class="pill">${escapeHtml(t)}</span>` : "";
   document.getElementById("two-week-plan").innerHTML = `
-    <div class="card"><h3>Days 1-2: ${escapeHtml(plan.days1to2.title)}</h3><ul>${plan.days1to2.items.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul></div>
-    <div class="card"><h3>Days 3-7: ${escapeHtml(plan.days3to7.title)}</h3><p>${escapeHtml(plan.days3to7.dailyTarget)}:</p><ul>${plan.days3to7.breakdown.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul></div>
-    <div class="card"><h3>Days 8-14: ${escapeHtml(plan.days8to14.title)}</h3><ul>${plan.days8to14.items.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul></div>`;
+    <div class="card"><h3>Days 1-2: ${escapeHtml(plan.days1to2.title)}${timeTag(plan.days1to2.estimatedTime)}</h3><ul>${plan.days1to2.items.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul></div>
+    <div class="card"><h3>Days 3-7: ${escapeHtml(plan.days3to7.title)}${timeTag(plan.days3to7.estimatedTime)}</h3><p>${escapeHtml(plan.days3to7.dailyTarget)}:</p><ul>${plan.days3to7.breakdown.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul></div>
+    <div class="card"><h3>Days 8-14: ${escapeHtml(plan.days8to14.title)}${timeTag(plan.days8to14.estimatedTime)}</h3><ul>${plan.days8to14.items.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul></div>`;
 
+  document.getElementById("pace-note").textContent = schema.paceNote;
   document.getElementById("weekly-goals").innerHTML = schema.weeklyGoals.map((g) => `<li>${escapeHtml(g)}</li>`).join("");
 
   const financial = await loadJSON("data/financial-resources.json");
