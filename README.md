@@ -154,18 +154,27 @@ Server, etc.).
 ## Test
 
 ```bash
-npm run check   # syntax-check every .mjs file
-npm test        # data/*.json shape validation + logic unit tests (settings, escapeHtml, milestones)
+npm run check      # syntax-check every .mjs/functions/api/*.js file + every JSON data file
+npm test           # data/*.json shape validation + logic unit tests (settings, escapeHtml, milestones) - fast, no browser needed
+npm run test:smoke # real-browser smoke suite (Playwright + Chromium) - crawls every page, checks mobile overflow, exercises the tracker/story-bank/next-step widget
 ```
 
 `tests/data.test.mjs` validates every `data/*.json` file's shape.
 `tests/logic.test.mjs` unit-tests the pure/near-pure logic in modules that
 don't touch the DOM at module load time (`common.mjs`, `settings.mjs`,
 `progress.mjs`) — things like XSS-safe escaping, settings defaults/merge
-behavior, and theme/font-scale class toggling. The page-entry `.mjs`
-files (`index.mjs`, `roles.mjs`, etc.) call `renderChrome()` immediately
-on load and need a real browser, so those are covered by manual
-Playwright smoke passes instead, not `node --test`.
+behavior, and theme/font-scale class toggling.
+
+`tests/smoke/smoke.test.mjs` is the one that needs a real browser (the
+page-entry `.mjs` files call `renderChrome()` immediately on load): it
+spins up a plain static server, crawls every page at both a phone and
+desktop width checking for console/page errors and horizontal overflow,
+and exercises the interactive bits that are easy to silently break —
+tracker persistence, the "new visitor starts genuinely blank" guarantee,
+the computed next-step widget, and the Story Bank. Kept in its own
+`tests/smoke/` folder (not picked up by the plain `npm test` glob) so
+day-to-day `npm test` stays instant and dependency-free; CI runs both.
+First run needs `npx playwright install --with-deps chromium` once.
 
 ## Deploy to Cloudflare Pages
 
