@@ -26,6 +26,7 @@ const DEFAULTS = {
   highContrast: false,
   reducedMotion: false,
   aiChatEnabled: false, // opt-in — the AI chat widget stays hidden until a visitor turns it on here
+  essentialsOnly: false, // opt-in — starts every page's collapsible sections closed, for when full detail feels like too much at once
 };
 
 export function getSettings() {
@@ -57,6 +58,12 @@ export function applyAccessibility(settings = getSettings()) {
   root.classList.toggle("dyslexia-font", !!settings.dyslexiaFont);
   root.classList.toggle("high-contrast", !!settings.highContrast);
   root.classList.toggle("reduced-motion", !!settings.reducedMotion);
+  // One-way "start simple" convenience, not a live density toggle — closes
+  // whatever's open right now. Turning it back off doesn't reopen anything;
+  // every section is still there, just a tap away under its heading.
+  if (settings.essentialsOnly) {
+    document.querySelectorAll("main details[open]").forEach((d) => { d.open = false; });
+  }
 }
 
 /** Renders the settings/accessibility panel into a <dialog> or container element. */
@@ -111,6 +118,10 @@ export function renderSettingsPanel(container) {
       <input type="checkbox" id="settings-motion" ${s.reducedMotion ? "checked" : ""}>
       <span>Reduce motion/animations</span>
     </label>
+    <label style="display:flex;gap:0.5rem;align-items:center;margin:0.5rem 0;">
+      <input type="checkbox" id="settings-essentials-only" ${s.essentialsOnly ? "checked" : ""}>
+      <span>Essentials-only mode (starts every page's sections closed, so it's less to look at)</span>
+    </label>
     <p style="font-size:0.8rem;color:var(--text-muted);">Everything above is saved only in this browser — nothing is uploaded, and nothing is shared with other visitors.</p>
 
     <h3>AI chat assistant</h3>
@@ -142,4 +153,5 @@ export function renderSettingsPanel(container) {
   container.querySelector("#settings-dyslexia").addEventListener("change", (e) => saveSettings({ dyslexiaFont: e.target.checked }));
   container.querySelector("#settings-contrast").addEventListener("change", (e) => saveSettings({ highContrast: e.target.checked }));
   container.querySelector("#settings-motion").addEventListener("change", (e) => saveSettings({ reducedMotion: e.target.checked }));
+  container.querySelector("#settings-essentials-only").addEventListener("change", (e) => saveSettings({ essentialsOnly: e.target.checked }));
 }
