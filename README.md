@@ -45,6 +45,8 @@ turned into real interactive tools instead of a static document:
   CSV — nothing is uploaded or shared between visitors).
 - **Government Contractors & Subcontractors** — federal contract awards
   near Houston/JSC, live from USAspending.gov.
+- **STAR Story Bank** — build 5-10 reusable STAR-format interview
+  stories from your own real experience, saved only in your browser.
 - **Trust & Safety** — a plain-language, permanent page listing exactly
   what this site and its optional AI assistant will never do (never
   auto-apply, never invent experience, never guess and present it as
@@ -97,8 +99,8 @@ breakdown for any city.
 |---|---|
 | **Language** | Vanilla JavaScript (ES modules), HTML, CSS — no framework, no bundler |
 | **Data** | Plain JSON files in `data/` — edit them directly, no CMS |
-| **Tests** | Node's built-in test runner (`node --test`) validates every data file's shape |
-| **CI** | GitHub Actions runs syntax checks + data tests on every push |
+| **Tests** | Node's built-in test runner (`node --test`) validates data shapes and core UI logic |
+| **CI** | GitHub Actions runs syntax checks (every `.mjs`/`functions/api/*.js` + every JSON file) and the test suite on every push |
 | **Hosting** | Static files — works on Cloudflare Pages, GitHub Pages, Netlify, or any static host |
 
 No `npm install` is required to run the site itself — `data/*.json` is
@@ -120,7 +122,10 @@ settings.mjs     Pay floor, city, and accessibility prefs (localStorage)
 progress.mjs     Cross-page milestone checklist (localStorage)
 splash.mjs       First-visit welcome screen
 help.mjs         "?" help/navigation panel
-chat-widget.mjs  Floating AI chat button (dormant until ANTHROPIC_API_KEY is set)
+modal.mjs        Shared focus-trap helper for Settings/Help/splash dialogs
+chat-widget.mjs  Opt-in floating AI chat button (dormant until enabled in Settings and the AI binding is set)
+data-sync.mjs    Manual export/import (file download, no setup needed)
+cloud-sync.mjs   Automatic cross-device sync via a Cloudflare KV code (dormant until SYNC_KV is bound)
 live-search.mjs  Search Toolkit's live job-results panel
 manifest.json    PWA manifest — installable to a home screen/dock
 sw.js            Service worker — offline caching + installability

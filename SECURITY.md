@@ -66,9 +66,9 @@ Functions above); everything else is a plain link the visitor clicks.
 ## Data handling
 
 - All user-entered data goes through `escapeHtml()` before being rendered
-  back into the page — this includes the application tracker, which is
-  the one place a visitor's own free-text input gets displayed back to
-  them.
+  back into the page — this includes the application tracker and the
+  STAR Story Bank, the two places a visitor's own free-text input gets
+  displayed back to them.
 - The AI chat box forwards a capped, recent slice of the conversation to
   `/api/chat` and nothing else — no page content, no tracker data, no
   settings are sent along with it.
