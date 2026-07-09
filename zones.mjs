@@ -26,7 +26,9 @@ async function init() {
         <p><strong>What's there for you:</strong> ${escapeHtml(z.whatsThere)}</p>
         <p><strong>Getting there without a car:</strong> ${escapeHtml(z.transit)}</p>
         <p><strong>Typical entry support pay:</strong> ${escapeHtml(z.payRange)} — ${escapeHtml(z.payNotes)}</p>
-        ${z.employers.length ? `<p><strong>Employers to check:</strong> ${z.employers.map(escapeHtml).join(", ")}</p>` : ""}
+        ${z.employers.length
+          ? `<p><strong>Employers to check:</strong> ${z.employers.map(escapeHtml).join(", ")}</p>`
+          : z.employersNote ? `<p><strong>Employers to check:</strong> ${escapeHtml(z.employersNote)}</p>` : ""}
         <p><a href="${searchUrl}">Search this zone on the Search Toolkit →</a></p>
       </div>`;
   }
