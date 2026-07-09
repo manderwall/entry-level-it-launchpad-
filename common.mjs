@@ -60,6 +60,23 @@ export function renderChrome(activeHref) {
   manifestLink.href = "manifest.json";
   document.head.appendChild(manifestLink);
 
+  // iOS ignores the web manifest for "Add to Home Screen" on many
+  // versions still in real use — without these Apple-specific tags, an
+  // iPhone/iPad visitor who adds this site to their home screen gets a
+  // shortcut that reopens inside Safari's browser chrome (URL bar, tab
+  // switcher) instead of a clean standalone app.
+  const appleMeta = [
+    ["apple-mobile-web-app-capable", "yes"],
+    ["apple-mobile-web-app-status-bar-style", "default"],
+    ["apple-mobile-web-app-title", "IT Launchpad"],
+  ];
+  for (const [name, content] of appleMeta) {
+    const meta = document.createElement("meta");
+    meta.name = name;
+    meta.content = content;
+    document.head.appendChild(meta);
+  }
+
   if (CF_BEACON_TOKEN) {
     const beacon = document.createElement("script");
     beacon.defer = true;
