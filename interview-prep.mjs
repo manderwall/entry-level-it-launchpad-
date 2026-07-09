@@ -40,6 +40,35 @@ async function init() {
       <p>"${escapeHtml(s.script)}" <button class="copy-btn" data-copy="${escapeHtml(s.script)}">Copy</button></p>
     </div>`).join("");
   document.getElementById("negotiation-rules").innerHTML = negotiation.rules.map((r) => `<li>${escapeHtml(r)}</li>`).join("");
+
+  // A ready-made mock-interview prompt for whatever AI chat tool someone
+  // already uses — pulls in real saved STAR stories from the Story Bank
+  // (same localStorage key story-bank.mjs owns) when there are any,
+  // falling back to this page's generic prompts otherwise, so the AI has
+  // real material instead of generic filler to work from.
+  let stories = [];
+  try {
+    stories = JSON.parse(localStorage.getItem("entry-level-it-launchpad:star-stories") || "[]")
+      .filter((s) => s.title || s.situation);
+  } catch {
+    // ignore corrupt storage
+  }
+  const storyText = stories.length
+    ? stories.map((s) => `- ${s.title || "Untitled story"}: ${s.situation || ""} ${s.task || ""} ${s.action || ""} ${s.result || ""}`.trim()).join("\n")
+    : data.starPrompts.map((s) => `- ${s.situation}`).join("\n");
+
+  const MOCK_INTERVIEW_PROMPT = `I'm interviewing for entry-level IT support roles (help desk, technical support, product support). I'm CompTIA A+ certified through Per Scholas with remote customer service experience.
+
+My 60-second pitch: ${data.pitch60Second}
+
+Stories I can draw on:
+${storyText}
+
+Please act as my interviewer. Ask me one behavioral or light-technical question at a time, wait for my answer, then give brief, honest feedback (what was strong, what to add, whether my STAR structure was clear) before asking the next one. Only comment on what I actually say — don't assume details I haven't given you.`;
+
+  document.getElementById("ai-prompt").innerHTML = `
+    <pre style="white-space:pre-wrap;font-family:inherit;margin:0 0 0.75rem;">${escapeHtml(MOCK_INTERVIEW_PROMPT)}</pre>
+    <button class="copy-btn" data-copy="${escapeHtml(MOCK_INTERVIEW_PROMPT)}">Copy</button>`;
 }
 
 init().catch((err) => console.error(err));
