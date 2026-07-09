@@ -44,6 +44,20 @@ async function init() {
 
   const tableEl = document.getElementById("tracker-table");
   const bannerEl = document.getElementById("followup-banner");
+  const rejectionEl = document.getElementById("rejection-note");
+
+  const REJECTION_NOTES = [
+    "That's one \"no\" closer to a \"yes.\" Update the row and keep moving — no need to dwell on it.",
+    "Rejection logged, not a verdict on you. Pick your next application whenever you're ready.",
+    "Noted. Most people collect a lot of these before an offer — this is the process working as expected, not a sign to stop.",
+  ];
+  let rejectionTimer = null;
+  function showRejectionNote() {
+    const note = REJECTION_NOTES[Math.floor(Math.random() * REJECTION_NOTES.length)];
+    rejectionEl.innerHTML = `<p class="callout">${escapeHtml(note)}</p>`;
+    clearTimeout(rejectionTimer);
+    rejectionTimer = setTimeout(() => { rejectionEl.innerHTML = ""; }, 8000);
+  }
 
   function renderFollowupBanner() {
     const today = new Date().toISOString().slice(0, 10);
@@ -79,6 +93,7 @@ async function init() {
     rows[Number(row)][key] = e.target.value;
     saveRows(rows);
     renderFollowupBanner();
+    if (key === "status" && e.target.value === "Rejected") showRejectionNote();
   }
   tableEl.addEventListener("input", handleFieldChange);
   tableEl.addEventListener("change", handleFieldChange);

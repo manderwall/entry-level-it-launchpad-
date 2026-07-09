@@ -1,11 +1,24 @@
 import { renderChrome, loadJSON, escapeHtml } from "./common.mjs";
 import { renderProgressBadge, renderChecklist } from "./progress.mjs";
 import { getSettings } from "./settings.mjs";
+import { computeNextStep } from "./next-step.mjs";
 
 renderChrome("index.html");
 renderProgressBadge();
 renderChecklist(document.getElementById("progress-checklist"));
 document.getElementById("hero-pay-floor").textContent = `$${getSettings().payFloor}/hr`;
+
+function renderNextStep() {
+  const step = computeNextStep();
+  document.getElementById("next-step").innerHTML = `
+    <p>${escapeHtml(step.text)}</p>
+    <a class="btn primary" href="${step.href}">${escapeHtml(step.label)} →</a>`;
+}
+renderNextStep();
+document.addEventListener("progress:changed", renderNextStep);
+window.addEventListener("storage", (e) => {
+  if (e.key === "entry-level-it-launchpad:progress" || e.key === "entry-level-it-launchpad:tracker-rows") renderNextStep();
+});
 
 const GUIDE_PAGES = [
   { href: "roles.html", title: "Best-Fit Roles & Pay", desc: "The five best target roles, full role details, what the work looks like, and salary targets." },
@@ -15,8 +28,10 @@ const GUIDE_PAGES = [
   { href: "projects-certs.html", title: "Skill-Building Projects & Next Certs", desc: "Five small projects with ready-made resume bullets, plus a cert cost/payoff calculator." },
   { href: "employers.html", title: "Employers, Pipelines & Apprenticeships", desc: "Staffing agencies, remote support pipelines, apprenticeships, and outreach/networking scripts." },
   { href: "gov-contractors.html", title: "Government Contractors & Subcontractors", desc: "Federal contract awards near Houston/JSC, pulled live from USAspending.gov — not a hiring board, but a place to start researching employers." },
-  { href: "interview-prep.html", title: "Interview Prep", desc: "The 60-second pitch, strong answers to common questions, STAR prompts, and quick technical definitions." },
+  { href: "interview-prep.html", title: "Interview Prep", desc: "The 60-second pitch, strong answers to common questions, STAR prompts, quick technical definitions, and negotiation scripts." },
+  { href: "story-bank.html", title: "STAR Story Bank", desc: "Build 5-10 reusable interview stories from your own real experience." },
   { href: "plan-tracker.html", title: "Application Plan & Weekly Tracker", desc: "A 2-week plan, a browser-local application tracker, and weekly goals." },
+  { href: "trust-safety.html", title: "Trust & Safety", desc: "What this site and its optional AI assistant will never do, in plain language." },
 ];
 
 document.getElementById("guide-contents").innerHTML = GUIDE_PAGES.map((p) => `

@@ -2,13 +2,13 @@
 // and can be installed to a home screen (iPad/iPhone/Android/desktop).
 // No build step in this project, so the cache list is maintained by hand
 // below — bump CACHE_VERSION whenever you add/remove/rename a file.
-const CACHE_VERSION = "v5";
+const CACHE_VERSION = "v6";
 const CACHE_NAME = `entry-level-it-launchpad-${CACHE_VERSION}`;
 
 const APP_SHELL = [
   "index.html", "roles.html", "search-toolkit.html", "zones.html", "resume.html",
   "projects-certs.html", "employers.html", "gov-contractors.html", "interview-prep.html", "plan-tracker.html", "trust-safety.html", "story-bank.html", "404.html",
-  "common.mjs", "settings.mjs", "splash.mjs", "help.mjs", "progress.mjs", "live-search.mjs", "chat-widget.mjs", "data-sync.mjs", "modal.mjs", "cloud-sync.mjs",
+  "common.mjs", "settings.mjs", "splash.mjs", "help.mjs", "progress.mjs", "live-search.mjs", "chat-widget.mjs", "data-sync.mjs", "modal.mjs", "cloud-sync.mjs", "next-step.mjs",
   "index.mjs", "roles.mjs", "search-toolkit.mjs", "zones.mjs", "resume.mjs",
   "projects-certs.mjs", "employers.mjs", "gov-contractors.mjs", "interview-prep.mjs", "plan-tracker.mjs", "trust-safety.mjs", "story-bank.mjs", "404.mjs",
   "styles.css", "manifest.json", "icon.svg", "icon-192.png", "icon-512.png", "apple-touch-icon.png",
