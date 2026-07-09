@@ -22,7 +22,9 @@ turned into real interactive tools instead of a static document:
   live pay/remote-odds filter.
 - **Search Toolkit** — a live link generator that builds ready-to-click
   searches on Indeed, LinkedIn, Dice, ZipRecruiter, Built In, and more
-  for any role + location; an application scorecard; a printable scam
+  for any role + location, with separate remote and local/on-site query
+  templates so a local or hybrid search gets tailored strings instead of
+  remote-oriented ones; an application scorecard; a printable scam
   checklist.
 - **Houston Zones & Getting There** — the metro broken into 6 job zones
   with transit access and pay benchmarks, plus a 5-step method to build
@@ -64,7 +66,11 @@ breakdown for any city.
   store, no install required to use it.
 - **Installable as an app** — `manifest.json` + a service worker
   (`sw.js`) make it installable to a home screen/dock like a native app,
-  and it keeps working offline once you've loaded it once.
+  and it keeps working offline once you've loaded it once. iOS-specific
+  meta tags (`apple-mobile-web-app-capable`, etc.) are included too, so a
+  home-screen shortcut on an iPhone/iPad opens as a standalone app
+  instead of inside Safari's browser chrome — many iOS versions still in
+  use ignore the web manifest and need these instead.
 - **Your own pay floor, not a hardcoded number** — the site defaults to
   $19/hr (based on a real entry-level offer), but every visitor sets
   their own in **⚙ Settings**, and it's used everywhere (Roles filter,
