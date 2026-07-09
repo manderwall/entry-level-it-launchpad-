@@ -43,6 +43,7 @@ export function renderProgressBadge() {
   const badge = document.createElement("a");
   badge.href = "index.html#progress";
   badge.className = "progress-badge";
+  badge.setAttribute("aria-live", "polite");
   target.appendChild(badge);
 
   function update() {

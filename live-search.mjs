@@ -24,7 +24,7 @@ export function renderLiveSearch(container) {
   container.innerHTML = `
     <div class="card">
       <h3>Live results</h3>
-      <div id="live-results">Loading…</div>
+      <div id="live-results" role="status" aria-live="polite">Loading…</div>
     </div>`;
   const resultsEl = container.querySelector("#live-results");
   let notConfigured = false;
