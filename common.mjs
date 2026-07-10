@@ -221,6 +221,22 @@ export async function loadJSON(path) {
   return res.json();
 }
 
+// Visually-hidden aria-live region so screen reader users hear a copy
+// confirmation — swapping a button's own visible text ("Copy" -> "Copied!")
+// isn't reliably announced on its own.
+function getCopyStatusEl() {
+  let el = document.getElementById("copy-status");
+  if (!el) {
+    el = document.createElement("div");
+    el.id = "copy-status";
+    el.setAttribute("role", "status");
+    el.setAttribute("aria-live", "polite");
+    el.style.cssText = "position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;";
+    document.body.appendChild(el);
+  }
+  return el;
+}
+
 // Event-delegated so it works regardless of whether [data-copy] buttons
 // exist yet at call time (most pages render them after an async fetch).
 export function wireCopyButtons(root = document) {
@@ -232,6 +248,7 @@ export function wireCopyButtons(root = document) {
       await navigator.clipboard.writeText(text);
       const original = btn.textContent;
       btn.textContent = "Copied!";
+      getCopyStatusEl().textContent = "Copied to clipboard.";
       setTimeout(() => { btn.textContent = original; }, 1500);
     } catch {
       window.prompt("Copy this text:", text);

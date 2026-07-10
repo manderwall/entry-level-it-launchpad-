@@ -77,19 +77,21 @@ async function init() {
   }
 
   function renderTable() {
-    const headCells = schema.columns.map((c) => `<th>${escapeHtml(c.label)}</th>`).join("") + "<th class=\"no-print\">Remove</th>";
+    const headCells = schema.columns.map((c) => `<th scope="col">${escapeHtml(c.label)}</th>`).join("") + "<th scope=\"col\" class=\"no-print\">Remove</th>";
     const bodyRows = rows.map((row, idx) => {
+      const rowLabel = row.company || `row ${idx + 1}`;
       const cells = schema.columns.map((c) => {
         const val = row[c.key] ?? "";
+        const fieldLabel = `${c.label} — ${rowLabel}`;
         if (c.type === "select") {
           const opts = c.options.map((o) => `<option value="${escapeHtml(o)}" ${o === val ? "selected" : ""}>${escapeHtml(o)}</option>`).join("");
-          return `<td><select data-row="${idx}" data-key="${c.key}">${opts}</select></td>`;
+          return `<td><select data-row="${idx}" data-key="${c.key}" aria-label="${escapeHtml(fieldLabel)}">${opts}</select></td>`;
         }
         const inputType = c.type === "date" ? "date" : "text";
         const placeholder = inputType === "text" ? ` placeholder="${escapeHtml(String(schema.exampleRow[c.key] ?? ""))}"` : "";
-        return `<td><input type="${inputType}" data-row="${idx}" data-key="${c.key}" value="${escapeHtml(val)}"${placeholder}></td>`;
+        return `<td><input type="${inputType}" data-row="${idx}" data-key="${c.key}" value="${escapeHtml(val)}" aria-label="${escapeHtml(fieldLabel)}"${placeholder}></td>`;
       }).join("");
-      return `<tr>${cells}<td class="no-print"><button data-remove="${idx}" aria-label="Remove row">✕</button></td></tr>`;
+      return `<tr>${cells}<td class="no-print"><button data-remove="${idx}" aria-label="Remove row for ${escapeHtml(rowLabel)}">✕</button></td></tr>`;
     }).join("");
     tableEl.innerHTML = `<thead><tr>${headCells}</tr></thead><tbody>${bodyRows}</tbody>`;
   }

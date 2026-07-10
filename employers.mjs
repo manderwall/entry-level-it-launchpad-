@@ -44,7 +44,7 @@ async function init() {
   document.getElementById("per-scholas").innerHTML = networking.perScholasAdvantage.map((s) => `<li>${escapeHtml(s)}</li>`).join("");
 
   document.getElementById("scripts").innerHTML = networking.scripts.map((s) => `
-    <div class="card"><h3>${escapeHtml(s.title)}</h3><p>${escapeHtml(s.text)} <button class="copy-btn" data-copy="${escapeHtml(s.text)}">Copy</button></p></div>
+    <div class="card"><h3>${escapeHtml(s.title)}</h3><p>${escapeHtml(s.text)} <button class="copy-btn" data-copy="${escapeHtml(s.text)}" aria-label="Copy: ${escapeHtml(s.title)} script">Copy</button></p></div>
   `).join("");
 }
 

@@ -320,6 +320,19 @@ details summary h2 {
   font-size: 1.1rem;
 }
 details summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Explicit high-contrast focus ring for every interactive element, rather
+   than leaving it to each browser's native default — several of these sit
+   on colored backgrounds (nav's aria-current link, the chat bubble) where
+   a thin native ring can be hard to see. */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
 details > *:not(summary) { margin-top: 0.75rem; }
 
 .disclaimer {

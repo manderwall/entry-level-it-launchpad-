@@ -45,7 +45,7 @@
       <input type="text" id="location-input" value="Remote" placeholder="Remote, Houston TX, or a ZIP">
     </div>
   </div>
-  <ul class="link-list" id="board-links"></ul>
+  <ul class="link-list" id="board-links" aria-live="polite"></ul>
   <div id="live-search"></div>
 
   <h2>Search filters to apply on any board</h2>
@@ -63,7 +63,7 @@
   <div id="scorecard"></div>
   <p id="scorecard-result" role="status" aria-live="polite"></p>
 
-  <h2>Scam checklist <button class="no-print" onclick="window.print()">Print this checklist</button></h2>
+  <h2>Scam checklist <button class="no-print" id="print-btn">Print this checklist</button></h2>
   <h3>Red flags to avoid</h3>
   <ul id="red-flags"></ul>
   <h3>How to verify a posting is legitimate</h3>

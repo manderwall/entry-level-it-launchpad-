@@ -16,7 +16,7 @@ async function init() {
       <h3>${escapeHtml(p.title)}</h3>
       <p><strong>Do:</strong> ${escapeHtml(p.instructions)}</p>
       <p><strong>Resume bullet:</strong> ${escapeHtml(p.resumeBullet)}
-        <button class="copy-btn" data-copy="${escapeHtml(p.resumeBullet)}">Copy</button></p>
+        <button class="copy-btn" data-copy="${escapeHtml(p.resumeBullet)}" aria-label="Copy: ${escapeHtml(p.title)} resume bullet">Copy</button></p>
     </div>`).join("");
 
   document.getElementById("already-earned").innerHTML = (certs.alreadyEarned || []).map((c) => `
@@ -24,7 +24,7 @@ async function init() {
       <h3>${escapeHtml(c.name)} <span style="color:var(--text-muted);font-weight:normal;font-size:0.85rem;">(${escapeHtml(c.provider)})</span></h3>
       <p>${escapeHtml(c.note)}</p>
       <p><strong>Resume bullet:</strong> ${escapeHtml(c.resumeBullet)}
-        <button class="copy-btn" data-copy="${escapeHtml(c.resumeBullet)}">Copy</button></p>
+        <button class="copy-btn" data-copy="${escapeHtml(c.resumeBullet)}" aria-label="Copy: ${escapeHtml(c.name)} resume bullet">Copy</button></p>
     </div>`).join("");
 
   const calcEl = document.getElementById("certs-calc");

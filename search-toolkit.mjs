@@ -130,9 +130,10 @@ Rules for your answer:
 
   document.getElementById("legitimacy-prompt").innerHTML = `
     <pre style="white-space:pre-wrap;font-family:inherit;margin:0 0 0.75rem;">${escapeHtml(LEGITIMACY_PROMPT)}</pre>
-    <button class="copy-btn" data-copy="${escapeHtml(LEGITIMACY_PROMPT)}">Copy</button>`;
+    <button class="copy-btn" data-copy="${escapeHtml(LEGITIMACY_PROMPT)}" aria-label="Copy: posting legitimacy AI prompt">Copy</button>`;
 }
 
+document.getElementById("print-btn")?.addEventListener("click", () => window.print());
 init().catch((err) => {
   console.error(err);
 });

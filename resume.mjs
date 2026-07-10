@@ -5,8 +5,8 @@ renderChrome("resume.html");
 renderProgressBadge();
 renderMilestoneToggle(document.getElementById("milestone"), "update-resume");
 
-function copyBlock(text) {
-  return `<button class="copy-btn" data-copy="${escapeHtml(text)}">Copy</button>`;
+function copyBlock(text, label) {
+  return `<button class="copy-btn" data-copy="${escapeHtml(text)}" aria-label="Copy: ${escapeHtml(label)}">Copy</button>`;
 }
 
 const HEADLINE = "CompTIA A+ Certified Technical Support Candidate | Per Scholas Graduate | Remote Customer Service Experience";
@@ -58,24 +58,24 @@ I'd welcome the chance to bring my troubleshooting foundation and customer-first
 
 Sincerely, [Your Name] — [Phone] • [Email] • [LinkedIn]`;
 
-document.getElementById("headline").innerHTML = `${escapeHtml(HEADLINE)} ${copyBlock(HEADLINE)}`;
-document.getElementById("summary").innerHTML = `${escapeHtml(SUMMARY)} ${copyBlock(SUMMARY)}`;
+document.getElementById("headline").innerHTML = `${escapeHtml(HEADLINE)} ${copyBlock(HEADLINE, "resume headline")}`;
+document.getElementById("summary").innerHTML = `${escapeHtml(SUMMARY)} ${copyBlock(SUMMARY, "resume summary")}`;
 document.getElementById("skills").innerHTML = SKILLS.map((s) => `<span class="pill">${escapeHtml(s)}</span>`).join(" ");
-document.getElementById("cs-bullets").innerHTML = CS_BULLETS.map((b) => `<li>${escapeHtml(b)} ${copyBlock(b)}</li>`).join("");
-document.getElementById("training-bullets").innerHTML = TRAINING_BULLETS.map((b) => `<li>${escapeHtml(b)} ${copyBlock(b)}</li>`).join("");
+document.getElementById("cs-bullets").innerHTML = CS_BULLETS.map((b, i) => `<li>${escapeHtml(b)} ${copyBlock(b, `customer service bullet ${i + 1}`)}</li>`).join("");
+document.getElementById("training-bullets").innerHTML = TRAINING_BULLETS.map((b, i) => `<li>${escapeHtml(b)} ${copyBlock(b, `training bullet ${i + 1}`)}</li>`).join("");
 
 document.getElementById("role-bullets").innerHTML = ROLE_BULLETS.map((r) => `
   <div class="card">
     <h3>${escapeHtml(r.role)}</h3>
-    <ul>${r.bullets.map((b) => `<li>${escapeHtml(b)} ${copyBlock(b)}</li>`).join("")}</ul>
+    <ul>${r.bullets.map((b, i) => `<li>${escapeHtml(b)} ${copyBlock(b, `${r.role} bullet ${i + 1}`)}</li>`).join("")}</ul>
   </div>`).join("");
 
-document.getElementById("li-headline").innerHTML = `${escapeHtml(LI_HEADLINE)} ${copyBlock(LI_HEADLINE)}`;
-document.getElementById("li-about").innerHTML = `${escapeHtml(LI_ABOUT)} ${copyBlock(LI_ABOUT)}`;
-document.getElementById("cover-letter").innerHTML = `${escapeHtml(COVER_LETTER)}<br>${copyBlock(COVER_LETTER)}`;
+document.getElementById("li-headline").innerHTML = `${escapeHtml(LI_HEADLINE)} ${copyBlock(LI_HEADLINE, "LinkedIn headline")}`;
+document.getElementById("li-about").innerHTML = `${escapeHtml(LI_ABOUT)} ${copyBlock(LI_ABOUT, "LinkedIn about section")}`;
+document.getElementById("cover-letter").innerHTML = `${escapeHtml(COVER_LETTER)}<br>${copyBlock(COVER_LETTER, "cover letter")}`;
 
 document.getElementById("opening-swaps").innerHTML = ROLE_BULLETS.map((r) => `
-  <div class="card"><h3>${escapeHtml(r.role)}</h3><p>${escapeHtml(r.opening)} ${copyBlock(r.opening)}</p></div>`).join("");
+  <div class="card"><h3>${escapeHtml(r.role)}</h3><p>${escapeHtml(r.opening)} ${copyBlock(r.opening, `${r.role} opening line`)}</p></div>`).join("");
 
 // A ready-made prompt for whatever AI chat tool someone already uses
 // (ChatGPT, Claude, Gemini, whatever) — this site's own opt-in assistant
@@ -107,6 +107,7 @@ Important: only use details I've actually given you above. Don't invent job titl
 
 document.getElementById("ai-prompt").innerHTML = `
   <pre style="white-space:pre-wrap;font-family:inherit;margin:0 0 0.75rem;">${escapeHtml(TAILOR_PROMPT)}</pre>
-  ${copyBlock(TAILOR_PROMPT)}`;
+  ${copyBlock(TAILOR_PROMPT, "AI tailoring prompt")}`;
 
+document.getElementById("print-btn")?.addEventListener("click", () => window.print());
 wireCopyButtons();

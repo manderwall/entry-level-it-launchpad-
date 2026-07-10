@@ -33,6 +33,7 @@ export function renderChatWidget() {
   bubble.className = "chat-bubble";
   bubble.type = "button";
   bubble.setAttribute("aria-label", "Ask a question");
+  bubble.setAttribute("aria-expanded", "false");
   bubble.title = "Ask a question";
   bubble.textContent = "💬";
   document.body.appendChild(bubble);
@@ -40,7 +41,7 @@ export function renderChatWidget() {
   const panel = document.createElement("div");
   panel.className = "chat-panel";
   panel.hidden = true;
-  panel.setAttribute("role", "dialog");
+  panel.setAttribute("role", "region");
   panel.setAttribute("aria-label", "Chat with the site assistant");
   panel.innerHTML = `
     <div class="chat-panel-header">
@@ -71,10 +72,12 @@ export function renderChatWidget() {
 
   function openPanel() {
     panel.hidden = false;
+    bubble.setAttribute("aria-expanded", "true");
     inputEl.focus();
   }
   function closePanel() {
     panel.hidden = true;
+    bubble.setAttribute("aria-expanded", "false");
     bubble.focus();
   }
 

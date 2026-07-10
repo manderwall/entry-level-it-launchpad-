@@ -11,12 +11,12 @@ async function init() {
     loadJSON("data/negotiation-scripts.json"),
   ]);
 
-  document.getElementById("pitch").innerHTML = `${escapeHtml(data.pitch60Second)} <button class="copy-btn" data-copy="${escapeHtml(data.pitch60Second)}">Copy</button>`;
+  document.getElementById("pitch").innerHTML = `${escapeHtml(data.pitch60Second)} <button class="copy-btn" data-copy="${escapeHtml(data.pitch60Second)}" aria-label="Copy: 60-second pitch">Copy</button>`;
 
   document.getElementById("qa").innerHTML = data.commonQuestions.map((qa) => `
     <div class="card">
       <h3>"${escapeHtml(qa.question)}"</h3>
-      <p>${escapeHtml(qa.answer)} <button class="copy-btn" data-copy="${escapeHtml(qa.answer)}">Copy</button></p>
+      <p>${escapeHtml(qa.answer)} <button class="copy-btn" data-copy="${escapeHtml(qa.answer)}" aria-label="Copy: answer to ${escapeHtml(qa.question)}">Copy</button></p>
     </div>`).join("");
 
   document.getElementById("tech-terms").innerHTML = data.technicalTerms.map((t) =>
@@ -37,7 +37,7 @@ async function init() {
   document.getElementById("negotiation-scripts").innerHTML = negotiation.scripts.map((s) => `
     <div class="card">
       <h3>${escapeHtml(s.moment)}</h3>
-      <p>"${escapeHtml(s.script)}" <button class="copy-btn" data-copy="${escapeHtml(s.script)}">Copy</button></p>
+      <p>"${escapeHtml(s.script)}" <button class="copy-btn" data-copy="${escapeHtml(s.script)}" aria-label="Copy: ${escapeHtml(s.moment)} script">Copy</button></p>
     </div>`).join("");
   document.getElementById("negotiation-rules").innerHTML = negotiation.rules.map((r) => `<li>${escapeHtml(r)}</li>`).join("");
 
@@ -68,7 +68,7 @@ Please act as my interviewer. Ask me one behavioral or light-technical question 
 
   document.getElementById("ai-prompt").innerHTML = `
     <pre style="white-space:pre-wrap;font-family:inherit;margin:0 0 0.75rem;">${escapeHtml(MOCK_INTERVIEW_PROMPT)}</pre>
-    <button class="copy-btn" data-copy="${escapeHtml(MOCK_INTERVIEW_PROMPT)}">Copy</button>`;
+    <button class="copy-btn" data-copy="${escapeHtml(MOCK_INTERVIEW_PROMPT)}" aria-label="Copy: mock interview AI prompt">Copy</button>`;
 }
 
 init().catch((err) => console.error(err));
