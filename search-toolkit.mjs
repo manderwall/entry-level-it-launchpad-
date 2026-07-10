@@ -1,4 +1,4 @@
-import { renderChrome, loadJSON, escapeHtml } from "./common.mjs";
+import { renderChrome, loadJSON, escapeHtml, wireCopyButtons } from "./common.mjs";
 import { renderProgressBadge, renderMilestoneToggle } from "./progress.mjs";
 import { renderLiveSearch } from "./live-search.mjs";
 
@@ -110,8 +110,30 @@ async function init() {
 
   document.getElementById("red-flags").innerHTML = scamChecklist.redFlags.map((f) => `<li>${escapeHtml(f)}</li>`).join("");
   document.getElementById("verification-steps").innerHTML = scamChecklist.verificationSteps.map((f) => `<li>${escapeHtml(f)}</li>`).join("");
+
+  // A ready-made "check this posting" prompt for whatever AI someone
+  // already has, built from this page's own scam-checklist criteria.
+  // Deliberately labeled as reasoning-only in the prompt itself (no
+  // domain/portal verification is possible from pasted text alone) so
+  // it doesn't overstate what any AI reading it can actually confirm.
+  const LEGITIMACY_PROMPT = `I want a second opinion on whether a job posting looks legitimate or has red flags. Paste the full posting text below this line:
+[PASTE THE JOB POSTING HERE]
+
+Please give me a three-tier read - High confidence (normal signals present), Proceed with caution (some signals missing but explainable), or Suspicious (multiple red flags stacked together) - checking specifically for:
+${scamChecklist.redFlags.map((f) => `- ${f}`).join("\n")}
+
+Rules for your answer:
+1. This is a signal, not an accusation - never say a company or posting "is a scam," just describe what you observed and let me decide.
+2. Always name at least one legitimate explanation when flagging caution or suspicious, so I'm not needlessly scared off a real opportunity.
+3. You cannot verify the company's real domain, look up other postings, or confirm the role is still open - you only have the text I pasted. Say so plainly rather than guessing at anything you can't actually check from the text alone.
+4. If uncertain, default to "Proceed with caution" rather than "Suspicious."`;
+
+  document.getElementById("legitimacy-prompt").innerHTML = `
+    <pre style="white-space:pre-wrap;font-family:inherit;margin:0 0 0.75rem;">${escapeHtml(LEGITIMACY_PROMPT)}</pre>
+    <button class="copy-btn" data-copy="${escapeHtml(LEGITIMACY_PROMPT)}">Copy</button>`;
 }
 
 init().catch((err) => {
   console.error(err);
 });
+wireCopyButtons();
