@@ -45,7 +45,7 @@ const FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' vi
 // a Google Analytics measurement ID), so it's fine to commit — but it only
 // works once you've added this site under Cloudflare dashboard > Analytics
 // & Logs > Web Analytics and swapped in the real token below.
-const CF_BEACON_TOKEN = ""; // <-- paste your token here once you've added the site in the dashboard
+const CF_BEACON_TOKEN = "b7819631306d4947a42066259a556d49";
 
 export function renderChrome(activeHref) {
   applyAccessibility(); // apply saved font-size/dyslexia/contrast/motion prefs before paint
