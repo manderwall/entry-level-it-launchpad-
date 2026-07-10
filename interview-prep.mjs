@@ -57,7 +57,7 @@ async function init() {
     ? stories.map((s) => `- ${s.title || "Untitled story"}: ${s.situation || ""} ${s.task || ""} ${s.action || ""} ${s.result || ""}`.trim()).join("\n")
     : data.starPrompts.map((s) => `- ${s.situation}`).join("\n");
 
-  const MOCK_INTERVIEW_PROMPT = `I'm interviewing for entry-level IT support roles (help desk, technical support, product support). I'm CompTIA A+ certified through Per Scholas with remote customer service experience.
+  const MOCK_INTERVIEW_PROMPT = `I'm interviewing for entry-level IT support roles (help desk, technical support, product support).
 
 My 60-second pitch: ${data.pitch60Second}
 

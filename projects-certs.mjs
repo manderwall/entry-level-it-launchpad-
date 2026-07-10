@@ -19,6 +19,14 @@ async function init() {
         <button class="copy-btn" data-copy="${escapeHtml(p.resumeBullet)}">Copy</button></p>
     </div>`).join("");
 
+  document.getElementById("already-earned").innerHTML = (certs.alreadyEarned || []).map((c) => `
+    <div class="card">
+      <h3>${escapeHtml(c.name)} <span style="color:var(--text-muted);font-weight:normal;font-size:0.85rem;">(${escapeHtml(c.provider)})</span></h3>
+      <p>${escapeHtml(c.note)}</p>
+      <p><strong>Resume bullet:</strong> ${escapeHtml(c.resumeBullet)}
+        <button class="copy-btn" data-copy="${escapeHtml(c.resumeBullet)}">Copy</button></p>
+    </div>`).join("");
+
   const calcEl = document.getElementById("certs-calc");
   calcEl.innerHTML = certs.certifications.map((c) => `
     <label style="display:flex;gap:0.6rem;align-items:flex-start;margin:0.5rem 0;">

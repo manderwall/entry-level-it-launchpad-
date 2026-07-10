@@ -1,9 +1,11 @@
 # Entry-Level IT Launchpad
 
-An open-source, ready-to-fork job-search launchpad for **CompTIA A+
-certified / Per Scholas grads** — and anyone else breaking into
-entry-level IT support with limited hands-on experience (for example,
-coming from remote customer service).
+An open-source, ready-to-fork job-search launchpad for anyone breaking
+into entry-level IT support with limited hands-on experience (for
+example, coming from remote customer service). Built by and for a
+Per Scholas cohort — certifications like CompTIA A+, Google IT
+Support, and Google AI Essentials are common starting points here, but
+none of them are required to use the site.
 
 ![Build](https://img.shields.io/badge/build_step-none-4ade80)
 ![Dependencies](https://img.shields.io/badge/runtime_deps-0-4ade80)

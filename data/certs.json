@@ -1,4 +1,20 @@
 {
+  "alreadyEarned": [
+    {
+      "id": "google-it-support",
+      "name": "Google IT Support Professional Certificate",
+      "provider": "Google (via Coursera)",
+      "note": "Many Per Scholas cohorts complete this alongside CompTIA A+. It's a well-recognized, legitimate entry-level IT credential on its own — list it even if CompTIA A+ isn't your path.",
+      "resumeBullet": "Completed the Google IT Support Professional Certificate, covering troubleshooting, customer service, networking, operating systems, system administration, and security fundamentals."
+    },
+    {
+      "id": "google-ai-essentials",
+      "name": "Google AI Essentials",
+      "provider": "Google (via Coursera)",
+      "note": "A shorter, newer credential covering practical AI tool use. Worth listing — a growing number of support and product roles now expect basic AI-tool fluency.",
+      "resumeBullet": "Completed Google AI Essentials, covering practical use of AI tools for productivity, communication, and everyday problem-solving."
+    }
+  ],
   "priceDisclaimer": "Prices reflect vendor list prices as of mid-2026 and tend to rise over time — budget slightly higher, and watch for student, military, or nonprofit discounts plus employer tuition reimbursement once you're hired.",
   "recommendedOrder": [
     "Microsoft 365 Fundamentals (MS-900)",

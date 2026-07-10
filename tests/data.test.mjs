@@ -66,6 +66,15 @@ test("certs.json certifications have positive cost and prep time", () => {
   }
 });
 
+test("certs.json alreadyEarned entries have a resume bullet and no cost field", () => {
+  const certs = loadJSON("certs.json");
+  assert.ok(certs.alreadyEarned.length > 0);
+  for (const c of certs.alreadyEarned) {
+    assert.ok(c.name && c.resumeBullet, `${c.id} missing name/resumeBullet`);
+    assert.ok(!("cost" in c), `${c.id} is something you already have, not something to buy`);
+  }
+});
+
 test("weekly-tracker-schema.json exampleRow has a value for every column", () => {
   const schema = loadJSON("weekly-tracker-schema.json");
   for (const col of schema.columns) {

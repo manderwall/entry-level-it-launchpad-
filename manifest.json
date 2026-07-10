@@ -1,7 +1,7 @@
 {
   "name": "Entry-Level IT Launchpad",
   "short_name": "IT Launchpad",
-  "description": "Job-search tools for CompTIA A+ / Per Scholas grads in the Houston area — best-fit roles, live search, resume templates, interview prep, and an application tracker.",
+  "description": "Job-search tools for entry-level IT support job seekers in the Houston area — best-fit roles, live search, resume templates, interview prep, and an application tracker.",
   "start_url": "index.html",
   "scope": ".",
   "display": "standalone",

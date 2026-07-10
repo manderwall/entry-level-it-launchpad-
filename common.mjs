@@ -108,7 +108,7 @@ export function renderChrome(activeHref) {
   header.innerHTML = `
     <div class="site-header-inner">
       <a class="site-title" href="index.html">Entry-Level IT <span>Launchpad</span></a>
-      <span style="font-size:0.8rem;color:var(--text-muted)">CompTIA A+ · Per Scholas · $<span id="header-pay-floor"></span>+/hr target</span>
+      <span style="font-size:0.8rem;color:var(--text-muted)">Entry-Level IT Support · $<span id="header-pay-floor"></span>+/hr target</span>
       <div class="header-actions">
         <button id="settings-btn" type="button" aria-label="Settings" title="Settings &amp; accessibility">⚙</button>
         <button id="help-btn" type="button" aria-label="Help" title="Help &amp; navigation">?</button>

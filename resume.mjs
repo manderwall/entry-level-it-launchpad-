@@ -11,7 +11,7 @@ function copyBlock(text) {
 
 const HEADLINE = "CompTIA A+ Certified Technical Support Candidate | Per Scholas Graduate | Remote Customer Service Experience";
 const SUMMARY = "CompTIA A+ certified IT support candidate trained through Per Scholas, with remote customer service experience and a foundation in hardware, Windows, networking basics, troubleshooting, ticketing, and user support. Known for clear communication, patience with non-technical users, accurate documentation, and calm escalation handling.";
-const SKILLS = ["CompTIA A+", "Windows 10/11", "Hardware troubleshooting", "Software troubleshooting", "Password resets / account support", "Remote desktop support", "Ticketing systems", "Customer service", "Phone, chat, and email support", "Basic networking: IP, DNS, DHCP, Wi-Fi, VPN", "Microsoft 365 / Outlook / Teams", "Documentation", "Escalation and incident notes"];
+const SKILLS = ["CompTIA A+", "Google IT Support Professional Certificate", "Google AI Essentials", "Windows 10/11", "Hardware troubleshooting", "Software troubleshooting", "Password resets / account support", "Remote desktop support", "Ticketing systems", "Customer service", "Phone, chat, and email support", "Basic networking: IP, DNS, DHCP, Wi-Fi, VPN", "Microsoft 365 / Outlook / Teams", "Documentation", "Escalation and incident notes"];
 
 const CS_BULLETS = [
   "Supported customers remotely through phone, chat, and email while maintaining quality and response-time standards.",
@@ -84,7 +84,7 @@ document.getElementById("opening-swaps").innerHTML = ROLE_BULLETS.map((r) => `
 // of asking the visitor to retype it, with an explicit anti-fabrication
 // instruction baked in so a job posting doesn't turn into invented
 // experience.
-const TAILOR_PROMPT = `I'm a CompTIA A+ certified Per Scholas graduate with remote customer service experience, applying for entry-level IT support roles.
+const TAILOR_PROMPT = `I'm applying for entry-level IT support roles. My background and current materials are below.
 
 My current resume headline: ${HEADLINE}
 
