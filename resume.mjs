@@ -109,5 +109,4 @@ document.getElementById("ai-prompt").innerHTML = `
   <pre style="white-space:pre-wrap;font-family:inherit;margin:0 0 0.75rem;">${escapeHtml(TAILOR_PROMPT)}</pre>
   ${copyBlock(TAILOR_PROMPT, "AI tailoring prompt")}`;
 
-document.getElementById("print-btn")?.addEventListener("click", () => window.print());
 wireCopyButtons();

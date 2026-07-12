@@ -96,12 +96,29 @@ async function init() {
     tableEl.innerHTML = `<thead><tr>${headCells}</tr></thead><tbody>${bodyRows}</tbody>`;
   }
 
+  // Row aria-labels are keyed off the company name (renderTable's
+  // rowLabel), but re-rendering the whole table on every keystroke would
+  // reset focus/cursor mid-type. Patch just this row's labels in place
+  // instead, so they stay accurate without disrupting typing.
+  function updateRowAccessibleNames(rowIdx) {
+    const tr = tableEl.querySelectorAll("tbody tr")[rowIdx];
+    if (!tr) return;
+    const rowLabel = rows[rowIdx].company || `row ${rowIdx + 1}`;
+    tr.querySelectorAll("[data-key]").forEach((el) => {
+      const col = schema.columns.find((c) => c.key === el.dataset.key);
+      if (col) el.setAttribute("aria-label", `${col.label} — ${rowLabel}`);
+    });
+    const removeBtn = tr.querySelector("[data-remove]");
+    if (removeBtn) removeBtn.setAttribute("aria-label", `Remove row for ${rowLabel}`);
+  }
+
   function handleFieldChange(e) {
     const { row, key } = e.target.dataset;
     if (row === undefined) return;
     rows[Number(row)][key] = e.target.value;
     saveRows(rows);
     renderFollowupBanner();
+    if (key === "company") updateRowAccessibleNames(Number(row));
     if (key === "status" && e.target.value === "Rejected") showRejectionNote();
   }
   tableEl.addEventListener("input", handleFieldChange);

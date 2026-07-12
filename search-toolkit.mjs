@@ -133,7 +133,6 @@ Rules for your answer:
     <button class="copy-btn" data-copy="${escapeHtml(LEGITIMACY_PROMPT)}" aria-label="Copy: posting legitimacy AI prompt">Copy</button>`;
 }
 
-document.getElementById("print-btn")?.addEventListener("click", () => window.print());
 init().catch((err) => {
   console.error(err);
 });

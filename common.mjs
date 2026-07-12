@@ -208,6 +208,12 @@ export function renderChrome(activeHref) {
     detailsClosedBeforePrint = [];
   });
 
+  // Pages that have a #print-btn (resume.html, search-toolkit.html) can't
+  // use onclick="window.print()" inline — this site's own CSP blocks
+  // inline event handlers. Wiring it here once, rather than in each page's
+  // own .mjs, is the same reasoning as wireCopyButtons() being shared.
+  document.getElementById("print-btn")?.addEventListener("click", () => window.print());
+
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js").catch(() => {
       // offline/installability is a nice-to-have — never block the page on it
