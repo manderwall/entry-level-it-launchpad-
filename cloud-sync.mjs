@@ -110,7 +110,10 @@ export function renderCloudSyncControls(container) {
   });
 
   container.querySelector("#cloud-sync-pull").addEventListener("click", async () => {
-    const code = container.querySelector("#cloud-sync-other-code").value.trim();
+    // Codes are generated uppercase-only (see generateCode above), but KV
+    // keys are case-sensitive — normalize here so retyping a code in
+    // lowercase doesn't silently 404 instead of finding the real match.
+    const code = container.querySelector("#cloud-sync-other-code").value.trim().toUpperCase();
     if (!code) return;
     statusEl.textContent = "Pulling…";
     try {
