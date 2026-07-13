@@ -271,14 +271,19 @@ third-party ad-tech.
 
 1. Cloudflare dashboard → **Analytics & Logs** → **Web Analytics** → add this site.
 2. Copy the beacon token it gives you.
-3. Paste it into `common.mjs`, replacing the empty `CF_BEACON_TOKEN = ""` near the top of the file.
+3. Paste it into `common.mjs`, replacing the `CF_BEACON_TOKEN` value near
+   the top of the file, and add your production hostname to
+   `CF_BEACON_HOSTS` right below it.
 4. Commit and redeploy.
 
 The token is meant to be public (same idea as a Google Analytics
-measurement ID) — safe to commit. Until you set it, the beacon script
-simply never gets injected, so there's zero overhead either way. CSP
-(`_headers` and every page's meta tag) already allows
-`static.cloudflareinsights.com` for when you do.
+measurement ID) — safe to commit. The repo ships with the original
+deployment's token, but the `CF_BEACON_HOSTS` allowlist means the beacon
+only ever injects on that deployment's hostname — on a fork, a local
+server, or a preview URL the script is never added, so there's zero
+overhead and no analytics sent anywhere until you swap in your own
+token + hostname. CSP (`_headers` and every page's meta tag) already
+allows `static.cloudflareinsights.com`.
 
 ### Protecting the free API quotas (dashboard-only, no code)
 
