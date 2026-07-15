@@ -5,15 +5,10 @@
 // every page — set it once here, every page reads it from here.
 // No import from common.mjs on purpose — common.mjs calls into this module
 // during renderChrome(), so importing back would create a circular module
-// dependency. Tiny local copy instead.
+// dependency. escape.mjs imports nothing, so it's safe from here.
 import { renderSyncControls } from "./data-sync.mjs";
 import { renderCloudSyncControls } from "./cloud-sync.mjs";
-
-function escapeHtml(str) {
-  return String(str).replace(/[&<>"']/g, (c) => (
-    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
-  ));
-}
+import { escapeHtml } from "./escape.mjs";
 
 const STORAGE_KEY = "entry-level-it-launchpad:settings";
 

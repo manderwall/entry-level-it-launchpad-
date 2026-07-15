@@ -1,10 +1,14 @@
 // Floating "Ask a question" chat widget, present on every page. Calls
-// /api/chat (a Cloudflare Pages Function proxying Anthropic's API — see
-// functions/api/chat.js). If the Function isn't configured yet (no
-// ANTHROPIC_API_KEY set) or isn't available (e.g. local static server),
-// it shows a friendly explanation instead of failing silently — unlike
-// the job-search widgets, this is a marquee feature so it should be
-// visible even when dormant.
+// /api/chat (a Cloudflare Pages Function running on Cloudflare Workers AI,
+// model Llama 3.1 8B via the account's AI binding — see functions/api/chat.js;
+// no API key involved). If the Function isn't configured yet (no AI binding)
+// or isn't available (e.g. local static server), it shows a friendly
+// explanation instead of failing silently — unlike the job-search widgets,
+// this is a marquee feature so it should be visible even when dormant.
+// From escape.mjs (not common.mjs) — common.mjs imports this module during
+// renderChrome(), so importing common.mjs back would create a cycle.
+import { escapeHtml } from "./escape.mjs";
+
 const STORAGE_KEY = "entry-level-it-launchpad:chat-history";
 const MAX_STORED_TURNS = 8;
 
@@ -20,12 +24,6 @@ function loadHistory() {
 
 function saveHistory(history) {
   sessionStorage.setItem(STORAGE_KEY, JSON.stringify(history.slice(-MAX_STORED_TURNS)));
-}
-
-function escapeHtml(str) {
-  return String(str).replace(/[&<>"']/g, (c) => (
-    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
-  ));
 }
 
 export function renderChatWidget() {
