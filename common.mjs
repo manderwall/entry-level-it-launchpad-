@@ -30,11 +30,7 @@ export const NAV_GROUPS = [
   { label: "About", hrefs: ["trust-safety.html"] },
 ];
 
-export function escapeHtml(str) {
-  return String(str).replace(/[&<>"']/g, (c) => (
-    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
-  ));
-}
+export { escapeHtml } from "./escape.mjs";
 
 const FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231656c0'/%3E%3Ctext x='50' y='68' font-size='58' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'%3EIT%3C/text%3E%3C/svg%3E";
 
@@ -42,10 +38,14 @@ const FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' vi
 // (no personal data, no cross-site tracking; Cloudflare's own product, not
 // a third-party ad-tech tracker). This token is meant to be public (it's
 // embedded in page source on every Cloudflare Web Analytics site, same as
-// a Google Analytics measurement ID), so it's fine to commit — but it only
-// works once you've added this site under Cloudflare dashboard > Analytics
-// & Logs > Web Analytics and swapped in the real token below.
+// a Google Analytics measurement ID), so it's fine to commit.
 const CF_BEACON_TOKEN = "b7819631306d4947a42066259a556d49";
+
+// The beacon only injects on these hostnames. This keeps forks, local
+// servers, and preview deployments from reporting page views into the
+// original deployment's analytics — if you fork this repo, replace the
+// token above with your own AND add your production hostname here.
+const CF_BEACON_HOSTS = ["entry-level-it-launchpad.pages.dev"];
 
 export function renderChrome(activeHref) {
   applyAccessibility(); // apply saved font-size/dyslexia/contrast/motion prefs before paint
@@ -77,7 +77,7 @@ export function renderChrome(activeHref) {
     document.head.appendChild(meta);
   }
 
-  if (CF_BEACON_TOKEN) {
+  if (CF_BEACON_TOKEN && CF_BEACON_HOSTS.includes(window.location.hostname)) {
     const beacon = document.createElement("script");
     beacon.defer = true;
     beacon.src = "https://static.cloudflareinsights.com/beacon.min.js";
