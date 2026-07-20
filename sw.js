@@ -2,7 +2,7 @@
 // and can be installed to a home screen (iPad/iPhone/Android/desktop).
 // No build step in this project, so the cache list is maintained by hand
 // below — bump CACHE_VERSION whenever you add/remove/rename a file.
-const CACHE_VERSION = "v6";
+const CACHE_VERSION = "v7";
 const CACHE_NAME = `entry-level-it-launchpad-${CACHE_VERSION}`;
 
 const APP_SHELL = [
@@ -19,12 +19,37 @@ const APP_SHELL = [
   "data/transportation-strategies.json", "data/weekly-tracker-schema.json", "data/video-resources.json",
 ];
 
+// Rebuild a response with the "redirected" flag cleared. Safari refuses to use
+// a service-worker response for a NAVIGATION when response.redirected is true
+// ("Response served by service worker has redirections"), so any page that
+// came back through a redirect can't be opened. Cloudflare Pages' clean-URL
+// rewrites (/x.html <-> /x) make our precached and fetched pages redirected,
+// so we copy the body into a fresh Response to strip the flag. Chrome tolerated
+// the old behavior; Safari did not — this makes both work.
+async function cleanResponse(response) {
+  if (!response || !response.redirected) return response;
+  const body = await response.blob();
+  return new Response(body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: new Headers(response.headers),
+  });
+}
+
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(APP_SHELL))
-      .then(() => self.skipWaiting())
-  );
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    // Precache each entry individually (not cache.addAll) so we can strip the
+    // redirect flag before storing, and so one missing file can't abort the
+    // whole install.
+    await Promise.all(APP_SHELL.map(async (path) => {
+      try {
+        const res = await fetch(new Request(path, { cache: "reload" }));
+        if (res.ok) await cache.put(path, await cleanResponse(res));
+      } catch (_) { /* skip individual failures */ }
+    }));
+    await self.skipWaiting();
+  })());
 });
 
 self.addEventListener("activate", (event) => {
@@ -43,19 +68,26 @@ self.addEventListener("fetch", (event) => {
   if (url.pathname.startsWith("/api/")) return;
   if (event.request.method !== "GET") return;
 
-  // Cache-first for the app shell, falling back to network + cache-fill
-  // for anything else same-origin (e.g. a data file added after this
-  // service worker's list was last updated).
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
-      return fetch(event.request).then((response) => {
-        if (response.ok && url.origin === self.location.origin) {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-        }
-        return response;
-      }).catch(() => cached);
-    })
-  );
+  // Cache-first for the app shell, falling back to network + cache-fill for
+  // anything else same-origin. Every response we hand back or store is passed
+  // through cleanResponse so a redirected response never reaches a navigation.
+  event.respondWith((async () => {
+    const cached = await caches.match(event.request);
+    if (cached) return cached;
+    try {
+      const response = await fetch(event.request);
+      if (response.ok && url.origin === self.location.origin) {
+        const toCache = await cleanResponse(response.clone());
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, toCache));
+      }
+      return await cleanResponse(response);
+    } catch (_) {
+      // Offline and not precached: give navigations a cached page instead of
+      // a hard failure.
+      if (event.request.mode === "navigate") {
+        return (await caches.match("index.html")) || (await caches.match("404.html")) || Response.error();
+      }
+      return Response.error();
+    }
+  })());
 });
