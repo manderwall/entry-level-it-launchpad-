@@ -2,7 +2,7 @@
 // and can be installed to a home screen (iPad/iPhone/Android/desktop).
 // No build step in this project, so the cache list is maintained by hand
 // below — bump CACHE_VERSION whenever you add/remove/rename a file.
-
+const CACHE_VERSION = "v9";
 const CACHE_NAME = `entry-level-it-launchpad-${CACHE_VERSION}`;
 
 const APP_SHELL = [
