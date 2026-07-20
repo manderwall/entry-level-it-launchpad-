@@ -215,10 +215,93 @@ export function renderChrome(activeHref) {
   document.getElementById("print-btn")?.addEventListener("click", () => window.print());
 
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js").catch(() => {
-      // offline/installability is a nice-to-have — never block the page on it
-    });
+    registerServiceWorker();
   }
+}
+
+// Service-worker update flow (shared across every page).
+//
+// sw.js no longer calls skipWaiting() at install, so a new worker WAITS
+// instead of swapping the app out from under a reader mid-task. This runs on
+// every page (renderChrome is each page's chrome entry point), so the
+// "new version available" banner appears wherever the reader happens to be.
+//
+// Flow:
+//   1. register() → a registration. If a worker is ALREADY waiting at boot
+//      (the reader reloaded into a pending update), show the banner now.
+//   2. On "updatefound", track the incoming worker; when it reaches
+//      "installed" AND a controller already exists (== this is an UPDATE, not
+//      the very first install), show the banner.
+//   3. Refresh click → postMessage SKIP_WAITING → the worker activates →
+//      "controllerchange" fires → we reload exactly once.
+//
+// First install has no controller, so the install→installed transition never
+// triggers the banner; the browser activates the worker and the next fetch
+// serves assets normally.
+//
+// Module-scope guard so the controllerchange handler and the Refresh-click
+// fallback timeout can't both reload — a single reload, ever.
+let _swReloading = false;
+
+async function registerServiceWorker() {
+  let reg;
+  try {
+    reg = await navigator.serviceWorker.register("sw.js");
+  } catch {
+    // offline/installability is a nice-to-have — never block the page on it
+    return;
+  }
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (_swReloading) return;
+    _swReloading = true;
+    window.location.reload();
+  });
+  if (reg.waiting && navigator.serviceWorker.controller) {
+    showSwUpdateBanner(reg.waiting);
+  }
+  reg.addEventListener("updatefound", () => {
+    const next = reg.installing;
+    if (!next) return;
+    next.addEventListener("statechange", () => {
+      if (next.state === "installed" && navigator.serviceWorker.controller) {
+        showSwUpdateBanner(next);
+      }
+    });
+  });
+}
+
+function showSwUpdateBanner(worker) {
+  if (document.getElementById("sw-update-banner")) return; // already up
+
+  const banner = document.createElement("div");
+  banner.id = "sw-update-banner";
+  banner.className = "sw-update-banner";
+  banner.setAttribute("role", "status");
+  banner.innerHTML = `
+    <span class="sw-update-text">A new version is available.</span>
+    <span class="sw-update-actions">
+      <button type="button" class="primary sw-update-refresh">Refresh</button>
+      <button type="button" class="sw-update-dismiss">Later</button>
+    </span>`;
+  document.body.appendChild(banner);
+
+  banner.querySelector(".sw-update-refresh").addEventListener("click", () => {
+    worker.postMessage({ type: "SKIP_WAITING" });
+    // Don't reload here — controllerchange handles the single reload once the
+    // worker actually activates; reloading now would race that activation and
+    // could serve the old version. Fallback: if controllerchange never fires
+    // (worker GC'd, message dropped), hard-reload after a few seconds so the
+    // button is never a dead end.
+    setTimeout(() => {
+      if (_swReloading) return;
+      _swReloading = true;
+      window.location.reload();
+    }, 5000);
+  }, { once: true });
+
+  banner.querySelector(".sw-update-dismiss").addEventListener("click", () => {
+    banner.remove();
+  });
 }
 
 export async function loadJSON(path) {

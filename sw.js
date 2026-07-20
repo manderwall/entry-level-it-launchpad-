@@ -2,7 +2,7 @@
 // and can be installed to a home screen (iPad/iPhone/Android/desktop).
 // No build step in this project, so the cache list is maintained by hand
 // below — bump CACHE_VERSION whenever you add/remove/rename a file.
-const CACHE_VERSION = "v7";
+const CACHE_VERSION = "v8";
 const CACHE_NAME = `entry-level-it-launchpad-${CACHE_VERSION}`;
 
 const APP_SHELL = [
@@ -48,8 +48,21 @@ self.addEventListener("install", (event) => {
         if (res.ok) await cache.put(path, await cleanResponse(res));
       } catch (_) { /* skip individual failures */ }
     }));
-    await self.skipWaiting();
+    // NO skipWaiting() here. A freshly installed worker WAITS instead of
+    // taking over silently, so a long-lived tab isn't swapped underneath
+    // the reader mid-task. common.mjs detects the waiting worker, shows a
+    // calm "new version available — refresh" banner, and only posts
+    // SKIP_WAITING (handled below) when the reader chooses to refresh.
   })());
+});
+
+// The page posts { type: "SKIP_WAITING" } when the reader clicks Refresh on
+// the update banner. Activating here fires "controllerchange" on the page,
+// which reloads it exactly once onto the new version.
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener("activate", (event) => {

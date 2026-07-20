@@ -506,6 +506,43 @@ html.reduced-motion *::after {
   margin: 0;
 }
 
+/* "New version available — refresh" banner. Injected by common.mjs when a
+   waiting service worker is detected, so it appears on any page. Calm, not
+   alarming: a neutral surface card fixed to the bottom, using theme tokens so
+   contrast holds in both light and dark. Sits below the chat panel/modals
+   (z 900/1000) but above page content. Left-anchored so it never covers the
+   bottom-right chat bubble. */
+.sw-update-banner {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  z-index: 800;
+  max-width: min(24rem, calc(100vw - 2.5rem));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+.sw-update-text { font-weight: 600; }
+.sw-update-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+/* >=44x44 hit targets (WCAG 2.5.5) — the site's default button padding is
+   smaller than that. */
+.sw-update-banner button {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.5rem 1rem;
+}
+
 /* Home page hero */
 .hero {
   display: flex;
