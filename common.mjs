@@ -242,6 +242,7 @@ export function renderChrome(activeHref) {
 // Module-scope guard so the controllerchange handler and the Refresh-click
 // fallback timeout can't both reload — a single reload, ever.
 let _swReloading = false;
+let _swUpdateAccepted = false; // reload only after the reader taps Refresh
 
 async function registerServiceWorker() {
   let reg;
@@ -252,7 +253,9 @@ async function registerServiceWorker() {
     return;
   }
   navigator.serviceWorker.addEventListener("controllerchange", () => {
-    if (_swReloading) return;
+    // clients.claim() fires this on a first visit too; only reload when the
+    // reader actually asked to update, so first loads don't flash.
+    if (!_swUpdateAccepted || _swReloading) return;
     _swReloading = true;
     window.location.reload();
   });
@@ -286,6 +289,7 @@ function showSwUpdateBanner(worker) {
   document.body.appendChild(banner);
 
   banner.querySelector(".sw-update-refresh").addEventListener("click", () => {
+    _swUpdateAccepted = true;
     worker.postMessage({ type: "SKIP_WAITING" });
     // Don't reload here — controllerchange handles the single reload once the
     // worker actually activates; reloading now would race that activation and
